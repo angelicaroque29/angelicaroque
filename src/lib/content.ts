@@ -173,6 +173,49 @@ export const credibilityItems = [
   "English & Spanish",
 ] as const;
 
+export const offerPaths = [
+  {
+    label: "Starter Website",
+    price: "from $500",
+    description: "Clean one-page site to get online fast",
+    href: "#packages",
+  },
+  {
+    label: "Business Presence",
+    price: "from $1,500",
+    description: "Website + branding + Google + social setup",
+    href: "#packages",
+    featured: true,
+  },
+  {
+    label: "Custom Build",
+    price: "from $3,000+",
+    description: "MVPs, automations, dashboards & tools",
+    href: "#packages",
+  },
+] as const;
+
+export const whoIHelp = [
+  {
+    title: "Service businesses",
+    description:
+      "Beauty, wellness, fitness, and local providers who need a professional site, lead capture, and less manual work.",
+    examples: "Salons, coaches, therapists, consultants",
+  },
+  {
+    title: "Founders & creators",
+    description:
+      "People with a product idea or growing audience who need an MVP, landing page, or backend system to launch.",
+    examples: "First-time founders, creators launching offers",
+  },
+  {
+    title: "Small teams",
+    description:
+      "Businesses outgrowing spreadsheets and DMs who need a simple dashboard, workflow, or internal tool.",
+    examples: "Ops-heavy small businesses, growing startups",
+  },
+] as const;
+
 export const experienceDetails = [
   "Software Engineer at American Express",
   "Internal tools, dashboards, automation workflows, and database systems",

@@ -15,7 +15,7 @@ export function CtaButton({
   variant = "primary",
   size = "lg",
   className,
-  children = "Book a Free Strategy Call",
+  children = "Book Appointment",
   href = siteConfig.calLink,
 }: CtaButtonProps) {
   const isExternal = href.startsWith("http");
@@ -26,11 +26,11 @@ export function CtaButton({
       variant={variant === "primary" ? "default" : "outline"}
       size={size}
       className={cn(
-        size === "lg" && "h-11 px-6 text-sm",
+        size === "lg" && "h-11 px-6 text-sm font-medium",
         variant === "primary" &&
-          "bg-primary text-primary-foreground shadow-sm hover:bg-primary/90",
+          "brand-gradient glow-soft rounded-full border-0 text-primary-foreground hover:brightness-105",
         variant === "secondary" &&
-          "border-border bg-white hover:bg-beige",
+          "rounded-full border-border/80 bg-surface/90 text-foreground backdrop-blur-sm hover:border-primary/25 hover:bg-lavender/60",
         className
       )}
     >

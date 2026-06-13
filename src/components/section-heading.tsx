@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 
 type SectionHeadingProps = {
+  label?: string;
   title: string;
   subtitle?: string;
   className?: string;
@@ -8,6 +9,7 @@ type SectionHeadingProps = {
 };
 
 export function SectionHeading({
+  label,
   title,
   subtitle,
   className,
@@ -21,7 +23,17 @@ export function SectionHeading({
         className
       )}
     >
-      <h2 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+      {label && (
+        <span
+          className={cn(
+            "section-eyebrow",
+            align === "center" && "mx-auto"
+          )}
+        >
+          {label}
+        </span>
+      )}
+      <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
         {title}
       </h2>
       {subtitle && (

@@ -18,12 +18,16 @@ const description =
   "Angelica Roque, known as Angie In Tech, builds AI-powered websites, automations, MVPs and digital presence for small businesses & founders. Software engineer @ AmEx. Bilingual EN/ES.";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://build-with-angelica.vercel.app"
+  ),
   title,
   description,
   openGraph: {
     title,
     description,
     type: "website",
+    images: [{ url: "/images/angelica-headshot.png", alt: "Angelica Roque" }],
   },
 };
 

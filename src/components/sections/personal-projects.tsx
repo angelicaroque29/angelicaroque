@@ -4,13 +4,14 @@ import { personalProjects } from "@/lib/content";
 
 export function PersonalProjects() {
   return (
-    <section id="projects" className="bg-beige">
+    <section id="projects" className="section-sand">
       <div className="section-container">
         <SectionHeading
-          title="Built by Angie"
-          subtitle="Personal software projects and experiments — the same engineering skills I bring to client work."
+          label="Built by Angie"
+          title="Projects & experiments"
+          subtitle="The same engineering behind client work — applied to my own products."
         />
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2">
           {personalProjects.map((project) => (
             <ProjectCard
               key={project.name}

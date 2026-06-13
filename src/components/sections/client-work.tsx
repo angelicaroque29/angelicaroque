@@ -4,13 +4,33 @@ import { clientWork } from "@/lib/content";
 
 export function ClientWork() {
   return (
-    <section id="client-work" className="bg-white">
+    <section id="client-work" className="section-sand">
       <div className="section-container">
         <SectionHeading
-          title="Selected client work"
-          subtitle="Real websites, branding, and digital presence I've built for businesses."
+          label="Client work"
+          title="Real businesses I've built for"
+          subtitle="Healthcare brands in Miami — full digital foundations, not just a homepage."
         />
-        <div className="grid gap-8 md:grid-cols-2">
+
+        <div className="mb-8 grid gap-3 sm:grid-cols-3">
+          {[
+            { value: "Website", label: "Design & development" },
+            { value: "Branding", label: "Visual identity" },
+            { value: "Google + Social", label: "Discovery & presence" },
+          ].map((item) => (
+            <div
+              key={item.value}
+              className="rounded-xl border border-border/70 bg-surface/80 px-4 py-3 text-center"
+            >
+              <p className="text-sm font-semibold text-foreground">
+                {item.value}
+              </p>
+              <p className="text-xs text-muted-foreground">{item.label}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2">
           {clientWork.map((project) => (
             <ProjectCard
               key={project.name}

@@ -13,22 +13,23 @@ const icons = [Layout, Bot, Code2, Globe];
 
 export function Services() {
   return (
-    <section id="services" className="bg-beige">
+    <section id="services" className="section-cream">
       <div className="section-container">
         <SectionHeading
-          title="What I build"
-          subtitle="Practical websites, automations, and digital systems — tailored to how your business actually works."
+          label="Services"
+          title="What I build for clients"
+          subtitle="From a simple website to a full digital foundation or custom product — scoped to what you actually need."
         />
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2">
           {services.map((service, index) => {
             const Icon = icons[index];
             return (
               <Card
                 key={service.title}
-                className="border-border/60 bg-white shadow-sm transition-shadow hover:shadow-md"
+                className="surface-card group border-0 bg-surface transition-all hover:-translate-y-0.5 hover:shadow-lg"
               >
-                <CardHeader>
-                  <div className="mb-2 flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <CardHeader className="pb-2">
+                  <div className="mb-3 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-lavender to-blush/50 text-primary transition-colors group-hover:from-primary-light group-hover:to-lavender">
                     <Icon className="size-5" />
                   </div>
                   <CardTitle className="text-lg">{service.title}</CardTitle>
@@ -37,7 +38,7 @@ export function Services() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-xs font-medium text-primary">
+                  <p className="rounded-lg bg-sand px-3 py-2 text-xs font-medium text-primary-dark">
                     {service.audience}
                   </p>
                 </CardContent>

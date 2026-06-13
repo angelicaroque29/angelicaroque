@@ -9,6 +9,7 @@ import { PersonalProjects } from "@/components/sections/personal-projects";
 import { Process } from "@/components/sections/process";
 import { Services } from "@/components/sections/services";
 import { Trust } from "@/components/sections/trust";
+import { WhoIHelp } from "@/components/sections/who-i-help";
 
 export default function Home() {
   return (
@@ -17,12 +18,13 @@ export default function Home() {
       <main>
         <Hero />
         <Trust />
-        <Services />
         <ClientWork />
+        <Services />
+        <Packages />
+        <WhoIHelp />
         <PersonalProjects />
         <Process />
         <About />
-        <Packages />
         <Cta />
       </main>
       <Footer />

@@ -14,11 +14,9 @@ export const siteConfig = {
     youtube: process.env.NEXT_PUBLIC_YOUTUBE_URL ?? "#",
   },
   navLinks: [
+    { label: "Work", href: "#client-work" },
     { label: "Services", href: "#services" },
-    { label: "Client Work", href: "#client-work" },
-    { label: "Projects", href: "#projects" },
-    { label: "Process", href: "#process" },
-    { label: "About", href: "#about" },
     { label: "Packages", href: "#packages" },
+    { label: "About", href: "#about" },
   ],
 } as const;
