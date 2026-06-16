@@ -1,4 +1,5 @@
 import { ArrowRight, Bot, Globe, Workflow } from "lucide-react";
+import { CurvedPath, DotMatrix, GradientBubble, ScatterDots } from "@/components/deco";
 import { Section } from "@/components/section";
 import { featuredServices } from "@/lib/content";
 
@@ -33,18 +34,54 @@ export function Services() {
     <Section id="services" flush className="!py-10 lg:!py-14">
       {/* Outer wrapper panel */}
       <div className="relative overflow-hidden rounded-[1.75rem] border border-[#e7e2da]/80 bg-[linear-gradient(118deg,rgb(232_228_245_/_0.38),rgb(250_248_243_/_0.82)_48%,rgb(221_245_241_/_0.32))] px-5 py-10 shadow-sm sm:px-8 lg:px-10 lg:py-12">
-        {/* Decorative corner grid */}
-        <div className="corner-grid right-0 top-6" style={{ width: "10rem", height: "10rem" }} />
-        {/* Soft sphere left */}
-        <div
-          className="pointer-events-none absolute -left-16 top-1/2 size-40 -translate-y-1/2 rounded-full"
-          style={{
-            background:
-              "radial-gradient(circle at 35% 35%, rgb(255 255 255 / 0.9) 0 8%, rgb(197 212 240 / 0.85) 22%, rgb(132 103 255 / 0.35) 54%, transparent 70%)",
-          }}
+
+        {/* Bubble — top right */}
+        <GradientBubble
+          size={220}
+          colorA="rgb(132 103 255 / 0.35)"
+          colorB="rgb(197 212 240 / 0.45)"
+          style={{ top: "-10%", right: "-5%", zIndex: 0 }}
         />
-        {/* Thin path bottom */}
-        <div className="thin-path -bottom-10 right-12 hidden h-28 w-56 lg:block" />
+        {/* Bubble — bottom left */}
+        <GradientBubble
+          size={160}
+          colorA="rgb(42 157 143 / 0.38)"
+          colorB="rgb(221 245 241 / 0.5)"
+          style={{ bottom: "-8%", left: "-6%", zIndex: 0 }}
+        />
+
+        {/* Dot matrix top-right */}
+        <DotMatrix
+          cols={9}
+          rows={6}
+          gap={18}
+          r={1.6}
+          fill="rgb(30 58 95 / 0.08)"
+          className="hidden lg:block"
+          style={{ top: "1rem", right: "1rem", zIndex: 1 }}
+        />
+
+        {/* Curved arc behind title */}
+        <CurvedPath
+          className="hidden lg:block"
+          style={{ top: "1rem", left: "0", width: "60%", zIndex: 1 }}
+          d="M 0 80 Q 120 20 280 60 T 480 30"
+          stroke="rgb(91 125 184 / 0.15)"
+          strokeWidth={1.5}
+          viewBox="0 0 480 100"
+        />
+
+        {/* Small scatter dots — left */}
+        <ScatterDots
+          className="hidden lg:block"
+          style={{ bottom: "1.5rem", left: "0.5rem", zIndex: 1 }}
+          dots={[
+            { cx: 8,  cy: 8,  r: 5,  fill: "rgb(132 103 255 / 0.22)" },
+            { cx: 22, cy: 22, r: 3,  fill: "rgb(91 125 184 / 0.28)" },
+            { cx: 36, cy: 10, r: 4,  fill: "rgb(42 157 143 / 0.2)" },
+            { cx: 14, cy: 36, r: 2.5, fill: "rgb(59 79 216 / 0.25)" },
+          ]}
+        />
 
         <div className="relative z-10">
           {/* Header */}
@@ -69,7 +106,8 @@ export function Services() {
               return (
                 <article
                   key={service.title}
-                  className="group relative flex flex-col overflow-hidden rounded-[1.35rem] border border-[#e7e2da] bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                  className="card-glow group relative flex flex-col overflow-hidden rounded-[1.35rem] border border-[#e7e2da] bg-white p-7 shadow-sm"
+                  style={{ animation: `fadeIn 0.7s cubic-bezier(.22,.68,0,1.2) ${0.1 + i * 0.12}s both` }}
                 >
                   {/* Colored top accent bar */}
                   <div

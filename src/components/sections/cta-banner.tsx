@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { CurvedPath, DotMatrix, GradientBubble, ScatterDots } from "@/components/deco";
 import { CtaButton } from "@/components/cta-button";
 import { Section } from "@/components/section";
 
@@ -14,18 +15,51 @@ export function CtaBanner() {
       <div className="cta-banner">
         <div className="dot-grid pointer-events-none absolute inset-0 opacity-18" />
 
-        {/* Sphere — right */}
-        <div
-          className="pointer-events-none absolute -bottom-12 -right-12 size-56 rounded-full"
-          style={{
-            background:
-              "radial-gradient(circle at 32% 28%, rgb(255 255 255 / 0.95) 0 10%, rgb(197 212 240 / 0.88) 24%, rgb(132 103 255 / 0.42) 56%, transparent 72%)",
-          }}
+        {/* Big bubble right */}
+        <GradientBubble
+          size={280}
+          colorA="rgb(132 103 255 / 0.45)"
+          colorB="rgb(197 212 240 / 0.55)"
+          style={{ bottom: "-20%", right: "-8%", zIndex: 0 }}
         />
-        {/* Sphere — left subtle */}
-        <div
-          className="pointer-events-none absolute -left-8 top-1/2 hidden size-28 -translate-y-1/2 rounded-full lg:block"
-          style={{ background: "radial-gradient(circle, rgb(221 245 241 / 0.65), transparent 70%)" }}
+        {/* Small teal bubble left */}
+        <GradientBubble
+          size={140}
+          colorA="rgb(42 157 143 / 0.4)"
+          colorB="rgb(221 245 241 / 0.5)"
+          style={{ top: "-15%", left: "-4%", zIndex: 0 }}
+        />
+
+        {/* Dot matrix — top right */}
+        <DotMatrix
+          cols={7}
+          rows={5}
+          gap={16}
+          r={1.5}
+          fill="rgb(30 58 95 / 0.08)"
+          className="hidden lg:block"
+          style={{ top: "0.75rem", right: "1rem", zIndex: 1 }}
+        />
+
+        {/* Curved arc top */}
+        <CurvedPath
+          className="hidden lg:block"
+          style={{ top: 0, left: 0, width: "100%", height: "60%", zIndex: 1 }}
+          d="M 0 100 Q 200 30 480 80 T 900 50"
+          stroke="rgb(91 125 184 / 0.18)"
+          strokeWidth={1.5}
+          viewBox="0 0 900 110"
+        />
+
+        {/* Scatter circles */}
+        <ScatterDots
+          className="hidden lg:block"
+          style={{ bottom: "1.5rem", left: "3rem", zIndex: 1 }}
+          dots={[
+            { cx: 8,  cy: 8,  r: 5,  fill: "rgb(91 125 184 / 0.22)" },
+            { cx: 24, cy: 20, r: 3,  fill: "rgb(132 103 255 / 0.28)" },
+            { cx: 40, cy: 8,  r: 4,  fill: "rgb(42 157 143 / 0.22)" },
+          ]}
         />
 
         <div className="relative z-10 flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-16">

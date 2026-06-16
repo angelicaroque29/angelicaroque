@@ -1,4 +1,5 @@
 import { ArrowRight, Check, Sparkles } from "lucide-react";
+import { CurvedPath, DotMatrix, GradientBubble, ScatterDots } from "@/components/deco";
 import { CtaButton } from "@/components/cta-button";
 import { Section } from "@/components/section";
 import {
@@ -31,7 +32,40 @@ const tierStyles = [
 
 export function Packages() {
   return (
-    <Section id="packages" flush className="!py-16 lg:!py-20">
+    <Section id="packages" flush className="relative !py-16 lg:!py-20">
+      {/* Background decorations */}
+      <GradientBubble
+        size={300}
+        colorA="rgb(91 125 184 / 0.2)"
+        colorB="rgb(197 212 240 / 0.3)"
+        className="hidden lg:block"
+        style={{ top: "-8%", right: "-6%", zIndex: 0 }}
+      />
+      <GradientBubble
+        size={200}
+        colorA="rgb(42 157 143 / 0.22)"
+        colorB="rgb(221 245 241 / 0.35)"
+        className="hidden lg:block"
+        style={{ bottom: "5%", left: "-4%", zIndex: 0 }}
+      />
+      <CurvedPath
+        className="hidden lg:block"
+        style={{ top: "10%", left: "0", width: "100%", zIndex: 0 }}
+        d="M 0 50 Q 200 0 400 60 T 800 30"
+        stroke="rgb(59 79 216 / 0.08)"
+        strokeWidth={1.5}
+        viewBox="0 0 800 100"
+      />
+      <ScatterDots
+        className="hidden lg:block"
+        style={{ top: "3rem", left: "2rem", zIndex: 0 }}
+        dots={[
+          { cx: 6,  cy: 6,  r: 4,  fill: "rgb(132 103 255 / 0.2)" },
+          { cx: 20, cy: 20, r: 2.5, fill: "rgb(91 125 184 / 0.25)" },
+          { cx: 34, cy: 8,  r: 3,  fill: "rgb(42 157 143 / 0.2)" },
+        ]}
+      />
+
       {/* Heading */}
       <div className="mb-12 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-xl">
@@ -82,9 +116,10 @@ export function Packages() {
               className={cn(
                 "relative flex flex-col overflow-hidden rounded-[1.35rem] border p-6 transition-all duration-300",
                 isHighlighted
-                  ? "border-[#2a9d8f]/30 bg-gradient-to-b from-[#f8fdfc] to-white shadow-lg lg:-mt-3 lg:mb-3 lg:pt-8"
-                  : "border-[#e7e2da] bg-white shadow-sm hover:shadow-md"
+                  ? "animated-border border-transparent bg-gradient-to-b from-[#f8fdfc] to-white shadow-lg lg:-mt-3 lg:mb-3 lg:pt-8"
+                  : "card-glow border-[#e7e2da] bg-white shadow-sm"
               )}
+              style={{ animation: `fadeIn 0.7s cubic-bezier(.22,.68,0,1.2) ${0.1 + index * 0.14}s both` }}
             >
               {/* Top colored bar */}
               <div

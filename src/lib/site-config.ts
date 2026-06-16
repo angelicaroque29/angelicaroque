@@ -19,7 +19,7 @@ export const siteConfig = {
     process.env.NEXT_PUBLIC_WHATSAPP_URL ?? "https://wa.me/17864610791",
   images: {
     logo: "/images/logo.png",
-    profile: "/images/angelica-profile.png",
+    profile: "/images/angelica-profile-hq.jpg",
     headshot: "/images/angelica-headshot.png",
     office: "/images/angelica-office.png",
     heroIllustration: "/images/hero-illustration.png",

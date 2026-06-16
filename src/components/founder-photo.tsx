@@ -24,9 +24,11 @@ export function FounderPhoto({
     >
       <Image
         src={siteConfig.images.profile}
-      alt={`${siteConfig.founder}, fundadora de ${siteConfig.name}`}
+        alt={`${siteConfig.founder}, fundadora de ${siteConfig.name}`}
         fill
         priority={priority}
+        quality={100}
+        unoptimized
         className={cn("object-cover object-[center_18%]", imageClassName)}
         sizes={sizes}
       />
