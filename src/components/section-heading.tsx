@@ -6,6 +6,8 @@ type SectionHeadingProps = {
   subtitle?: string;
   className?: string;
   align?: "left" | "center";
+  large?: boolean;
+  aside?: React.ReactNode;
 };
 
 export function SectionHeading({
@@ -13,34 +15,44 @@ export function SectionHeading({
   title,
   subtitle,
   className,
-  align = "center",
+  align = "left",
+  large = false,
+  aside,
 }: SectionHeadingProps) {
   return (
     <div
       className={cn(
-        "mb-12 max-w-2xl",
-        align === "center" && "mx-auto text-center",
+        "mb-12",
+        align === "center" && "mx-auto max-w-2xl text-center",
+        align === "left" && "max-w-3xl",
+        aside && "flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between",
         className
       )}
     >
-      {label && (
-        <span
+      <div className={cn(aside && "flex-1")}>
+        {label && <p className="section-eyebrow">{label}</p>}
+        {align === "left" && !large && <div className="accent-bar" />}
+        <h2
           className={cn(
-            "section-eyebrow",
+            large ? "heading-display" : "heading-editorial",
             align === "center" && "mx-auto"
           )}
         >
-          {label}
-        </span>
-      )}
-      <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
-        {title}
-      </h2>
-      {subtitle && (
-        <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-          {subtitle}
-        </p>
-      )}
+          {title}
+        </h2>
+        {subtitle && (
+          <p
+            className={cn(
+              "mt-4 max-w-xl text-base leading-relaxed sm:text-lg",
+              align === "center" ? "mx-auto" : "",
+              "text-muted-foreground"
+            )}
+          >
+            {subtitle}
+          </p>
+        )}
+      </div>
+      {aside}
     </div>
   );
 }

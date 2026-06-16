@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 type ProjectCardProps = {
@@ -27,10 +26,12 @@ export function ProjectCard({
   links,
   featured = false,
 }: ProjectCardProps) {
+  const tags = services ?? techTags ?? [];
+
   return (
     <article
       className={cn(
-        "surface-card group flex flex-col overflow-hidden transition-all hover:-translate-y-1 hover:shadow-lg",
+        "card-editorial group flex flex-col overflow-hidden p-0",
         featured && "md:col-span-2"
       )}
     >
@@ -43,67 +44,58 @@ export function ProjectCard({
           sizes={
             featured
               ? "(max-width: 768px) 100vw, 66vw"
-              : "(max-width: 768px) 100vw, 50vw"
+              : "(max-width: 768px) 100vw, 33vw"
           }
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
       </div>
-      <div className="flex flex-1 flex-col p-5 sm:p-6">
+      <div className="flex flex-1 flex-col p-6">
         <div className="flex items-start justify-between gap-3">
           <h3 className="font-heading text-lg font-semibold">{name}</h3>
           {status && (
-            <Badge
-              variant="secondary"
-              className="shrink-0 border-0 bg-lavender/80 text-primary-dark"
-            >
+            <span className="shrink-0 rounded-full bg-teal-soft px-2.5 py-0.5 text-[10px] font-semibold tracking-wide text-navy uppercase">
               {status}
-            </Badge>
+            </span>
           )}
         </div>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
           {description}
         </p>
-        {(services || techTags) && (
+        {tags.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-2">
-            {services?.map((service) => (
-              <Badge key={service} variant="outline" className="text-xs">
-                {service}
-              </Badge>
-            ))}
-            {techTags?.map((tag) => (
-              <Badge
+            {tags.map((tag) => (
+              <span
                 key={tag}
-                variant="outline"
-                className="border-primary/10 bg-lavender/50 text-xs text-primary-dark"
+                className="rounded-full border border-border bg-white px-2.5 py-0.5 text-xs font-medium text-navy"
               >
                 {tag}
-              </Badge>
+              </span>
             ))}
           </div>
         )}
         {(url || links) && (
-          <div className="mt-5 flex flex-wrap gap-2">
+          <div className="mt-5 flex flex-wrap gap-3">
             {url && (
-              <Button asChild size="sm" className="rounded-full">
-                <a href={url} target="_blank" rel="noopener noreferrer">
-                  Visit Website
-                  <ExternalLink className="size-3.5" />
-                </a>
-              </Button>
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-teal transition-colors hover:text-navy"
+              >
+                {siteConfig.cta.visitSite}
+                <ExternalLink className="size-3.5" />
+              </a>
             )}
             {links?.map((link) => (
-              <Button
+              <a
                 key={link.url}
-                asChild
-                variant="outline"
-                size="sm"
-                className="rounded-full"
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-ink"
               >
-                <a href={link.url} target="_blank" rel="noopener noreferrer">
-                  {link.label}
-                  <ExternalLink className="size-3.5" />
-                </a>
-              </Button>
+                {link.label}
+                <ExternalLink className="size-3.5" />
+              </a>
             ))}
           </div>
         )}

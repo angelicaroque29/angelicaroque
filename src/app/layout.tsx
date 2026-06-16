@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
 const inter = Inter({
@@ -13,9 +14,9 @@ const plusJakarta = Plus_Jakarta_Sans({
   weight: ["500", "600", "700"],
 });
 
-const title = "Angie In Tech | Websites, Automations & AI Products";
+const title = "Angelica Roque | AngieInTech · Tecnología simple para negocios que quieren crecer";
 const description =
-  "Angelica Roque, known as Angie In Tech, builds AI-powered websites, automations, MVPs and digital presence for small businesses & founders. Software engineer @ AmEx. Bilingual EN/ES.";
+  "Angelica Roque construye páginas web, automatizaciones y sistemas digitales para que tu negocio consiga más clientes, ahorre tiempo y trabaje con más claridad. Ingeniera de software @ AmEx. Miami. EN/ES.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -27,7 +28,12 @@ export const metadata: Metadata = {
     title,
     description,
     type: "website",
-    images: [{ url: "/images/angelica-headshot.png", alt: "Angelica Roque" }],
+    locale: "es_US",
+    images: [{ url: siteConfig.images.profile, alt: "Angelica Roque" }],
+  },
+  icons: {
+    icon: siteConfig.images.logo,
+    apple: siteConfig.images.logo,
   },
 };
 
@@ -38,10 +44,10 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="es"
       className={`${inter.variable} ${plusJakarta.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="flex min-h-screen w-full flex-col">{children}</body>
     </html>
   );
 }

@@ -1,37 +1,42 @@
+import { AtSign, Mail } from "lucide-react";
+import { BrandLogo } from "@/components/brand-logo";
+import { Section } from "@/components/section";
 import { siteConfig } from "@/lib/site-config";
+
+const serviceLinks = [
+  { label: "Páginas Web", href: "#services" },
+  { label: "Automatizaciones", href: "#services" },
+  { label: "Sistemas con IA", href: "#services" },
+];
+
+const legalLinks = [
+  { label: "Política de privacidad", href: "#" },
+  { label: "Términos de servicio", href: "#" },
+];
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/60 bg-gradient-to-b from-sand to-cream">
-      <div className="section-container py-12 md:py-14">
-        <div className="grid gap-10 md:grid-cols-3">
-          <div>
-            <div className="flex items-center gap-2.5">
-              <span className="brand-gradient flex size-8 items-center justify-center rounded-lg text-xs font-bold text-primary-foreground">
-                AiT
-              </span>
-              <div>
-                <p className="font-heading text-sm font-semibold">
-                  {siteConfig.name}
-                </p>
-                <p className="text-xs text-primary">{siteConfig.handle}</p>
-              </div>
-            </div>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              {siteConfig.tagline}
+    <Section bare className="bg-white/70 px-5 pb-10 pt-10 sm:px-8 lg:px-12">
+      <footer className="section-inner">
+        <div className="grid gap-10 border-t border-border pt-10 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="lg:col-span-2">
+            <BrandLogo href="#hero" size="md" />
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
+              Transformo el caos manual en sistemas que trabajan por ti. Webs,
+              automatizaciones e IA para pequeños negocios.
             </p>
           </div>
 
           <div>
-            <p className="text-xs font-semibold tracking-wide text-foreground uppercase">
-              Navigate
+            <p className="text-xs font-semibold tracking-[0.15em] text-muted-foreground uppercase">
+              Navegación
             </p>
-            <nav className="mt-4 flex flex-col gap-2">
+            <nav className="mt-4 flex flex-col gap-2.5">
               {siteConfig.navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className="text-sm text-muted-foreground transition-colors hover:text-ink"
                 >
                   {link.label}
                 </a>
@@ -40,60 +45,69 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-semibold tracking-wide text-foreground uppercase">
-              Connect
+            <p className="text-xs font-semibold tracking-[0.15em] text-muted-foreground uppercase">
+              Servicios
             </p>
-            <div className="mt-4 flex flex-col gap-2 text-sm">
-              <a
-                href={siteConfig.social.instagram}
-                className="text-muted-foreground transition-colors hover:text-foreground"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram
-              </a>
-              <a
-                href={siteConfig.social.tiktok}
-                className="text-muted-foreground transition-colors hover:text-foreground"
-                target={siteConfig.social.tiktok !== "#" ? "_blank" : undefined}
-                rel={
-                  siteConfig.social.tiktok !== "#"
-                    ? "noopener noreferrer"
-                    : undefined
-                }
-              >
-                TikTok
-              </a>
-              <a
-                href={siteConfig.social.youtube}
-                className="text-muted-foreground transition-colors hover:text-foreground"
-                target={siteConfig.social.youtube !== "#" ? "_blank" : undefined}
-                rel={
-                  siteConfig.social.youtube !== "#"
-                    ? "noopener noreferrer"
-                    : undefined
-                }
-              >
-                YouTube
-              </a>
-              <a
-                href={`mailto:${siteConfig.email}`}
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {siteConfig.email}
-              </a>
-            </div>
+            <nav className="mt-4 flex flex-col gap-2.5">
+              {serviceLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="text-sm text-muted-foreground transition-colors hover:text-ink"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          <div>
+            <p className="text-xs font-semibold tracking-[0.15em] text-muted-foreground uppercase">
+              Legal
+            </p>
+            <nav className="mt-4 flex flex-col gap-2.5">
+              {legalLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="text-sm text-muted-foreground transition-colors hover:text-ink"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-border/60 pt-8 text-xs text-muted-foreground sm:flex-row">
-          <p>
-            © {new Date().getFullYear()} {siteConfig.founder}. All rights
-            reserved.
+        <div className="mt-10 flex flex-col gap-6 border-t border-border pt-6 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-xs font-semibold tracking-[0.15em] text-muted-foreground uppercase">
+              Conecta conmigo
+            </p>
+            <div className="mt-3 flex flex-wrap items-center gap-4">
+              <a
+                href={siteConfig.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-ink"
+              >
+                <AtSign className="size-4" />
+                Instagram
+              </a>
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-ink"
+              >
+                <Mail className="size-4" />
+                Email
+              </a>
+            </div>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            © {new Date().getFullYear()} {siteConfig.name}. Todos los derechos reservados.
           </p>
-          <p>Built by Angie · Miami, FL</p>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </Section>
   );
 }

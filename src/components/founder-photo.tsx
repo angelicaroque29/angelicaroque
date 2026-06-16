@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 type FounderPhotoProps = {
@@ -17,13 +18,13 @@ export function FounderPhoto({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-2xl border border-border/70 bg-sand shadow-[0_12px_40px_oklch(0.28_0.02_45/0.1)]",
+        "relative overflow-hidden rounded-2xl border border-border/60 bg-surface shadow-[0_12px_40px_oklch(0.32_0.08_265/0.1)]",
         className
       )}
     >
       <Image
-        src="/images/angelica-headshot.png"
-        alt="Angelica Roque, founder of Angie In Tech"
+        src={siteConfig.images.profile}
+      alt={`${siteConfig.founder}, fundadora de ${siteConfig.name}`}
         fill
         priority={priority}
         className={cn("object-cover object-[center_18%]", imageClassName)}

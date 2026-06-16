@@ -1,27 +1,57 @@
 export const services = [
   {
-    title: "Website Builds",
+    title: "Automatización de procesos",
     description:
-      "Clean, professional websites for small businesses and personal brands — mobile-friendly, fast, and built to convert visitors into leads.",
-    audience: "For businesses that need a credible online home.",
+      "Seguimiento, recordatorios, reportes. Tareas repetitivas que haces a mano hoy, corren solas mañana.",
+    audience: "Pierdes horas en lo mismo cada semana",
   },
   {
-    title: "AI Automations",
+    title: "Sistemas digitales conectados",
     description:
-      "Workflows that handle repetitive tasks — lead follow-ups, intake routing, data processing — so you can focus on your clients.",
-    audience: "For teams drowning in manual admin work.",
+      "Web, formularios, pagos y seguimiento en un solo flujo. Sin saltar entre apps y hojas sueltas.",
+    audience: "Todo está disperso y nada se habla entre sí",
   },
   {
-    title: "MVP Development",
+    title: "Herramientas a tu medida",
     description:
-      "Turn your product idea into a working first version you can test with real users — scoped, focused, and launch-ready.",
-    audience: "For founders validating before going all-in.",
+      "Portales, dashboards o productos propios cuando las apps genéricas ya no encajan con tu operación.",
+    audience: "Excel y herramientas genéricas ya no alcanzan",
   },
   {
-    title: "Digital Presence Setup",
+    title: "IA práctica",
     description:
-      "Branding direction, Google Business Profile, website, and social media foundation — everything a business needs to show up online.",
-    audience: "For businesses starting from scratch or rebranding.",
+      "Clasificación, resúmenes y sugerencias para acelerar tu trabajo. Tú siempre revisas y decides.",
+    audience: "Quieres trabajar más rápido sin perder control",
+  },
+] as const;
+
+export const featuredServices = [
+  {
+    tag: "Presencia digital",
+    title: "Páginas Web",
+    headline: "Tu negocio trabaja aunque no estés.",
+    description:
+      "Sitio profesional que presenta tu oferta, captura leads y convierte visitas en clientes, las 24 horas, sin que tengas que perseguir a nadie.",
+    outcome: "Más clientes sin esfuerzo extra",
+    color: "blue" as const,
+  },
+  {
+    tag: "Automatización",
+    title: "Automatizaciones",
+    headline: "Deja de hacer lo mismo una y otra vez.",
+    description:
+      "Conecto tu agenda, formularios, pagos y seguimiento para que el flujo de cliente funcione solo. Tú te enfocas en crecer.",
+    outcome: "Horas libres para lo que importa",
+    color: "purple" as const,
+  },
+  {
+    tag: "Sistemas & IA",
+    title: "Sistemas a tu medida",
+    headline: "Infraestructura que escala contigo.",
+    description:
+      "Portales, dashboards y sistemas inteligentes para que tu equipo tome mejores decisiones, atienda más rápido y no dependa de hojas de Excel.",
+    outcome: "Operación organizada que escala",
+    color: "teal" as const,
   },
 ] as const;
 
@@ -31,26 +61,16 @@ export const clientWork = [
     url: "https://www.inarahealth.org/",
     image: "/images/inara-health.png",
     description:
-      "ABA therapy agency in Miami. I built their full digital foundation — from brand identity to a live website that helps families find and trust their services.",
-    services: [
-      "Website",
-      "Branding",
-      "Google presence",
-      "Social media setup",
-    ],
+      "Agencia de terapia ABA en Miami. Construí su base digital completa, identidad de marca, sitio web y presencia que ayuda a las familias a encontrarlos y confiar.",
+    services: ["Sitio web", "Branding", "Google", "Redes sociales"],
   },
   {
     name: "Reflection Health Group",
     url: "https://reflection-healthgroup.com/",
     image: "/images/reflection-health.png",
     description:
-      "Pediatric ABA therapy provider serving Miami-Dade and Broward. Bilingual site with lead capture, Google visibility, and cohesive brand across platforms.",
-    services: [
-      "Website",
-      "Branding",
-      "Google presence",
-      "Social media setup",
-    ],
+      "Proveedor de terapia ABA pediátrica en Miami-Dade y Broward. Sitio bilingüe con captura de leads, visibilidad en Google y marca cohesiva.",
+    services: ["Sitio web", "Branding", "Google", "Redes sociales"],
   },
 ] as const;
 
@@ -59,16 +79,16 @@ export const personalProjects = [
     name: "OSS Network",
     image: "/images/oss-network.png",
     description:
-      "A mobile platform for Brazilian Jiu-Jitsu athletes and academies — competition tracking, athlete analytics, academy dashboards, and community features. Live on the App Store.",
+      "Plataforma móvil para atletas y academias de Brazilian Jiu-Jitsu, competencias, analíticas, reportes y comunidad. Disponible en App Store.",
     techTags: ["Flutter", "Mobile", "Analytics", "Supabase"],
-    status: "Live",
+    status: "En vivo",
     links: [
       {
         label: "App Store",
         url: "https://apps.apple.com/us/app/oss-network-flutter/id6756801934",
       },
       {
-        label: "View on BuilderHub",
+        label: "Ver en BuilderHub",
         url: "https://joinbuilderhub.vercel.app/projects/oss-network",
       },
     ],
@@ -77,149 +97,394 @@ export const personalProjects = [
     name: "BuilderHub",
     image: "/images/builderhub.png",
     description:
-      "A project discovery and collaboration platform where builders, founders, and engineers share what they're building, find collaborators, and launch ideas together.",
+      "Plataforma de descubrimiento y colaboración donde builders, founders e ingenieros comparten proyectos y encuentran colaboradores.",
     techTags: ["Next.js", "Supabase", "Tailwind", "Vercel"],
-    status: "In Progress",
+    status: "En progreso",
     links: [
       {
-        label: "Visit BuilderHub",
+        label: "Visitar BuilderHub",
         url: "https://joinbuilderhub.vercel.app",
       },
     ],
   },
 ] as const;
 
+export const consultationOffers = {
+  label: "Consultoría",
+  title: "¿No sabes por dónde empezar? Empieza aquí.",
+  subtitle: "Sesiones cortas, sin compromiso de proyecto. Te digo qué conviene y qué no.",
+  note: "Primera cita de 20 min gratis. Después eliges si quieres una sesión de pago o un proyecto.",
+  sessions: [
+    {
+      name: "Consulta express",
+      price: "$75",
+      duration: "30 minutos",
+      description:
+        "Una duda concreta: ¿qué conviene automatizar? ¿qué herramienta usar? ¿por dónde empiezo?",
+      includes: [
+        "Videollamada de 30 minutos",
+        "Respuestas directas a tus preguntas",
+        "Recomendación honesta si no necesitas un proyecto grande",
+      ],
+      highlighted: false,
+    },
+    {
+      name: "Sesión de estrategia",
+      price: "$150",
+      duration: "60 minutos",
+      description:
+        "Revisamos qué te quita más tiempo hoy y qué conviene automatizar primero.",
+      includes: [
+        "Videollamada de 60 minutos",
+        "Mapa de tu operación actual: dónde se pierde tiempo y dinero",
+        "Lista priorizada: qué hacer primero, segundo y tercero",
+        "Estimado de inversión si decides implementar",
+      ],
+      highlighted: true,
+    },
+    {
+      name: "Diagnóstico digital",
+      price: "$450–$650",
+      duration: "3–5 días",
+      description:
+        "Auditoría escrita de tu operación digital: qué funciona, qué duele y qué mejorar primero.",
+      includes: [
+        "Revisión de todos tus canales de contacto",
+        "Documento con problemas encontrados y soluciones",
+        "Plan de 30/60/90 días en lenguaje sencillo",
+        "Propuesta con precio fijo si quieres que yo lo implemente",
+      ],
+      highlighted: false,
+    },
+  ],
+} as const;
+
+export const discoveryOffer = {
+  name: "Diagnóstico digital",
+  price: "$450–$650",
+  timeline: "3–5 días",
+  hours: "3–5 hrs de trabajo",
+  description:
+    "Recomendado antes de proyectos grandes. Sabes exactamente qué se va a hacer, cuánto cuesta y en cuánto tiempo, antes de pagar el proyecto completo.",
+  deliverables: [
+    "Revisión de cómo opera tu negocio hoy: web, herramientas, flujos y puntos de fricción",
+    "Dónde se pierden clientes, tiempo y dinero",
+    "Qué automatizar primero y por qué",
+    "Plan para 30, 60 y 90 días",
+    "Propuesta de implementación con precio y fechas claras",
+  ],
+  why: "Así no pagas un proyecto a ciegas y yo no construyo lo incorrecto.",
+} as const;
+
 export const packages = [
   {
-    name: "Starter Website",
-    price: "$500",
+    name: "Operación Automatizada",
+    tier: "Starter",
+    price: "$1,800",
+    priceRange: "– $2,800",
+    timeline: "4–6 semanas",
+    audience: "Para negocios que quieren empezar a automatizar",
+    bestFor: "Ordena tu operación sin rehacer todo",
+    problem:
+      "Hacemos lo mismo una y otra vez a mano: seguimiento, recordatorios, captura de datos. Siempre se nos escapa algo.",
     description:
-      "For small businesses that need a clean, professional online presence.",
+      "Automatizo los flujos que más te quitan tiempo: captura de clientes, agenda, seguimiento y reportes automáticos.",
     features: [
-      "One-page website",
-      "Mobile-friendly design",
-      "Contact form",
-      "Basic SEO setup",
+      "Formularios y flujos de ingreso de clientes automatizados",
+      "Agenda en línea con recordatorios y confirmaciones",
+      "Hoja de seguimiento: quién entró, quién avanzó, quién pagó",
+      "Automatizaciones en los canales donde ya operas (web, email, redes)",
+      "Plantillas y respuestas para preguntas frecuentes",
+      "Resumen semanal: qué entró, qué se cerró, qué falta",
+      "Capacitación de 60 min + guía escrita para tu equipo",
     ],
+    includes: "Hasta 3 canales + formularios + 1 sistema de seguimiento",
+    excludes: "Página web nueva completa, logo/branding, funciones a medida complejas",
     highlighted: false,
   },
   {
-    name: "Business Presence",
-    price: "$1,500",
+    name: "Negocio Digital Completo",
+    tier: "Growth",
+    price: "$3,200",
+    priceRange: "– $5,000",
+    timeline: "6–10 semanas",
+    audience: "Para negocios listos para escalar con sistemas",
+    bestFor: "Web profesional + operación conectada de punta a punta",
+    problem:
+      "Tenemos clientes, pero web, cobros, seguimiento y herramientas no están conectados.",
     description:
-      "For businesses that need a complete digital foundation — not just a website.",
+      "Web profesional, Google optimizado y toda la operación conectada: desde el primer contacto hasta el cliente pagado.",
     features: [
-      "Website",
-      "Branding direction",
-      "Google Business Profile guidance/setup",
-      "Social media profile setup",
-      "Lead capture/contact flow",
+      "Página web profesional (nueva o mejora seria de la actual)",
+      "Perfil de Google optimizado + pedir reseñas después del servicio",
+      "Formulario de ingreso del cliente (datos, preferencias, plazos)",
+      "Links de pago conectados a tu seguimiento de clientes",
+      "Alertas al equipo cuando entra un cliente nuevo o cambia un estado",
+      "Plantillas reutilizables para propuestas y paquetes",
+      "Automatizaciones de bienvenida y seguimiento post-venta",
+      "Español e inglés en formularios y comunicaciones clave",
+      "1 mes de ajustes después del lanzamiento (sin funciones nuevas)",
     ],
+    includes: "Web + 3 canales + un solo sistema de seguimiento",
     highlighted: true,
   },
   {
-    name: "Custom Build",
-    price: "$3,000+",
+    name: "Sistema a Tu Medida",
+    tier: "Enterprise",
+    price: "desde $6,000",
+    priceRange: "",
+    timeline: "10–14 semanas",
+    audience: "Para negocios que necesitan una solución propia a medida",
+    bestFor: "Cuando Excel y apps sueltas ya no alcanzan",
+    problem:
+      "Ya probamos apps sueltas y Excel, necesitamos algo hecho para cómo trabajamos.",
     description:
-      "For founders and businesses that need a custom system or product.",
+      "Herramienta o sistema completamente personalizado, construido para tu operación exacta.",
     features: [
-      "MVP",
-      "AI automation",
-      "Internal tool",
-      "Dashboard",
-      "Custom workflow or integration",
+      "Portal donde el cliente ve su proyecto, archivos y aprobaciones",
+      "Panel interno con números, clientes y entregas",
+      "Conexión entre agenda, pagos, email y seguimiento de clientes",
+      "Primera versión de producto o app para probar con usuarios reales",
+      "Ayuda inteligente con reglas claras, tú siempre revisas",
+      "Entrega por etapas con documentación y plan técnico",
     ],
+    includes: "Alcance definido en el diagnóstico, precio según lo que necesites",
     highlighted: false,
   },
 ] as const;
+
+export const operationsRetainer = {
+  name: "Acompañamiento mensual",
+  price: "$500",
+  priceRange: "– $900",
+  priceSuffix: "/mes",
+  capacity: "Máx. 2 negocios · unas 8 hrs/mes",
+  audience:
+    "Después del Paquete 1 o 2, para ir mejorando sin contratar una agencia",
+  description:
+    "Reviso que las automatizaciones sigan funcionando, optimizo flujos y agrego mejoras incrementales.",
+  features: [
+    "Revisión y mejora de automatizaciones existentes",
+    "Nuevos flujos para campañas o procesos que surjan",
+    "Ajustes de formularios, seguimiento y reportes",
+    "Resumen mensual: qué funciona, qué duele, qué mejorar",
+    "Prioridad en mi agenda (no disponible 24/7)",
+  ],
+  excludes:
+    "Proyectos grandes nuevos, se cotizan aparte",
+} as const;
+
+export const packageEngagementNote =
+  "Trabajo con pocos clientes a la vez para dar foco real. Las herramientas mensuales van a tu nombre y suelen costar ~$15–30/mes.";
+
+export const painMatrix = {
+  label: "Alcance",
+  title: "Qué problema resuelve cada paquete",
+  subtitle: "Comparación por tipo de dolor operativo.",
+  areas: [
+    { name: "Automatizar tareas repetitivas", tier1: true, tier2: true, tier3: true },
+    { name: "Captación y seguimiento de clientes", tier1: true, tier2: true, tier3: true },
+    { name: "Presencia web y Google", tier1: false, tier2: true, tier3: true },
+    { name: "Agenda y recordatorios", tier1: true, tier2: true, tier3: true },
+    { name: "Reportes y visibilidad semanal", tier1: true, tier2: true, tier3: true },
+    { name: "Onboarding post-venta", tier1: false, tier2: true, tier3: true },
+    { name: "Cobros y pagos integrados", tier1: false, tier2: true, tier3: true },
+    { name: "Pedir reseñas en Google", tier1: false, tier2: true, tier3: true },
+    { name: "Portal, app o sistema propio", tier1: false, tier2: false, tier3: true },
+  ],
+  tierLabels: ["Paquete 1", "Paquete 2", "Paquete 3"],
+} as const;
+
+export const policies = {
+  label: "Políticas",
+  title: "Cómo trabajamos juntos",
+  subtitle: "Reglas claras para cuidar tu proyecto y mi tiempo.",
+  items: [
+    {
+      title: "Citas por agenda",
+      description: "Usamos Cal.com, no llamadas sorpresa a cualquier hora.",
+    },
+    {
+      title: "Tiempo de respuesta",
+      description: "24–48 horas hábiles por email o WhatsApp.",
+    },
+    {
+      title: "Cambios extra",
+      description: "Si pides algo fuera del acuerdo inicial, se cotiza aparte ($75–125/hr).",
+    },
+    {
+      title: "Inicio del proyecto",
+      description: "Empiezo cuando se paga el 50% del depósito acordado.",
+    },
+    {
+      title: "Herramientas mensuales",
+      description: "Las cuentas de herramientas (agenda, automatizaciones) van a tu nombre, tú las controlas.",
+    },
+  ],
+} as const;
 
 export const processSteps = [
   {
     number: "01",
-    title: "Discover",
-    description:
-      "We talk through your goals, audience, and what's getting in the way — so I build the right thing first.",
+    title: "Charla gratis",
+    description: "20 min para entender tu negocio y ver si hay fit.",
   },
   {
     number: "02",
-    title: "Plan",
-    description:
-      "I map out scope, features, timeline, and design direction before writing code.",
+    title: "Plan con precio",
+    description: "Qué se hace, cuánto cuesta y en cuántas semanas.",
   },
   {
     number: "03",
-    title: "Build",
-    description:
-      "I develop your website, automation, or tool with regular check-ins along the way.",
+    title: "Construcción",
+    description: "Web, automatizaciones y seguimiento — con avances regulares.",
   },
   {
     number: "04",
-    title: "Launch",
-    description:
-      "We deploy, test everything, and make sure you're confident using what we built.",
+    title: "Lanzamiento",
+    description: "Probamos todo y te enseño a usarlo con guías para tu equipo.",
   },
   {
     number: "05",
-    title: "Improve",
-    description:
-      "After launch, I help you iterate based on real feedback and usage.",
+    title: "Ajustes",
+    description: "Corrijo detalles post-lanzamiento. Opcional: acompañamiento mensual.",
   },
 ] as const;
 
 export const credibilityItems = [
-  "Software Engineer @ American Express",
-  "Real Client Websites",
-  "Branding + Google Presence",
-  "English & Spanish",
+  "Ingeniera @ American Express",
+  "Automatización e IA para negocios",
+  "Bilingüe EN / ES",
 ] as const;
 
 export const offerPaths = [
   {
-    label: "Starter Website",
-    price: "from $500",
-    description: "Clean one-page site to get online fast",
+    label: "Consulta",
+    price: "desde $75",
+    description: "30–60 min · sin proyecto",
+    href: "#consultation",
+  },
+  {
+    label: "Operación Automatizada",
+    price: "$1.8k–$2.8k",
+    description: "Flujos y tareas que corren solas",
     href: "#packages",
   },
   {
-    label: "Business Presence",
-    price: "from $1,500",
-    description: "Website + branding + Google + social setup",
+    label: "Negocio Digital",
+    price: "$3.2k–$5k",
+    description: "Web + sistemas conectados",
     href: "#packages",
     featured: true,
   },
+] as const;
+
+export const bookingOptions = [
   {
-    label: "Custom Build",
-    price: "from $3,000+",
-    description: "MVPs, automations, dashboards & tools",
-    href: "#packages",
+    id: "free",
+    label: "Llamada gratis · 20 min",
+    price: "Gratis",
+    description: "Cuéntame el problema y te digo qué puedo hacer por tu negocio.",
+    detail:
+      "Sin presión, sin compromiso. Platicamos, veo cómo funciona tu operación y te digo un camino claro. La mayoría empieza aquí.",
+    badge: "Recomendado",
+    calUrl: null as string | null, // usa el embed principal
+  },
+  {
+    id: "consult",
+    label: "Sesión de estrategia",
+    price: "desde $75",
+    description: "Una sesión enfocada en priorizar qué mejorar primero.",
+    detail:
+      "30 min ($75) o 60 min ($150). Sales con un plan priorizado, pasos concretos y estimado de inversión si decides avanzar.",
+    badge: "Sin proyecto",
+    calUrl: "https://cal.com/angelica-roque-bznohb" as string | null,
+  },
+  {
+    id: "project",
+    label: "Quiero un proyecto",
+    price: "desde $1,800",
+    description: "Listo para construir: web, automatización o sistema a medida.",
+    detail:
+      "Empezamos con la llamada gratis para entender alcance. Luego propuesta por escrito: qué incluye, cuánto cuesta y en cuánto tiempo.",
+    badge: "Implementación",
+    calUrl: "https://cal.com/angelica-roque-bznohb" as string | null,
+  },
+] as const;
+
+export const bookingSteps = [
+  {
+    number: 1,
+    title: "Elige",
+    description: "Gratis, consulta o proyecto.",
+  },
+  {
+    number: 2,
+    title: "Revisa",
+    description: "Qué incluye y qué conviene.",
+  },
+  {
+    number: 3,
+    title: "Agenda",
+    description: "Escoge fecha y hora.",
   },
 ] as const;
 
 export const whoIHelp = [
   {
-    title: "Service businesses",
+    title: "Negocios de servicios",
     description:
-      "Beauty, wellness, fitness, and local providers who need a professional site, lead capture, and less manual work.",
-    examples: "Salons, coaches, therapists, consultants",
+      "Salud, belleza, coaching, consultoría — quien pierde tiempo en tareas manuales y necesita orden.",
+    examples: "Clínicas, decoradoras, coaches, terapeutas",
   },
   {
-    title: "Founders & creators",
+    title: "Emprendedores",
     description:
-      "People with a product idea or growing audience who need an MVP, landing page, or backend system to launch.",
-    examples: "First-time founders, creators launching offers",
+      "Quien tiene idea o audiencia y necesita sistemas, web o herramientas para operar sin caos.",
+    examples: "Primer negocio, creadores con servicio propio",
   },
   {
-    title: "Small teams",
+    title: "Equipos pequeños",
     description:
-      "Businesses outgrowing spreadsheets and DMs who need a simple dashboard, workflow, or internal tool.",
-    examples: "Ops-heavy small businesses, growing startups",
+      "Negocios que ya no alcanzan con Excel y procesos manuales y necesitan algo más organizado.",
+    examples: "Negocios locales en crecimiento",
   },
 ] as const;
 
 export const experienceDetails = [
-  "Software Engineer at American Express",
-  "Internal tools, dashboards, automation workflows, and database systems",
-  "B.S. Digital Arts & Sciences, Computer Science minor",
-  "Bilingual: English and Spanish",
-  "Branding, websites, Google presence, and social media for real businesses",
+  "Ingeniera de software en American Express",
+  "Automatizaciones, reportes y herramientas internas",
+  "Licenciatura en Digital Arts & Sciences + Computer Science",
+  "Bilingüe: inglés y español",
+  "Webs, sistemas y flujos para negocios en Miami",
 ] as const;
+
+export const ctaPerks = [
+  {
+    text: "Cuéntame qué te quita tiempo y te digo por dónde empezar",
+  },
+  {
+    text: "Primera cita de 20 min gratis, sin presión",
+  },
+  {
+    text: "Sales con claridad, trabajemos o no",
+  },
+] as const;
+
+export const clientWorkHighlights = [
+  { value: "Sitio web", label: "Diseño y desarrollo" },
+  { value: "Branding", label: "Identidad visual" },
+  { value: "Google + Redes", label: "Presencia en línea" },
+] as const;
+
+export const ui = {
+  mostPopular: "Más popular",
+  includes: "Incluye",
+  notIncluded: "No incluye",
+  ongoing: "Mensual",
+  from: "desde",
+  deliverables: "Qué recibes",
+  whyDiscovery: "Por qué vale la pena",
+  effort: "Nota sobre el trabajo",
+  freeIntro: "Primera cita 20 min · gratis",
+} as const;

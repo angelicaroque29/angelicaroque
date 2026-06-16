@@ -1,83 +1,60 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { BrandLogo } from "@/components/brand-logo";
 import { CtaButton } from "@/components/cta-button";
 import { siteConfig } from "@/lib/site-config";
-import { cn } from "@/lib/utils";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/50 bg-cream/80 backdrop-blur-xl backdrop-saturate-150">
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-6 md:px-8">
-        <Link
-          href="#hero"
-          className="group flex items-center gap-2.5"
-          onClick={() => setOpen(false)}
-        >
-          <span className="brand-gradient flex size-8 items-center justify-center rounded-lg text-xs font-bold text-primary-foreground shadow-sm">
-            AiT
-          </span>
-          <span className="flex flex-col leading-none">
-            <span className="font-heading text-sm font-semibold tracking-tight">
-              {siteConfig.name}
-            </span>
-            <span className="text-[10px] text-muted-foreground">
-              {siteConfig.handle}
-            </span>
-          </span>
-        </Link>
+    <header className="sticky top-0 z-50 w-full border-b border-[#e7e2da]/80 bg-ivory/96 backdrop-blur-md">
+      <nav className="mx-auto grid min-h-[4.5rem] w-full max-w-6xl grid-cols-[1fr_auto] items-center gap-4 px-5 sm:px-8 lg:grid-cols-[auto_1fr_auto] lg:px-10">
+        <BrandLogo onClick={() => setOpen(false)} size="md" className="min-w-0 shrink" />
 
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden items-center justify-center gap-8 lg:flex">
           {siteConfig.navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-lavender/50 hover:text-foreground"
-            >
+            <a key={link.href} href={link.href} className="nav-link">
               {link.label}
             </a>
           ))}
-          <CtaButton size="default" className="ml-3 h-9 rounded-full px-4">
-            Book Appointment
+        </div>
+
+        <div className="hidden lg:block">
+          <CtaButton size="default" href="#booking" showArrow className="h-9 px-5 text-xs">
+            {siteConfig.cta.book}
           </CtaButton>
         </div>
 
         <button
           type="button"
-          className="inline-flex size-10 items-center justify-center rounded-xl border border-border/60 bg-surface md:hidden"
-          aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen((prev) => !prev)}
+          className="justify-self-end rounded-lg p-2 text-ink transition-colors hover:bg-sand lg:hidden"
+          aria-label={open ? "Cerrar" : "Menú"}
+          onClick={() => setOpen(!open)}
         >
           {open ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
       </nav>
 
-      <div
-        className={cn(
-          "border-t border-border/50 bg-background md:hidden",
-          open ? "block" : "hidden"
-        )}
-      >
-        <div className="flex flex-col gap-1 px-5 py-4">
+      {open && (
+        <div className="border-t border-border bg-white px-5 py-5 lg:hidden">
           {siteConfig.navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="rounded-xl px-3 py-3 text-sm text-muted-foreground transition-colors hover:bg-lavender/50 hover:text-foreground"
+              className="block border-b border-border/60 py-3.5 text-sm font-medium text-muted-foreground last:border-0"
               onClick={() => setOpen(false)}
             >
               {link.label}
             </a>
           ))}
-          <div className="pt-2">
-            <CtaButton className="w-full rounded-full" />
-          </div>
+          <CtaButton href="#booking" showArrow className="mt-4 w-full">
+            {siteConfig.cta.book}
+          </CtaButton>
         </div>
-      </div>
+      )}
     </header>
   );
 }

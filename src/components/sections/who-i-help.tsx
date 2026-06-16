@@ -6,16 +6,13 @@ export function WhoIHelp() {
     <section id="who-i-help" className="section-cream">
       <div className="section-container">
         <SectionHeading
-          label="Who I help"
-          title="Built for businesses ready to grow online"
-          subtitle="I work with owners and founders who need something real — not a template and not a 12-person agency."
+          label="Para quién"
+          title="Negocios listos para operar con sistema"
+          subtitle="Trabajo con dueños y founders que necesitan algo real, no una plantilla ni una agencia de 12 personas."
         />
         <div className="grid gap-4 md:grid-cols-3">
           {whoIHelp.map((item, index) => (
-            <div
-              key={item.title}
-              className="surface-card flex flex-col p-6"
-            >
+            <div key={item.title} className="surface-card flex flex-col p-6">
               <span className="font-heading text-3xl font-semibold text-primary/25">
                 {String(index + 1).padStart(2, "0")}
               </span>

@@ -1,16 +1,17 @@
 import { credibilityItems } from "@/lib/content";
+import { Section } from "@/components/section";
 
 export function Trust() {
   return (
-    <section className="border-y border-border/70 bg-surface">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-8 gap-y-3 px-5 py-5 sm:px-6 md:gap-x-12 md:px-8">
+    <Section bare className="border-y border-border/60 bg-white/50 px-5 py-4 sm:px-8 lg:px-12">
+      <div className="section-inner flex flex-wrap items-center justify-center gap-3 sm:gap-4">
         {credibilityItems.map((item) => (
-          <div key={item} className="flex items-center gap-2.5">
-            <span className="size-1.5 rounded-full bg-primary-dark" />
-            <p className="text-sm font-medium text-foreground">{item}</p>
-          </div>
+          <span key={item} className="trust-pill text-xs sm:text-sm">
+            <span className="size-1.5 rounded-full bg-teal" />
+            {item}
+          </span>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

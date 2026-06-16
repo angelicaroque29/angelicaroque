@@ -1,46 +1,58 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 type CtaButtonProps = {
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "teal" | "ghost";
   size?: "default" | "lg";
   className?: string;
   children?: React.ReactNode;
   href?: string;
+  showArrow?: boolean;
 };
 
 export function CtaButton({
   variant = "primary",
   size = "lg",
   className,
-  children = "Book Appointment",
-  href = siteConfig.calLink,
+  children = siteConfig.cta.book,
+  href = "#booking",
+  showArrow = false,
 }: CtaButtonProps) {
   const isExternal = href.startsWith("http");
 
+  const variantClass =
+    variant === "primary"
+      ? "btn-primary"
+      : variant === "teal"
+        ? "btn-teal"
+        : variant === "ghost"
+          ? "btn-ghost"
+          : "btn-ghost";
+
+  const sizeClass = size === "lg" ? "h-12 px-7 text-sm" : "h-10 px-5 text-sm";
+
+  const inner = (
+    <>
+      {children}
+      {showArrow && <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />}
+    </>
+  );
+
+  const classes = cn("group", variantClass, sizeClass, className);
+
+  if (isExternal) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={classes}>
+        {inner}
+      </a>
+    );
+  }
+
   return (
-    <Button
-      asChild
-      variant={variant === "primary" ? "default" : "outline"}
-      size={size}
-      className={cn(
-        size === "lg" && "h-11 px-6 text-sm font-medium",
-        variant === "primary" &&
-          "brand-gradient glow-soft rounded-full border-0 text-primary-foreground hover:brightness-105",
-        variant === "secondary" &&
-          "rounded-full border-border/80 bg-surface/90 text-foreground backdrop-blur-sm hover:border-primary/25 hover:bg-lavender/60",
-        className
-      )}
-    >
-      {isExternal ? (
-        <a href={href} target="_blank" rel="noopener noreferrer">
-          {children}
-        </a>
-      ) : (
-        <Link href={href}>{children}</Link>
-      )}
-    </Button>
+    <Link href={href} className={classes}>
+      {inner}
+    </Link>
   );
 }
