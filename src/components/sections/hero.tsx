@@ -1,45 +1,22 @@
+"use client";
+
 import Image from "next/image";
-import { ArrowRight, BadgeCheck, Briefcase, Globe, Languages, Sparkles, Zap } from "lucide-react";
+import { Briefcase, FolderKanban, Globe, Languages, MapPin, Sparkles, Zap } from "lucide-react";
 import { CurvedPath, DotMatrix, GradientBubble, ScatterDots } from "@/components/deco";
 import { CtaButton } from "@/components/cta-button";
 import { Section } from "@/components/section";
+import { useLocale } from "@/lib/i18n/context";
 import { siteConfig } from "@/lib/site-config";
 
-const highlights = [
-  {
-    icon: Zap,
-    title: "Automatizaciones",
-    label: "que te ahorran tiempo",
-    color: "#3b4fd8",
-    bg: "linear-gradient(135deg,#eef2fb,#dde6f8)",
-  },
-  {
-    icon: Sparkles,
-    title: "Sistemas con IA",
-    label: "que trabajan por ti",
-    color: "#7c5cc4",
-    bg: "linear-gradient(135deg,#f0edf8,#e5dff5)",
-  },
-  {
-    icon: Globe,
-    title: "Websites que venden",
-    label: "los 7 días de la semana",
-    color: "#2a9d8f",
-    bg: "linear-gradient(135deg,#ddf5f1,#c8ede8)",
-  },
+const highlightStyles = [
+  { icon: Zap, color: "#3b4fd8", bg: "linear-gradient(135deg,#eef2fb,#dde6f8)" },
+  { icon: Sparkles, color: "#7c5cc4", bg: "linear-gradient(135deg,#f0edf8,#e5dff5)" },
+  { icon: Globe, color: "#2a9d8f", bg: "linear-gradient(135deg,#ddf5f1,#c8ede8)" },
 ];
 
-const stats = [
-  { icon: BadgeCheck, label: "5+ años", detail: "de experiencia" },
-  { icon: Languages, label: "EN / ES", detail: "Bilingüe" },
-  { icon: Briefcase, label: "AmEx", detail: "Software Engineer" },
-];
+const statIcons = [Briefcase, FolderKanban, Languages, MapPin] as const;
 
-const outcomes = [
-  "Más clientes sin trabajar más",
-  "Operación que corre sola",
-  "Tecnología que realmente funciona",
-];
+const outcomeColors = ["#3b4fd8", "#7c5cc4", "#2a9d8f"];
 
 function PhotoFrame() {
   return (
@@ -129,6 +106,8 @@ function PhotoFrame() {
 }
 
 export function Hero() {
+  const { t } = useLocale();
+
   return (
     <Section id="hero" bare className="relative overflow-hidden">
       {/* ── Background atmosphere ── */}
@@ -201,29 +180,28 @@ export function Hero() {
           <div className="fade-in-1 flex justify-center lg:justify-start">
             <span className="micro-chip">
               <span className="pulse-dot mr-1.5 inline-block size-1.5 rounded-full" style={{ background: "#5b7db8" }} />
-              AngieInTech · Miami · Software Engineer
+              {t.hero.chip}
             </span>
           </div>
 
           <h1 className="fade-in-2 mt-5 max-w-[580px] font-heading text-[clamp(2.6rem,5.2vw,4.15rem)] font-semibold leading-[1.03] tracking-[-0.045em] text-navy">
-            Tecnología simple para negocios que{" "}
-            <span className="shimmer-text">quieren crecer.</span>
+            {t.hero.title}{" "}
+            <span className="shimmer-text">{t.hero.titleHighlight}</span>
           </h1>
 
           <p className="fade-in-3 mx-auto mt-6 max-w-[440px] text-[0.9375rem] leading-[1.85] text-muted-foreground lg:mx-0">
-            Construyo páginas web, automatizaciones y sistemas digitales para ayudarte
-            a conseguir más clientes, ahorrar tiempo y trabajar con más claridad.
+            {t.hero.subtitle}
           </p>
 
           {/* Outcome pills */}
           <div className="fade-in-3 mx-auto mt-5 flex flex-wrap justify-center gap-2 lg:justify-start">
-            {outcomes.map((o, i) => (
+            {t.hero.outcomes.map((o, i) => (
               <span
                 key={o}
                 className="inline-flex items-center gap-1.5 rounded-full border border-[#e7e2da] bg-white px-3 py-1.5 text-[11px] font-medium text-navy shadow-xs transition-all duration-200 hover:border-[#5b7db8]/40 hover:shadow-sm"
                 style={{ animationDelay: `${0.32 + i * 0.07}s` }}
               >
-                <span className="size-1.5 rounded-full" style={{ background: i === 0 ? "#3b4fd8" : i === 1 ? "#7c5cc4" : "#2a9d8f" }} />
+                <span className="size-1.5 rounded-full" style={{ background: outcomeColors[i] }} />
                 {o}
               </span>
             ))}
@@ -231,17 +209,17 @@ export function Hero() {
 
           <div className="fade-in-4 mt-8 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
             <CtaButton href="#booking" showArrow className="!h-12 !px-8">
-              Agenda tu llamada gratis
+              {t.hero.primaryCta}
             </CtaButton>
             <CtaButton variant="ghost" href="#services" className="!h-12 !px-7">
-              Ver servicios
+              {t.hero.secondaryCta}
             </CtaButton>
           </div>
 
           {/* Credentials */}
-          <div className="fade-in-4 mt-10 flex flex-wrap justify-center gap-5 border-t border-[#e7e2da]/60 pt-8 lg:justify-start">
-            {stats.map((item, i) => {
-              const Icon = item.icon;
+          <div className="fade-in-4 mt-10 grid gap-4 border-t border-[#e7e2da]/60 pt-8 sm:grid-cols-2 lg:max-w-xl">
+            {t.hero.stats.map((item, i) => {
+              const Icon = statIcons[i] ?? Briefcase;
               return (
                 <span key={item.label} className="inline-flex items-center gap-2.5 text-xs text-muted-foreground">
                   <span className="flex size-8 items-center justify-center rounded-full border border-[#e7e2da] bg-white shadow-xs transition-colors duration-200 hover:border-[#5b7db8]/40">
@@ -279,8 +257,9 @@ export function Hero() {
 
           {/* Float service chips — right, below face */}
           <div className="absolute -right-5 bottom-0 z-20 hidden flex-col gap-3 lg:flex xl:-right-14">
-            {highlights.map((item, i) => {
-              const Icon = item.icon;
+            {t.hero.highlights.map((item, i) => {
+              const style = highlightStyles[i];
+              const Icon = style.icon;
               return (
                 <div
                   key={item.title}
@@ -289,9 +268,9 @@ export function Hero() {
                 >
                   <span
                     className="flex size-8 shrink-0 items-center justify-center rounded-xl"
-                    style={{ background: item.bg }}
+                    style={{ background: style.bg }}
                   >
-                    <Icon className="size-4" style={{ color: item.color }} />
+                    <Icon className="size-4" style={{ color: style.color }} />
                   </span>
                   <span className="min-w-0 leading-snug">
                     <span className="block text-xs font-semibold text-navy">{item.title}</span>

@@ -1,20 +1,14 @@
+"use client";
+
 import { AtSign, Mail } from "lucide-react";
 import { BrandLogo } from "@/components/brand-logo";
 import { Section } from "@/components/section";
+import { useLocale } from "@/lib/i18n/context";
 import { siteConfig } from "@/lib/site-config";
 
-const serviceLinks = [
-  { label: "Páginas Web", href: "#services" },
-  { label: "Automatizaciones", href: "#services" },
-  { label: "Sistemas con IA", href: "#services" },
-];
-
-const legalLinks = [
-  { label: "Política de privacidad", href: "#" },
-  { label: "Términos de servicio", href: "#" },
-];
-
 export function Footer() {
+  const { t } = useLocale();
+
   return (
     <Section bare className="bg-white/70 px-5 pb-10 pt-10 sm:px-8 lg:px-12">
       <footer className="section-inner">
@@ -22,17 +16,16 @@ export function Footer() {
           <div className="lg:col-span-2">
             <BrandLogo href="#hero" size="md" />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Transformo el caos manual en sistemas que trabajan por ti. Webs,
-              automatizaciones e IA para pequeños negocios.
+              {t.footer.tagline}
             </p>
           </div>
 
           <div>
             <p className="text-xs font-semibold tracking-[0.15em] text-muted-foreground uppercase">
-              Navegación
+              {t.footer.navigation}
             </p>
             <nav className="mt-4 flex flex-col gap-2.5">
-              {siteConfig.navLinks.map((link) => (
+              {t.nav.links.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
@@ -46,10 +39,10 @@ export function Footer() {
 
           <div>
             <p className="text-xs font-semibold tracking-[0.15em] text-muted-foreground uppercase">
-              Servicios
+              {t.footer.services}
             </p>
             <nav className="mt-4 flex flex-col gap-2.5">
-              {serviceLinks.map((link) => (
+              {t.footer.serviceLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
@@ -63,10 +56,10 @@ export function Footer() {
 
           <div>
             <p className="text-xs font-semibold tracking-[0.15em] text-muted-foreground uppercase">
-              Legal
+              {t.footer.legal}
             </p>
             <nav className="mt-4 flex flex-col gap-2.5">
-              {legalLinks.map((link) => (
+              {t.footer.legalLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
@@ -82,7 +75,7 @@ export function Footer() {
         <div className="mt-10 flex flex-col gap-6 border-t border-border pt-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-xs font-semibold tracking-[0.15em] text-muted-foreground uppercase">
-              Conecta conmigo
+              {t.footer.connect}
             </p>
             <div className="mt-3 flex flex-wrap items-center gap-4">
               <a
@@ -104,7 +97,7 @@ export function Footer() {
             </div>
           </div>
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} {siteConfig.name}. Todos los derechos reservados.
+            © {new Date().getFullYear()} {siteConfig.name}. {t.footer.rights}
           </p>
         </div>
       </footer>

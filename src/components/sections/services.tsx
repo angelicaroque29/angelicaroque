@@ -1,35 +1,39 @@
+"use client";
+
 import { ArrowRight, Bot, Globe, Workflow } from "lucide-react";
 import { CurvedPath, DotMatrix, GradientBubble, ScatterDots } from "@/components/deco";
 import { Section } from "@/components/section";
-import { featuredServices } from "@/lib/content";
+import { useLocale } from "@/lib/i18n/context";
 
 const icons = [Globe, Workflow, Bot];
 
-const accents = {
-  blue: {
+const accentList = [
+  {
     bg: "linear-gradient(135deg, #eef2fb 0%, #dde6f8 100%)",
     icon: "#4262c8",
     bar: "linear-gradient(90deg, #3b4fd8, #5b7db8)",
     chip: "bg-[#eef2fb] text-[#3b4fd8]",
     link: "#3b4fd8",
   },
-  purple: {
+  {
     bg: "linear-gradient(135deg, #f0edf8 0%, #e5dff5 100%)",
     icon: "#7c5cc4",
     bar: "linear-gradient(90deg, #7c5cc4, #a07dd8)",
     chip: "bg-[#f0edf8] text-[#7c5cc4]",
     link: "#7c5cc4",
   },
-  teal: {
+  {
     bg: "linear-gradient(135deg, #ddf5f1 0%, #c8ede8 100%)",
     icon: "#2a9d8f",
     bar: "linear-gradient(90deg, #2a9d8f, #4bbfb1)",
     chip: "bg-[#ddf5f1] text-[#1f7a6e]",
     link: "#1f7a6e",
   },
-} as const;
+] as const;
 
 export function Services() {
+  const { t } = useLocale();
+
   return (
     <Section id="services" flush className="!py-10 lg:!py-14">
       {/* Outer wrapper panel */}
@@ -87,22 +91,20 @@ export function Services() {
           {/* Header */}
           <div className="mb-10 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-lg">
-              <span className="micro-chip mb-3 inline-flex">Servicios</span>
+              <span className="micro-chip mb-3 inline-flex">{t.services.label}</span>
               <h2 className="font-heading text-[clamp(1.6rem,3vw,2.2rem)] font-semibold leading-[1.1] tracking-tight text-navy">
-                La tecnología que tu negocio necesita para crecer.
+                {t.services.title}
               </h2>
             </div>
             <p className="max-w-xs text-sm leading-[1.8] text-muted-foreground lg:pb-1 lg:text-right">
-              Web, automatización y tecnología inteligente para que atiendas más clientes
-              sin contratar más personas ni trabajar más horas.
+              {t.services.subtitle}
             </p>
           </div>
 
-          {/* Cards */}
           <div className="grid gap-5 md:grid-cols-3">
-            {featuredServices.map((service, i) => {
+            {t.services.items.map((service, i) => {
               const Icon = icons[i];
-              const a = accents[service.color];
+              const a = accentList[i];
               return (
                 <article
                   key={service.title}
@@ -148,7 +150,7 @@ export function Services() {
                       className="inline-flex items-center gap-1 text-xs font-semibold transition-colors"
                       style={{ color: a.link }}
                     >
-                      Saber más
+                      {t.services.learnMore}
                       <ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" />
                     </a>
                   </div>

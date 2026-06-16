@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Providers } from "@/components/providers";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -47,7 +48,9 @@ export default function RootLayout({
       lang="es"
       className={`${inter.variable} ${plusJakarta.variable} h-full antialiased`}
     >
-      <body className="flex min-h-screen w-full flex-col">{children}</body>
+      <body className="flex min-h-screen w-full flex-col">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
