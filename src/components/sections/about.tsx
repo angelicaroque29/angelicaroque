@@ -18,11 +18,14 @@ export function About() {
           <div className="soft-sphere -left-8 -top-8 size-24 opacity-70" />
           <div className="relative overflow-hidden rounded-[1.75rem] border border-border bg-white shadow-md">
             <Image
-              src={siteConfig.images.office}
+              src={siteConfig.images.profile}
               alt={siteConfig.founder}
-              width={600}
-              height={750}
-              className="aspect-[4/5] w-full object-cover"
+              width={768}
+              height={1024}
+              quality={100}
+              unoptimized
+              className="aspect-[4/5] w-full object-cover object-[center_22%]"
+              sizes="(max-width: 1024px) 90vw, 480px"
             />
           </div>
         </div>
@@ -45,7 +48,7 @@ export function About() {
           <ul className="mt-8 grid gap-3 sm:grid-cols-2">
             {t.about.experience.map((item) => (
               <li key={item} className="flex items-start gap-2.5 text-sm">
-                <Check className="mt-0.5 size-4 shrink-0 text-teal" />
+                <Check className="mt-0.5 size-4 shrink-0 text-accent-blue" />
                 {item}
               </li>
             ))}

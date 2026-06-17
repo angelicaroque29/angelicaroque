@@ -386,6 +386,21 @@
     transform: translateY(-1px);
   }
 
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 px-6 py-3 text-sm font-semibold transition-all duration-200;
+    border-color: rgb(30 58 95 / 0.28);
+    background: linear-gradient(180deg, #ffffff 0%, #eef2fb 100%);
+    color: var(--navy);
+    box-shadow: 0 4px 14px rgb(59 79 216 / 0.1);
+  }
+
+  .btn-secondary:hover {
+    border-color: rgb(59 79 216 / 0.45);
+    background: linear-gradient(180deg, #ffffff 0%, #dde6f8 100%);
+    box-shadow: 0 8px 22px rgb(59 79 216 / 0.14);
+    transform: translateY(-1px);
+  }
+
   .btn-ghost {
     @apply inline-flex items-center justify-center gap-2 rounded-full border bg-white/80 px-6 py-3 text-sm font-semibold transition-all duration-200;
     border-color: var(--border-warm);

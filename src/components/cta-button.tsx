@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 type CtaButtonProps = {
-  variant?: "primary" | "secondary" | "teal" | "ghost";
+  variant?: "primary" | "secondary" | "accent" | "teal" | "ghost";
   size?: "default" | "lg";
   className?: string;
   children?: React.ReactNode;
@@ -25,11 +25,13 @@ export function CtaButton({
   const variantClass =
     variant === "primary"
       ? "btn-primary"
-      : variant === "teal"
-        ? "btn-teal"
-        : variant === "ghost"
-          ? "btn-ghost"
-          : "btn-ghost";
+      : variant === "secondary"
+        ? "btn-secondary"
+        : variant === "accent" || variant === "teal"
+          ? "btn-teal"
+          : variant === "ghost"
+            ? "btn-ghost"
+            : "btn-ghost";
 
   const sizeClass = size === "lg" ? "h-12 px-7 text-sm" : "h-10 px-5 text-sm";
 

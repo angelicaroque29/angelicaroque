@@ -165,7 +165,7 @@ export function Hero() {
               <CtaButton href="#booking" showArrow className="!h-11 !px-7">
                 {t.hero.primaryCta}
               </CtaButton>
-              <CtaButton variant="ghost" href="#services" className="!h-11 !px-6">
+              <CtaButton variant="secondary" href="#services" showArrow className="!h-11 !px-7">
                 {t.hero.secondaryCta}
               </CtaButton>
             </div>
@@ -232,7 +232,7 @@ export function Hero() {
                   quality={100}
                   unoptimized
                   sizes="(max-width: 1024px) 70vw, 420px"
-                  className="aspect-[4/5] w-full object-cover object-[center_14%]"
+                  className="aspect-[4/5] w-full object-cover object-[center_22%]"
                 />
               </div>
             </div>
