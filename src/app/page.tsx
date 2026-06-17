@@ -1,5 +1,5 @@
 import { Footer } from "@/components/footer";
-import { Nav } from "@/components/nav";
+import { StickyNav } from "@/components/sticky-nav";
 import { About } from "@/components/sections/about";
 import { Booking } from "@/components/sections/booking";
 import { CtaBanner } from "@/components/sections/cta-banner";
@@ -11,7 +11,7 @@ import { Services } from "@/components/sections/services";
 export default function Home() {
   return (
     <>
-      <Nav />
+      <StickyNav />
       <main className="site-main">
         <Hero />
         <MarqueeStrip />

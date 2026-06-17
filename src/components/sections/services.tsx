@@ -36,17 +36,14 @@ export function Services() {
 
   return (
     <Section id="services" flush className="!py-10 lg:!py-14">
-      {/* Outer wrapper panel */}
       <div className="relative overflow-hidden rounded-[1.75rem] border border-[#e7e2da]/80 bg-[linear-gradient(118deg,rgb(232_228_245_/_0.38),rgb(250_248_243_/_0.82)_48%,rgb(221_245_241_/_0.32))] px-5 py-10 shadow-sm sm:px-8 lg:px-10 lg:py-12">
 
-        {/* Bubble — top right */}
         <GradientBubble
           size={220}
           colorA="rgb(132 103 255 / 0.35)"
           colorB="rgb(197 212 240 / 0.45)"
           style={{ top: "-10%", right: "-5%", zIndex: 0 }}
         />
-        {/* Bubble — bottom left */}
         <GradientBubble
           size={160}
           colorA="rgb(42 157 143 / 0.38)"
@@ -54,7 +51,6 @@ export function Services() {
           style={{ bottom: "-8%", left: "-6%", zIndex: 0 }}
         />
 
-        {/* Dot matrix top-right */}
         <DotMatrix
           cols={9}
           rows={6}
@@ -65,7 +61,6 @@ export function Services() {
           style={{ top: "1rem", right: "1rem", zIndex: 1 }}
         />
 
-        {/* Curved arc behind title */}
         <CurvedPath
           className="hidden lg:block"
           style={{ top: "1rem", left: "0", width: "60%", zIndex: 1 }}
@@ -75,7 +70,6 @@ export function Services() {
           viewBox="0 0 480 100"
         />
 
-        {/* Small scatter dots — left */}
         <ScatterDots
           className="hidden lg:block"
           style={{ bottom: "1.5rem", left: "0.5rem", zIndex: 1 }}
@@ -88,7 +82,6 @@ export function Services() {
         />
 
         <div className="relative z-10">
-          {/* Header */}
           <div className="mb-10 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-lg">
               <span className="micro-chip mb-3 inline-flex">{t.services.label}</span>
@@ -111,17 +104,14 @@ export function Services() {
                   className="card-glow group relative flex flex-col overflow-hidden rounded-[1.35rem] border border-[#e7e2da] bg-white p-7 shadow-sm"
                   style={{ animation: `fadeIn 0.7s cubic-bezier(.22,.68,0,1.2) ${0.1 + i * 0.12}s both` }}
                 >
-                  {/* Colored top accent bar */}
                   <div
                     className="absolute inset-x-0 top-0 h-[3px] rounded-t-[1.35rem]"
                     style={{ background: a.bar }}
                   />
-                  {/* Subtle deck number */}
                   <span className="pointer-events-none absolute right-5 top-5 font-heading text-5xl font-semibold leading-none" style={{ color: "rgb(30 58 95 / 0.045)" }}>
                     0{i + 1}
                   </span>
 
-                  {/* Icon */}
                   <div
                     className="mb-5 flex size-11 items-center justify-center rounded-xl"
                     style={{ background: a.bg }}
@@ -129,7 +119,6 @@ export function Services() {
                     <Icon className="size-5" style={{ color: a.icon }} strokeWidth={1.75} />
                   </div>
 
-                  {/* Tag chip */}
                   <span className={`mb-3 inline-flex w-fit rounded-full px-2.5 py-0.5 text-[10px] font-semibold tracking-wide ${a.chip}`}>
                     {service.tag}
                   </span>
@@ -140,7 +129,6 @@ export function Services() {
                     {service.description}
                   </p>
 
-                  {/* Outcome */}
                   <div className="mt-5 flex items-center justify-between border-t border-[#f0ece6] pt-4">
                     <span className="text-xs font-medium text-muted-foreground">
                       {service.outcome}

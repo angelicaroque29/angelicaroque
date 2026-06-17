@@ -423,6 +423,138 @@
     color: var(--ink);
   }
 
+  .nav-link-deck {
+    @apply relative px-1 py-2 text-sm font-medium transition-colors;
+    color: var(--muted-text);
+  }
+
+  .nav-link-deck:hover {
+    color: var(--ink);
+  }
+
+  .nav-link-deck.is-active {
+    color: var(--ink);
+  }
+
+  .nav-link-deck.is-active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #3b4fd8, #2a9d8f);
+  }
+
+  .hero-stage {
+    background: #e9e9ec;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgb(255 255 255 / 0.55), transparent 40%),
+      radial-gradient(circle at 80% 10%, rgb(221 245 241 / 0.35), transparent 35%);
+    padding: 1rem 1rem 0;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-stage {
+      padding: 1.25rem 1.5rem 0;
+    }
+  }
+
+  .hero-deck {
+    @apply relative mx-auto w-full max-w-[1180px] overflow-hidden rounded-[2rem] border bg-white;
+    border-color: rgb(231 226 218 / 0.9);
+    box-shadow: 0 24px 80px rgb(24 32 51 / 0.08);
+  }
+
+  .hero-deck-grid {
+    @apply grid items-center gap-8 px-5 pb-10 pt-4 sm:px-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-6 lg:px-10 lg:pb-12 lg:pt-2;
+  }
+
+  .hero-deck-copy {
+    @apply max-w-xl;
+  }
+
+  .hero-deck-photo {
+    @apply relative mx-auto flex w-full max-w-[320px] items-center justify-center lg:mx-0 lg:max-w-none lg:justify-end lg:pr-2 xl:pr-6;
+  }
+
+  .hero-deck-photo-inner {
+    @apply relative z-10 w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[min(100%,420px)] lg:min-w-[320px];
+  }
+
+  .hero-name {
+    @apply font-heading font-bold uppercase leading-[0.92] tracking-[-0.05em] text-navy;
+    font-size: clamp(3rem, 7vw, 4.75rem);
+  }
+
+  .hero-greeting {
+    @apply text-base font-medium text-muted-foreground sm:text-lg;
+  }
+
+  .hero-email-pill {
+    @apply inline-flex items-center rounded-full border bg-white px-4 py-2.5 text-sm font-medium text-navy shadow-xs transition-colors hover:border-[#5b7db8]/35;
+    border-color: var(--border-warm);
+  }
+
+  .hero-social-btn {
+    @apply inline-flex size-11 items-center justify-center rounded-full border bg-white text-navy shadow-xs transition-all hover:-translate-y-0.5 hover:border-[#5b7db8]/35;
+    border-color: var(--border-warm);
+  }
+
+  .hero-photo-ring {
+    @apply pointer-events-none absolute rounded-full border;
+    border-color: rgb(231 226 218 / 0.9);
+    background: linear-gradient(180deg, rgb(250 248 243), rgb(255 255 255));
+  }
+
+  .hero-skill-rail {
+    @apply relative hidden lg:flex lg:flex-col lg:items-end lg:gap-8 lg:pb-8;
+  }
+
+  .hero-skill-rail::before {
+    content: "";
+    position: absolute;
+    left: 1.35rem;
+    top: 2rem;
+    bottom: 2rem;
+    width: 1px;
+    background: linear-gradient(180deg, rgb(91 125 184 / 0.15), rgb(42 157 143 / 0.35), rgb(91 125 184 / 0.1));
+  }
+
+  .hero-skill-card {
+    @apply relative ml-8 w-[210px] overflow-hidden rounded-[1.1rem] border bg-white shadow-sm transition-transform duration-300 hover:-translate-y-1;
+    border-color: rgb(231 226 218 / 0.95);
+  }
+
+  .hero-skill-dot {
+    @apply absolute -left-[1.72rem] top-1/2 size-3 -translate-y-1/2 rounded-full border-2 border-white;
+    background: linear-gradient(135deg, #3b4fd8, #2a9d8f);
+    box-shadow: 0 0 0 4px rgb(42 157 143 / 0.12);
+  }
+
+  .hero-deco-torus {
+    @apply pointer-events-none absolute rounded-full border;
+    border-color: rgb(197 212 240 / 0.55);
+    transform: rotate(-18deg);
+  }
+
+  .hero-deco-sphere {
+    @apply pointer-events-none absolute rounded-full;
+    background: radial-gradient(circle at 35% 30%, rgb(255 255 255 / 0.95), rgb(197 212 240 / 0.55) 45%, rgb(91 125 184 / 0.18) 70%, transparent 72%);
+  }
+
+  .btn-talk {
+    @apply inline-flex items-center justify-center rounded-full px-5 py-2.5 text-[11px] font-bold tracking-[0.14em] text-white uppercase transition-all duration-200;
+    background: linear-gradient(135deg, #3b4fd8, #2a9d8f);
+    box-shadow: 0 8px 24px rgb(59 79 216 / 0.22);
+  }
+
+  .btn-talk:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 28px rgb(59 79 216 / 0.28);
+  }
+
   /* ── Trust & service patterns ── */
   .trust-pill {
     @apply inline-flex items-center gap-2 rounded-full border bg-white px-4 py-2 text-sm font-medium;

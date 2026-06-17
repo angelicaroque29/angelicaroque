@@ -12,13 +12,16 @@ const es = {
       cta: "Agendar cita",
       openMenu: "Menú",
       closeMenu: "Cerrar",
+      talkCta: "Hablemos",
     },
     hero: {
       chip: "AngieInTech · Miami · Software Engineer",
+      greeting: "Hola, soy",
+      name: "ANGÉLICA",
       title: "Tecnología simple para negocios que",
       titleHighlight: "quieren crecer.",
       subtitle:
-        "Construyo páginas web, automatizaciones y sistemas digitales para ayudarte a conseguir más clientes, ahorrar tiempo y trabajar con más claridad.",
+        "Ingeniera de software con maestría en Computer Science. Construyo webs, automatizaciones y sistemas para negocios que quieren crecer sin hacer todo a mano.",
       outcomes: [
         "Más clientes sin trabajar más",
         "Operación que corre sola",
@@ -33,9 +36,9 @@ const es = {
         { label: "Based in Miami", detail: "Local & remote" },
       ],
       highlights: [
-        { title: "Automatizaciones", label: "que te ahorran tiempo" },
-        { title: "Sistemas con IA", label: "que trabajan por ti" },
-        { title: "Websites que venden", label: "los 7 días de la semana" },
+        { title: "Páginas Web", label: "captura de leads" },
+        { title: "Automatizaciones", label: "flujos que ahorran tiempo" },
+        { title: "Sistemas con IA", label: "hechos a tu medida" },
       ],
     },
     marquee: [
@@ -235,16 +238,16 @@ const es = {
       label: "Founder-led studio",
       title: "Sobre mí",
       paragraph1:
-        "Soy Angelica Roque, ingeniera de software en Miami y fundadora de AngieInTech. Ayudo a negocios a automatizar lo que más duele en su operación diaria.",
+        "Soy Angelica Roque, fundadora de AngieInTech e ingeniera de software en Miami. Ayudo a negocios de servicios a verse más profesionales, captar clientes y organizar su operación sin más caos manual.",
       paragraph2:
-        "De día, American Express. Para clientes: webs, automatizaciones y herramientas que devuelven tiempo y control.",
+        "Maestría en Computer Science. Construyo webs, automatizaciones y sistemas que devuelven tiempo, claridad y control — contigo de cerca, desde la idea hasta el lanzamiento.",
       principles: ["Simple antes que complejo", "Control humano", "Hecho para tu operación"],
       experience: [
-        "Ingeniera de software en American Express",
-        "Automatizaciones, reportes y herramientas internas",
+        "Maestría en Computer Science",
+        "Webs, automatizaciones y sistemas para negocios",
         "Licenciatura en Digital Arts & Sciences + Computer Science",
         "Bilingüe: inglés y español",
-        "Webs, sistemas y flujos para negocios en Miami",
+        "Basada en Miami · clientes locales y remotos",
       ],
       cta: "Agendar cita",
     },
@@ -289,13 +292,16 @@ const en = {
       cta: "Book a call",
       openMenu: "Menu",
       closeMenu: "Close",
+      talkCta: "Let's talk",
     },
     hero: {
       chip: "AngieInTech · Miami · Software Engineer",
+      greeting: "Hello, I'm",
+      name: "ANGELICA",
       title: "Simple systems that help small businesses",
       titleHighlight: "get more clients.",
       subtitle:
-        "I build websites, automations, and AI-powered workflows that help service businesses save time, capture leads, and operate with more clarity.",
+        "Software engineer with a Master's in Computer Science. I build websites, automations, and systems for businesses that want to grow without doing everything manually.",
       outcomes: [
         "More clients without working more",
         "Operations that run on their own",
@@ -310,9 +316,9 @@ const en = {
         { label: "Based in Miami", detail: "Local & remote" },
       ],
       highlights: [
-        { title: "Automations", label: "that save you time" },
-        { title: "AI systems", label: "that work for you" },
-        { title: "Websites that sell", label: "7 days a week" },
+        { title: "Websites", label: "lead capture" },
+        { title: "Automations", label: "workflows that save time" },
+        { title: "AI Systems", label: "built for you" },
       ],
     },
     marquee: [
@@ -512,16 +518,16 @@ const en = {
       label: "Founder-led studio",
       title: "About me",
       paragraph1:
-        "I'm Angelica Roque, a software engineer in Miami and founder of AngieInTech. I help businesses automate what hurts most in their daily operations.",
+        "I'm Angelica Roque, founder of AngieInTech and a software engineer in Miami. I help service businesses look more professional, capture clients, and run their operations with less manual chaos.",
       paragraph2:
-        "By day, American Express. For clients: websites, automations, and tools that give you back time and control.",
+        "Master's in Computer Science. I build websites, automations, and systems that give you back time, clarity, and control — working closely with you from idea to launch.",
       principles: ["Simple before complex", "Human in the loop", "Built for how you work"],
       experience: [
-        "Software engineer at American Express",
-        "Automations, reporting, and internal tools",
+        "Master's in Computer Science",
+        "Websites, automations, and systems for businesses",
         "BS in Digital Arts & Sciences + Computer Science",
         "Bilingual: English and Spanish",
-        "Websites, systems, and workflows for Miami businesses",
+        "Based in Miami · local and remote clients",
       ],
       cta: "Book a call",
     },
