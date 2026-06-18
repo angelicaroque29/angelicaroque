@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { BrandLogo } from "@/components/brand-logo";
 import { LanguageToggle } from "@/components/language-toggle";
 import { useLocale } from "@/lib/i18n/context";
+import { useNavigateToBooking } from "@/lib/booking-calendar-context";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
@@ -17,6 +18,7 @@ type NavProps = {
 export function Nav({ deck = false, onNavigate }: NavProps) {
   const [open, setOpen] = useState(false);
   const { t } = useLocale();
+  const navigateToBooking = useNavigateToBooking();
 
   const close = () => {
     setOpen(false);
@@ -55,7 +57,11 @@ export function Nav({ deck = false, onNavigate }: NavProps) {
 
         <div className="hidden items-center gap-3 lg:flex">
           <LanguageToggle />
-          <Link href="#booking" className={deck ? "btn-talk" : "btn-primary h-10 px-5 text-xs"}>
+          <Link
+            href="#booking"
+            className={deck ? "btn-talk" : "btn-primary h-10 px-5 text-xs"}
+            onClick={() => navigateToBooking()}
+          >
             {deck ? t.nav.talkCta : t.nav.cta}
           </Link>
         </div>
@@ -90,7 +96,14 @@ export function Nav({ deck = false, onNavigate }: NavProps) {
               {link.label}
             </a>
           ))}
-          <Link href="#booking" onClick={close} className="btn-talk mt-4 inline-flex w-full justify-center">
+          <Link
+            href="#booking"
+            onClick={() => {
+              close();
+              navigateToBooking();
+            }}
+            className="btn-talk mt-4 inline-flex w-full justify-center"
+          >
             {t.nav.talkCta}
           </Link>
         </div>

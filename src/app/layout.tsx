@@ -15,9 +15,9 @@ const plusJakarta = Plus_Jakarta_Sans({
   weight: ["500", "600", "700"],
 });
 
-const title = "Angelica Roque | AngieInTech · Tecnología simple para negocios que quieren crecer";
+const title = "Angelica Roque | AngieInTech · Sistemas con IA para negocios pequeños";
 const description =
-  "Angelica Roque construye páginas web, automatizaciones y sistemas digitales para que tu negocio consiga más clientes, ahorre tiempo y trabaje con más claridad. Ingeniera de software @ AmEx. Miami. EN/ES.";
+  "Webs, automatizaciones, dashboards y sistemas con IA para negocios que quieren ahorrar tiempo, captar más leads y operar con menos caos. Miami · EN/ES.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(

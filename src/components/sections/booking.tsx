@@ -1,23 +1,21 @@
 "use client";
 
-import { useState } from "react";
 import { Calendar, CheckCircle2, ChevronDown, ExternalLink, MessageCircle, Sparkles, Star } from "lucide-react";
 import { Section } from "@/components/section";
 import { useLocale } from "@/lib/i18n/context";
+import { useBookingCalendar, useNavigateToBooking } from "@/lib/booking-calendar-context";
 import { siteConfig } from "@/lib/site-config";
 
 const optionStyles = {
   free: {
     ctaIcon: Calendar,
-    href: siteConfig.calLink,
-    bar: "linear-gradient(90deg, #3b4fd8, #5b7db8, #2a9d8f)",
+    bar: "linear-gradient(90deg, #3b4fd8, #5b7db8)",
     bg: "linear-gradient(160deg, #fafbff 0%, #f0f4ff 100%)",
     accent: "#3b4fd8",
     accentBg: "#eef2fb",
   },
-  consult: {
+  audit: {
     ctaIcon: Calendar,
-    href: siteConfig.calLink,
     bar: "linear-gradient(90deg, #7c5cc4, #a07dd8)",
     bg: "linear-gradient(160deg, #fdf9ff 0%, #f5f0fc 100%)",
     accent: "#7c5cc4",
@@ -25,16 +23,16 @@ const optionStyles = {
   },
   project: {
     ctaIcon: Sparkles,
-    href: siteConfig.calLink,
-    bar: "linear-gradient(90deg, #2a9d8f, #4bbfb1)",
-    bg: "linear-gradient(160deg, #f7fdfb 0%, #ebf8f5 100%)",
-    accent: "#2a9d8f",
-    accentBg: "#ddf5f1",
+    bar: "linear-gradient(90deg, #1e3a5f, #5b7db8)",
+    bg: "linear-gradient(160deg, #f4f6fb 0%, #eef2fb 100%)",
+    accent: "#1e3a5f",
+    accentBg: "#eef2fb",
   },
 } as const;
 
 export function Booking() {
-  const [showCalendar, setShowCalendar] = useState(false);
+  const { showCalendar, setShowCalendar } = useBookingCalendar();
+  const navigateToBooking = useNavigateToBooking();
   const { t } = useLocale();
 
   return (
@@ -119,19 +117,21 @@ export function Booking() {
                       ))}
                     </ul>
                     <a
-                      href={style.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href="#booking"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        navigateToBooking();
+                      }}
                       className="mt-6 flex items-center justify-center gap-2 rounded-full py-3 text-sm font-semibold transition-all duration-200 hover:brightness-105 hover:shadow-md"
                       style={
-                        opt.featured
+                        opt.featured || opt.id === "audit"
                           ? { background: style.accent, color: "#ffffff" }
-                          : { background: style.accentBg, color: style.accent }
+                          : { background: style.accentBg, color: style.accent, border: `1.5px solid ${style.accent}33` }
                       }
                     >
-                      <Cta className="size-4" />
+                      <Cta className="size-4" strokeWidth={2.25} />
                       {opt.cta}
-                      <ExternalLink className="size-3 opacity-60" />
+                      <Calendar className="size-3.5 opacity-80" />
                     </a>
                   </div>
                 </div>
@@ -139,45 +139,61 @@ export function Booking() {
             })}
           </div>
 
-          {/* Show full calendar toggle */}
-          <div className="mt-8 text-center">
+          {/* Calendar */}
+          <div className="mt-10 overflow-hidden rounded-[1.35rem] border-2 border-[#3b4fd8]/25 bg-[linear-gradient(135deg,#eef2fb_0%,#ffffff_55%,#faf9f7_100%)] shadow-md">
             <button
               type="button"
-              onClick={() => setShowCalendar((v) => !v)}
-              className="inline-flex items-center gap-2 rounded-full border border-[#e7e2da] bg-white px-5 py-2.5 text-sm font-semibold text-navy shadow-xs transition-all hover:border-[#5b7db8]/40 hover:shadow-sm"
+              onClick={() => setShowCalendar(!showCalendar)}
+              className="flex w-full items-center justify-between gap-4 p-5 text-left transition-colors hover:bg-white/50 sm:p-6"
+              aria-expanded={showCalendar}
             >
-              <Calendar className="size-4 text-[#5b7db8]" />
-              {showCalendar ? t.booking.hideCalendar : t.booking.showCalendar}
-              <ChevronDown
-                className="size-4 text-muted-foreground transition-transform duration-200"
-                style={{ transform: showCalendar ? "rotate(180deg)" : "rotate(0deg)" }}
-              />
-            </button>
-          </div>
-
-          {/* Full cal.com embed — all event types */}
-          {showCalendar && (
-            <div className="mt-6 overflow-hidden rounded-[1.35rem] border border-[#e7e2da] bg-white shadow-sm">
-              <div className="flex items-center justify-between border-b border-[#e7e2da]/60 px-6 py-4">
-                <p className="text-sm font-semibold text-navy">{t.booking.calendarTitle}</p>
-                <a
-                  href={siteConfig.calLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5b7db8] hover:text-navy"
-                >
-                  {t.booking.openCalendar}
-                  <ExternalLink className="size-3" />
-                </a>
+              <div className="flex min-w-0 items-center gap-4">
+                <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-[#3b4fd8] shadow-[0_4px_14px_rgb(59_79_216_/_0.35)] sm:size-14">
+                  <Calendar className="size-6 text-white sm:size-7" strokeWidth={2} />
+                </div>
+                <div className="min-w-0">
+                  <p className="font-heading text-base font-semibold text-navy sm:text-lg">
+                    {showCalendar ? t.booking.hideCalendar : t.booking.showCalendar}
+                  </p>
+                  <p className="mt-0.5 text-xs text-muted-foreground sm:text-sm">
+                    {t.booking.calendarTitle}
+                  </p>
+                </div>
               </div>
-              <iframe
-                title="Calendario Angelica Roque"
-                src={`${siteConfig.calLink}?embed=true&theme=light`}
-                className="h-[600px] w-full border-0 bg-white"
-                loading="lazy"
-              />
-            </div>
-          )}
+              <span
+                className="flex size-9 shrink-0 items-center justify-center rounded-full border border-[#3b4fd8]/20 bg-white shadow-xs"
+                aria-hidden
+              >
+                <ChevronDown
+                  className="size-5 text-[#3b4fd8] transition-transform duration-200"
+                  style={{ transform: showCalendar ? "rotate(180deg)" : "rotate(0deg)" }}
+                />
+              </span>
+            </button>
+
+            {showCalendar && (
+              <div className="border-t border-[#3b4fd8]/15 bg-white">
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#e7e2da]/60 px-5 py-3 sm:px-6">
+                  <p className="text-sm font-semibold text-navy">{t.booking.calendarTitle}</p>
+                  <a
+                    href={siteConfig.calLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-full bg-[#eef2fb] px-3 py-1.5 text-xs font-semibold text-[#3b4fd8] transition-colors hover:bg-[#3b4fd8] hover:text-white"
+                  >
+                    {t.booking.openCalendar}
+                    <ExternalLink className="size-3" />
+                  </a>
+                </div>
+                <iframe
+                  title="Calendario Angelica Roque"
+                  src={`${siteConfig.calLink}?embed=true&theme=light`}
+                  className="h-[min(70vh,640px)] w-full border-0 bg-white"
+                  loading="lazy"
+                />
+              </div>
+            )}
+          </div>
 
           {/* Footer */}
           <div className="mt-8 flex flex-col items-center gap-3 border-t border-[#e7e2da]/60 pt-6 sm:flex-row sm:justify-between">

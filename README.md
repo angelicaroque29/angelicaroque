@@ -1,6 +1,6 @@
 # Angie In Tech
 
-Personal brand website for [Angie In Tech](https://angieintech.com) — websites, automations, and AI-powered products by Angelica Roque.
+Personal brand website for [Angie In Tech](https://angieintech.com): websites, automations, and AI-powered products by Angelica Roque.
 
 ## Tech Stack
 

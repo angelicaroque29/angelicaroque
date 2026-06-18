@@ -34,7 +34,6 @@ export const siteConfig = {
   navLinks: [
     { label: "Inicio", href: "#hero" },
     { label: "Servicios", href: "#services" },
-    { label: "Paquetes", href: "#packages" },
     { label: "Sobre mí", href: "#about" },
     { label: "Contacto", href: "#contact" },
   ],

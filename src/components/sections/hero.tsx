@@ -6,6 +6,7 @@ import { AtSign, Briefcase, FolderKanban, Globe, Languages, Mail, MapPin } from 
 import { CurvedPath, DotMatrix, GradientBubble, ScatterDots } from "@/components/deco";
 import { CtaButton } from "@/components/cta-button";
 import { Nav } from "@/components/nav";
+import { useNavigateToBooking } from "@/lib/booking-calendar-context";
 import { useLocale } from "@/lib/i18n/context";
 import { siteConfig } from "@/lib/site-config";
 
@@ -79,6 +80,7 @@ function PhotoFrame() {
 
 export function Hero() {
   const { t } = useLocale();
+  const navigateToBooking = useNavigateToBooking();
 
   return (
     <section id="hero" className="hero-stage">
@@ -145,6 +147,10 @@ export function Hero() {
 
             <p className="hero-greeting mt-5">{t.hero.greeting}</p>
             <h1 className="hero-name mt-2">{t.hero.name}</h1>
+            <p className="fade-in-2 mt-4 font-heading text-[clamp(1.15rem,2.2vw,1.45rem)] font-semibold leading-snug tracking-tight text-navy">
+              {t.hero.title}{" "}
+              <span className="shimmer-text">{t.hero.titleHighlight}</span>
+            </p>
             <p className="fade-in-3 mx-auto mt-5 max-w-md text-sm leading-[1.85] text-muted-foreground sm:text-[0.9375rem] lg:mx-0">
               {t.hero.subtitle}
             </p>
@@ -248,7 +254,11 @@ export function Hero() {
               </div>
             ))}
           </div>
-          <Link href="#booking" className="btn-talk mt-5 inline-flex w-full justify-center">
+          <Link
+            href="#booking"
+            onClick={() => navigateToBooking()}
+            className="btn-talk mt-5 inline-flex w-full justify-center"
+          >
             {t.nav.talkCta}
           </Link>
         </div>

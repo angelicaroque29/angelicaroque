@@ -337,7 +337,7 @@ export const processSteps = [
   {
     number: "03",
     title: "Construcción",
-    description: "Web, automatizaciones y seguimiento — con avances regulares.",
+    description: "Web, automatizaciones y seguimiento con avances regulares.",
   },
   {
     number: "04",
@@ -434,7 +434,7 @@ export const whoIHelp = [
   {
     title: "Negocios de servicios",
     description:
-      "Salud, belleza, coaching, consultoría — quien pierde tiempo en tareas manuales y necesita orden.",
+      "Salud, belleza, coaching, consultoría: quien pierde tiempo en tareas manuales y necesita orden.",
     examples: "Clínicas, decoradoras, coaches, terapeutas",
   },
   {

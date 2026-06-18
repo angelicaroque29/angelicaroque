@@ -30,7 +30,7 @@ export function BrandLogo({
       className={cn("inline-flex items-baseline font-heading leading-none", s.gap)}
       aria-label={siteConfig.name}
     >
-      {/* "AIT" — A and T in navy, I in gradient */}
+      {/* "AIT": A and T in navy, I in gradient */}
       <span className={cn("font-bold tracking-[-0.04em]", s.ait, invert ? "text-white" : "text-navy")}>
         A
         <span
@@ -47,7 +47,7 @@ export function BrandLogo({
         </span>
         T
       </span>
-      {/* "angieintech." — lighter weight */}
+      {/* "angieintech.": lighter weight */}
       <span
         className={cn(
           "font-normal tracking-normal",

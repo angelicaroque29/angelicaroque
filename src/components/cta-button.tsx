@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { isBookingHref, useBookingClickHandler } from "@/lib/booking-calendar-context";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
@@ -21,6 +24,7 @@ export function CtaButton({
   showArrow = false,
 }: CtaButtonProps) {
   const isExternal = href.startsWith("http");
+  const onBookingClick = useBookingClickHandler(href);
 
   const variantClass =
     variant === "primary"
@@ -53,7 +57,7 @@ export function CtaButton({
   }
 
   return (
-    <Link href={href} className={classes}>
+    <Link href={href} className={classes} onClick={isBookingHref(href) ? onBookingClick : undefined}>
       {inner}
     </Link>
   );
