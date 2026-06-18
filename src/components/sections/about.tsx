@@ -18,13 +18,13 @@ export function About() {
           <div className="soft-sphere -left-8 -top-8 size-24 opacity-70" />
           <div className="relative overflow-hidden rounded-[1.75rem] border border-border bg-white shadow-md">
             <Image
-              src={siteConfig.images.profile}
-              alt={siteConfig.founder}
-              width={768}
+              src={siteConfig.images.office}
+              alt={`${siteConfig.founder} at work`}
+              width={766}
               height={1024}
               quality={100}
               unoptimized
-              className="aspect-[4/5] w-full object-cover object-[center_22%]"
+              className="aspect-[4/5] w-full object-cover object-[center_35%]"
               sizes="(max-width: 1024px) 90vw, 480px"
             />
           </div>
