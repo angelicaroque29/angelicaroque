@@ -5,13 +5,19 @@ import { Check } from "lucide-react";
 import { CtaButton } from "@/components/cta-button";
 import { Section } from "@/components/section";
 import { useLocale } from "@/lib/i18n/context";
+import { routes } from "@/lib/routes";
 import { siteConfig } from "@/lib/site-config";
+import { cn } from "@/lib/utils";
 
-export function About() {
+type AboutProps = {
+  standalone?: boolean;
+};
+
+export function About({ standalone = false }: AboutProps) {
   const { t } = useLocale();
 
   return (
-    <Section id="about" flush>
+    <Section id="about" flush className={cn(standalone && "!pt-10 lg:!pt-14")}>
       <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div className="relative">
           <div className="thin-path -bottom-4 -right-4 hidden h-32 w-2/3 lg:block" />
@@ -54,7 +60,7 @@ export function About() {
             ))}
           </ul>
           <div className="mt-8">
-            <CtaButton href="#booking" showArrow>
+            <CtaButton href={routes.booking} showArrow>
               {t.about.cta}
             </CtaButton>
           </div>

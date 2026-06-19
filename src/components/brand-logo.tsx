@@ -18,7 +18,7 @@ const sizes = {
 
 export function BrandLogo({
   className,
-  href = "#hero",
+  href = "/",
   onClick,
   size = "md",
   invert = false,

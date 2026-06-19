@@ -8,6 +8,8 @@ import {
   useState,
   type MouseEvent,
 } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { isBookingRoute, routes } from "@/lib/routes";
 
 type BookingCalendarContextValue = {
   showCalendar: boolean;
@@ -17,20 +19,23 @@ type BookingCalendarContextValue = {
 
 const BookingCalendarContext = createContext<BookingCalendarContextValue | null>(null);
 
-export function isBookingHref(href: string) {
-  return href === "#booking" || href.endsWith("#booking");
-}
-
 export function BookingCalendarProvider({ children }: { children: React.ReactNode }) {
   const [showCalendar, setShowCalendar] = useState(true);
+  const pathname = usePathname();
 
   const openCalendar = useCallback(() => {
     setShowCalendar(true);
   }, []);
 
   useEffect(() => {
+    if (pathname === routes.booking) {
+      setShowCalendar(true);
+    }
+  }, [pathname]);
+
+  useEffect(() => {
     const openFromHash = () => {
-      if (window.location.hash === "#booking") {
+      if (window.location.hash === "#booking" || window.location.pathname === routes.booking) {
         setShowCalendar(true);
       }
     };
@@ -57,13 +62,21 @@ export function useBookingCalendar() {
 
 export function useNavigateToBooking() {
   const ctx = useContext(BookingCalendarContext);
+  const router = useRouter();
+  const pathname = usePathname();
 
   return useCallback(() => {
     ctx?.openCalendar();
-    requestAnimationFrame(() => {
-      document.getElementById("booking")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  }, [ctx]);
+
+    if (pathname === routes.booking) {
+      requestAnimationFrame(() => {
+        document.getElementById("booking")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      return;
+    }
+
+    router.push(routes.booking);
+  }, [ctx, pathname, router]);
 }
 
 export function useBookingClickHandler(href: string) {
@@ -71,13 +84,10 @@ export function useBookingClickHandler(href: string) {
 
   return useCallback(
     (event: MouseEvent<HTMLAnchorElement>) => {
-      if (!isBookingHref(href)) return;
+      if (!isBookingRoute(href)) return;
 
+      event.preventDefault();
       navigateToBooking();
-
-      if (window.location.hash === "#booking") {
-        event.preventDefault();
-      }
     },
     [href, navigateToBooking]
   );

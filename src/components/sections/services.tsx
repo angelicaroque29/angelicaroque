@@ -13,6 +13,7 @@ import {
   serviceOfferIcons,
   type ServiceOfferId,
 } from "@/lib/service-offers";
+import { routes } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 
 type ServicesProps = {
@@ -106,7 +107,7 @@ function AuditFeaturedCard({
         </div>
 
         <CtaButton
-          href="#booking"
+          href={routes.booking}
           showArrow
           className="w-full shrink-0 !h-12 !border-0 !bg-white !text-navy shadow-md hover:!bg-[#eef2fb] lg:w-auto lg:!px-8"
         >
@@ -218,7 +219,7 @@ function StandardOfferCard({
       />
 
       <div className="mt-6 pt-2">
-        <CtaButton href="#booking" variant="secondary" className="w-full !h-11" showArrow>
+        <CtaButton href={routes.booking} variant="secondary" className="w-full !h-11" showArrow>
           {offer.cta}
         </CtaButton>
       </div>
@@ -294,7 +295,7 @@ function PremiumOfferCard({
 
       <div className="mt-6 pt-2">
         <CtaButton
-          href="#booking"
+          href={routes.booking}
           showArrow
           className="w-full !h-11 !border-0 !bg-white !text-navy shadow-md hover:!bg-[#eef2fb]"
         >
@@ -372,7 +373,7 @@ function CustomOfferCard({
       />
 
       <div className="mt-6 pt-2">
-        <CtaButton href="#booking" variant="secondary" className="w-full !h-11 !border-navy/20" showArrow>
+        <CtaButton href={routes.booking} variant="secondary" className="w-full !h-11 !border-navy/20" showArrow>
           {offer.cta}
         </CtaButton>
       </div>
@@ -393,7 +394,7 @@ export function Services({ standalone = false }: ServicesProps) {
       <Section
         id="services"
         flush
-        className={cn("!py-10 lg:!py-14", standalone && "!pt-24 lg:!pt-28")}
+        className={cn("!py-10 lg:!py-14", standalone && "!pt-6 lg:!pt-10")}
       >
         <div className="relative overflow-hidden rounded-[1.75rem] border border-[#e7e2da]/80 bg-[linear-gradient(118deg,rgb(232_228_245_/_0.38),rgb(250_248_243_/_0.82)_48%,rgb(221_232_250_/_0.32))] px-5 py-10 shadow-sm sm:px-8 lg:px-10 lg:py-12">
           <GradientBubble
@@ -536,7 +537,7 @@ export function Services({ standalone = false }: ServicesProps) {
             </h2>
             <p className="mt-3 text-sm leading-[1.8] text-muted-foreground">{services.finalCta.text}</p>
             <div className="mt-7 flex justify-center">
-              <CtaButton href="#booking" showArrow className="!h-11 !px-7">
+              <CtaButton href={routes.booking} showArrow className="!h-11 !px-7">
                 {services.finalCta.cta}
               </CtaButton>
             </div>

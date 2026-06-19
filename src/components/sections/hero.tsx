@@ -1,12 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { AtSign, Briefcase, FolderKanban, Globe, Languages, Mail, MapPin } from "lucide-react";
 import { CurvedPath, DotMatrix, GradientBubble, ScatterDots } from "@/components/deco";
 import { CtaButton } from "@/components/cta-button";
-import { Nav } from "@/components/nav";
-import { useNavigateToBooking } from "@/lib/booking-calendar-context";
+import { routes } from "@/lib/routes";
 import { useLocale } from "@/lib/i18n/context";
 import { siteConfig } from "@/lib/site-config";
 
@@ -80,7 +78,6 @@ function PhotoFrame() {
 
 export function Hero() {
   const { t } = useLocale();
-  const navigateToBooking = useNavigateToBooking();
 
   return (
     <section id="hero" className="hero-stage">
@@ -134,8 +131,6 @@ export function Hero() {
         <div className="hero-deco-torus hidden lg:block" style={{ width: 88, height: 88, top: "14%", left: "6%" }} />
         <div className="hero-deco-sphere hidden lg:block" style={{ width: 54, height: 54, top: "10%", right: "22%" }} />
 
-        <Nav deck />
-
         <div className="hero-deck-grid">
           <div className="hero-deck-copy order-2 flex flex-col justify-center pb-2 text-center lg:order-1 lg:text-left">
             <div className="fade-in-1 flex justify-center lg:justify-start">
@@ -168,10 +163,10 @@ export function Hero() {
             </div>
 
             <div className="fade-in-4 mt-7 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
-              <CtaButton href="#booking" showArrow className="!h-11 !px-7">
+              <CtaButton href={routes.booking} showArrow className="!h-11 !px-7">
                 {t.hero.primaryCta}
               </CtaButton>
-              <CtaButton variant="secondary" href="#services" showArrow className="!h-11 !px-7">
+              <CtaButton variant="secondary" href={routes.services} showArrow className="!h-11 !px-7">
                 {t.hero.secondaryCta}
               </CtaButton>
             </div>
@@ -254,13 +249,9 @@ export function Hero() {
               </div>
             ))}
           </div>
-          <Link
-            href="#booking"
-            onClick={() => navigateToBooking()}
-            className="btn-talk mt-5 inline-flex w-full justify-center"
-          >
+          <CtaButton href={routes.booking} showArrow className="btn-talk mt-5 w-full !h-11">
             {t.nav.talkCta}
-          </Link>
+          </CtaButton>
         </div>
       </div>
     </section>

@@ -1,9 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { AtSign, Mail } from "lucide-react";
 import { BrandLogo } from "@/components/brand-logo";
 import { Section } from "@/components/section";
 import { useLocale } from "@/lib/i18n/context";
+import { routes } from "@/lib/routes";
 import { siteConfig } from "@/lib/site-config";
 
 export function Footer() {
@@ -14,7 +16,7 @@ export function Footer() {
       <footer className="section-inner">
         <div className="grid gap-10 border-t border-border pt-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <BrandLogo href="#hero" size="md" />
+            <BrandLogo href={routes.home} size="md" />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
               {t.footer.tagline}
             </p>
@@ -26,13 +28,13 @@ export function Footer() {
             </p>
             <nav className="mt-4 flex flex-col gap-2.5">
               {t.nav.links.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   className="text-sm text-muted-foreground transition-colors hover:text-ink"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
@@ -43,13 +45,13 @@ export function Footer() {
             </p>
             <nav className="mt-4 flex flex-col gap-2.5">
               {t.footer.serviceLinks.map((link) => (
-                <a
+                <Link
                   key={link.label}
                   href={link.href}
                   className="text-sm text-muted-foreground transition-colors hover:text-ink"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>

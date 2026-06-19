@@ -438,6 +438,11 @@
     color: var(--ink);
   }
 
+  .nav-link.is-active {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
   .nav-link-deck {
     @apply relative px-1 py-2 text-sm font-medium transition-colors;
     color: var(--muted-text);

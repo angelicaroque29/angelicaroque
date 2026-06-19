@@ -3,11 +3,17 @@ import type { Locale } from "@/lib/i18n/types";
 const es = {
     nav: {
       links: [
-        { label: "Inicio", href: "#hero" },
-        { label: "Servicios", href: "#services" },
-        { label: "Sobre mí", href: "#about" },
-        { label: "Contacto", href: "#contact" },
+        { label: "Inicio", href: "/" },
+        { label: "Servicios", href: "/#services" },
+        { label: "Sobre mí", href: "/about" },
+        { label: "Agenda", href: "/booking" },
       ],
+      mobile: {
+        home: "Inicio",
+        services: "Servicios",
+        about: "Sobre mí",
+        book: "Agenda",
+      },
       cta: "Agendar cita",
       openMenu: "Menú",
       closeMenu: "Cerrar",
@@ -289,11 +295,11 @@ const es = {
       connect: "Conecta conmigo",
       rights: "Todos los derechos reservados.",
       serviceLinks: [
-        { label: "Auditoría", href: "#services" },
-        { label: "Sistema inicial", href: "#services" },
-        { label: "Experiencia del cliente", href: "#services" },
-        { label: "Operaciones", href: "#services" },
-        { label: "Automatización con IA", href: "#services" },
+        { label: "Auditoría", href: "/#services" },
+        { label: "Sistema inicial", href: "/#services" },
+        { label: "Experiencia del cliente", href: "/#services" },
+        { label: "Operaciones", href: "/#services" },
+        { label: "Automatización con IA", href: "/#services" },
       ],
       legalLinks: [
         { label: "Política de privacidad", href: "#" },
@@ -305,11 +311,17 @@ const es = {
 const en = {
     nav: {
       links: [
-        { label: "Home", href: "#hero" },
-        { label: "Services", href: "#services" },
-        { label: "About", href: "#about" },
-        { label: "Contact", href: "#contact" },
+        { label: "Home", href: "/" },
+        { label: "Services", href: "/#services" },
+        { label: "About", href: "/about" },
+        { label: "Book", href: "/booking" },
       ],
+      mobile: {
+        home: "Home",
+        services: "Services",
+        about: "About",
+        book: "Book",
+      },
       cta: "Book a call",
       openMenu: "Menu",
       closeMenu: "Close",
@@ -591,11 +603,11 @@ const en = {
       connect: "Connect",
       rights: "All rights reserved.",
       serviceLinks: [
-        { label: "Systems audit", href: "#services" },
-        { label: "Starter setup", href: "#services" },
-        { label: "Client experience", href: "#services" },
-        { label: "Operations", href: "#services" },
-        { label: "AI automation", href: "#services" },
+        { label: "Systems audit", href: "/#services" },
+        { label: "Starter setup", href: "/#services" },
+        { label: "Client experience", href: "/#services" },
+        { label: "Operations", href: "/#services" },
+        { label: "AI automation", href: "/#services" },
       ],
       legalLinks: [
         { label: "Privacy policy", href: "#" },

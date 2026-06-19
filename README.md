@@ -28,7 +28,7 @@ cp .env.example .env.local
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `NEXT_PUBLIC_CAL_LINK` | Calendar booking URL | `https://cal.com/angelica` |
+| `NEXT_PUBLIC_CAL_LINK` | Calendar booking URL | `https://cal.com/angelica-roque-bznohb` |
 | `NEXT_PUBLIC_CONTACT_EMAIL` | Contact email | `hello@angieintech.com` |
 | `NEXT_PUBLIC_INSTAGRAM_URL` | Instagram profile URL | `https://instagram.com/angieintech` |
 | `NEXT_PUBLIC_TIKTOK_URL` | TikTok profile URL | (placeholder) |

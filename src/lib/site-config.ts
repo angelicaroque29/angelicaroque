@@ -1,3 +1,17 @@
+const DEFAULT_CAL_LINK = "https://cal.com/angelica-roque-bznohb";
+
+/** Rejects legacy prod value `cal.com/angelica` (404 — username never claimed). */
+function resolveCalLink(raw?: string) {
+  const value = raw?.trim();
+  if (!value) return DEFAULT_CAL_LINK;
+  if (/^https?:\/\/(www\.)?cal\.com\/angelica\/?$/i.test(value)) {
+    return DEFAULT_CAL_LINK;
+  }
+  return value.replace(/\/$/, "");
+}
+
+const calLink = resolveCalLink(process.env.NEXT_PUBLIC_CAL_LINK);
+
 export const siteConfig = {
   name: "AngieInTech",
   handle: "@angieintech",
@@ -6,10 +20,10 @@ export const siteConfig = {
   location: "Miami, FL",
   tagline:
     "Angelica Roque · AngieInTech · Tecnología simple para negocios que quieren crecer.",
-  calLink: process.env.NEXT_PUBLIC_CAL_LINK ?? "https://cal.com/angelica-roque-bznohb",
+  calLink,
   calEmbedUrl:
-    process.env.NEXT_PUBLIC_CAL_EMBED_URL ??
-    "https://cal.com/angelica-roque-bznohb?embed=true&theme=light",
+    process.env.NEXT_PUBLIC_CAL_EMBED_URL?.trim() ||
+    `${calLink}?embed=true&theme=light`,
   email:
     process.env.NEXT_PUBLIC_CONTACT_EMAIL ??
     "angieintech.business@gmail.com",
@@ -32,10 +46,10 @@ export const siteConfig = {
     youtube: process.env.NEXT_PUBLIC_YOUTUBE_URL ?? "#",
   },
   navLinks: [
-    { label: "Inicio", href: "#hero" },
-    { label: "Servicios", href: "#services" },
-    { label: "Sobre mí", href: "#about" },
-    { label: "Contacto", href: "#contact" },
+    { label: "Inicio", href: "/" },
+    { label: "Servicios", href: "/#services" },
+    { label: "Sobre mí", href: "/about" },
+    { label: "Agenda", href: "/booking" },
   ],
   cta: {
     book: "Agendar cita",

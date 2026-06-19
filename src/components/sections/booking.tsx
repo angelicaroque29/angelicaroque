@@ -3,8 +3,9 @@
 import { Calendar, CheckCircle2, ChevronDown, ExternalLink, MessageCircle, Sparkles, Star } from "lucide-react";
 import { Section } from "@/components/section";
 import { useLocale } from "@/lib/i18n/context";
-import { useBookingCalendar, useNavigateToBooking } from "@/lib/booking-calendar-context";
+import { useBookingCalendar } from "@/lib/booking-calendar-context";
 import { siteConfig } from "@/lib/site-config";
+import { cn } from "@/lib/utils";
 
 const optionStyles = {
   free: {
@@ -30,13 +31,16 @@ const optionStyles = {
   },
 } as const;
 
-export function Booking() {
+type BookingProps = {
+  standalone?: boolean;
+};
+
+export function Booking({ standalone = false }: BookingProps) {
   const { showCalendar, setShowCalendar } = useBookingCalendar();
-  const navigateToBooking = useNavigateToBooking();
   const { t } = useLocale();
 
   return (
-    <Section id="booking" flush className="!py-14 lg:!py-20">
+    <Section id="booking" flush className={cn("!py-14 lg:!py-20", standalone && "!pt-10 lg:!pt-14")}>
       <div className="relative overflow-hidden rounded-[1.75rem] border border-[#e7e2da]/70 bg-white/60 px-5 py-10 shadow-sm sm:px-8 lg:px-12 lg:py-14">
         <div className="corner-grid right-4 top-4" />
         <div
@@ -116,11 +120,16 @@ export function Booking() {
                         </li>
                       ))}
                     </ul>
-                    <a
-                      href="#booking"
-                      onClick={(event) => {
-                        event.preventDefault();
-                        navigateToBooking();
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowCalendar(true);
+                        requestAnimationFrame(() => {
+                          document.getElementById("booking-calendar")?.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                          });
+                        });
                       }}
                       className="mt-6 flex items-center justify-center gap-2 rounded-full py-3 text-sm font-semibold transition-all duration-200 hover:brightness-105 hover:shadow-md"
                       style={
@@ -132,7 +141,7 @@ export function Booking() {
                       <Cta className="size-4" strokeWidth={2.25} />
                       {opt.cta}
                       <Calendar className="size-3.5 opacity-80" />
-                    </a>
+                    </button>
                   </div>
                 </div>
               );
@@ -140,7 +149,7 @@ export function Booking() {
           </div>
 
           {/* Calendar */}
-          <div className="mt-10 overflow-hidden rounded-[1.35rem] border-2 border-[#3b4fd8]/25 bg-[linear-gradient(135deg,#eef2fb_0%,#ffffff_55%,#faf9f7_100%)] shadow-md">
+          <div id="booking-calendar" className="mt-10 overflow-hidden rounded-[1.35rem] border-2 border-[#3b4fd8]/25 bg-[linear-gradient(135deg,#eef2fb_0%,#ffffff_55%,#faf9f7_100%)] shadow-md">
             <button
               type="button"
               onClick={() => setShowCalendar(!showCalendar)}
@@ -187,7 +196,7 @@ export function Booking() {
                 </div>
                 <iframe
                   title="Calendario Angelica Roque"
-                  src={`${siteConfig.calLink}?embed=true&theme=light`}
+                  src={siteConfig.calEmbedUrl}
                   className="h-[min(70vh,640px)] w-full border-0 bg-white"
                   loading="lazy"
                 />

@@ -1,7 +1,12 @@
+"use client";
+
+import Link from "next/link";
 import { AtSign, Calendar, Mail, MapPin, MessageCircle } from "lucide-react";
 import { CtaButton } from "@/components/cta-button";
 import { Section } from "@/components/section";
+import { routes } from "@/lib/routes";
 import { siteConfig } from "@/lib/site-config";
+import { cn } from "@/lib/utils";
 
 const items = [
   { icon: Mail, label: "Email", value: siteConfig.email, href: `mailto:${siteConfig.email}` },
@@ -20,12 +25,16 @@ const items = [
     external: true,
   },
   { icon: MapPin, label: "Ubicación", value: siteConfig.location },
-  { icon: Calendar, label: "Agenda", value: "Reserva en línea", href: "#booking" },
+  { icon: Calendar, label: "Agenda", value: "Reserva en línea", href: routes.booking },
 ];
 
-export function Contact() {
+type ContactProps = {
+  standalone?: boolean;
+};
+
+export function Contact({ standalone = false }: ContactProps) {
   return (
-    <Section id="contact" flush wash="lavender">
+    <Section id="contact" flush wash="lavender" className={cn(standalone && "!pt-10 lg:!pt-14")}>
       <div className="cta-banner mb-12">
         <div className="dot-grid pointer-events-none absolute inset-0 opacity-30" />
         <div
@@ -47,7 +56,7 @@ export function Contact() {
             Primera cita de 20 min gratis. Cuéntame qué te quita tiempo y te digo
             qué automatizar primero.
           </p>
-          <CtaButton href="#booking" showArrow className="mt-6">
+          <CtaButton href={routes.booking} showArrow className="mt-6">
             Agendar una llamada
           </CtaButton>
         </div>
@@ -78,6 +87,14 @@ export function Contact() {
             </div>
           );
           if (item.href) {
+            const isInternal = item.href.startsWith("/");
+            if (isInternal) {
+              return (
+                <Link key={item.label} href={item.href} className="transition-opacity hover:opacity-90">
+                  {inner}
+                </Link>
+              );
+            }
             return (
               <a
                 key={item.label}
@@ -95,7 +112,7 @@ export function Contact() {
       </div>
 
       <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-        <CtaButton href="#booking" showArrow>
+        <CtaButton href={routes.booking} showArrow>
           {siteConfig.cta.book}
         </CtaButton>
         <CtaButton variant="ghost" href={siteConfig.whatsappUrl}>

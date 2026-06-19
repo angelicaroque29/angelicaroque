@@ -1,8 +1,9 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import { CurvedPath, DotMatrix, GradientBubble, ScatterDots } from "@/components/deco";
 import { CtaButton } from "@/components/cta-button";
+import { CurvedPath, DotMatrix, GradientBubble, ScatterDots } from "@/components/deco";
+import { routes } from "@/lib/routes";
 import { Section } from "@/components/section";
 import { useLocale } from "@/lib/i18n/context";
 
@@ -87,7 +88,7 @@ export function CtaBanner() {
               ))}
             </div>
           </div>
-          <CtaButton href="#booking" showArrow className="shrink-0 !h-12 !px-8 text-base">
+          <CtaButton href={routes.booking} showArrow className="shrink-0 !h-12 !px-8 text-base">
             {t.ctaBanner.cta}
           </CtaButton>
         </div>
