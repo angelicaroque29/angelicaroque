@@ -16,7 +16,7 @@ export function LanguageToggle({ className }: { className?: string }) {
       role="group"
       aria-label="Language"
     >
-      {(["es", "en"] as Locale[]).map((code) => {
+      {(["en", "es"] as Locale[]).map((code) => {
         const active = locale === code;
         return (
           <button

@@ -45,6 +45,11 @@ export const siteConfig = {
     tiktok: process.env.NEXT_PUBLIC_TIKTOK_URL ?? "#",
     youtube: process.env.NEXT_PUBLIC_YOUTUBE_URL ?? "#",
   },
+  instagramDmUrl:
+    process.env.NEXT_PUBLIC_INSTAGRAM_DM_URL ?? "https://ig.me/m/angieintech",
+  agentAvatarUrl:
+    process.env.NEXT_PUBLIC_JOTFORM_AGENT_AVATAR ??
+    "https://cdn.jotfor.ms/assets/agent-avatars/avatar_icon_1270.png",
   navLinks: [
     { label: "Inicio", href: "/" },
     { label: "Servicios", href: "/#services" },

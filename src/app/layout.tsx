@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { JotformAgentEmbed } from "@/components/jotform-agent-embed";
 import { Providers } from "@/components/providers";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
@@ -15,9 +16,9 @@ const plusJakarta = Plus_Jakarta_Sans({
   weight: ["500", "600", "700"],
 });
 
-const title = "Angelica Roque | AngieInTech · Sistemas con IA para negocios pequeños";
+const title = "Angelica Roque | AngieInTech · AI Systems for Small Business";
 const description =
-  "Webs, automatizaciones, dashboards y sistemas con IA para negocios que quieren ahorrar tiempo, captar más leads y operar con menos caos. Miami · EN/ES.";
+  "Websites, automations, dashboards, and AI systems for businesses that want to save time, capture more leads, and run with less chaos. Miami · EN/ES.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     title,
     description,
     type: "website",
-    locale: "es_US",
+    locale: "en_US",
     images: [{ url: siteConfig.images.profile, alt: "Angelica Roque" }],
   },
   icons: {
@@ -45,11 +46,12 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="es"
+      lang="en"
       className={`${inter.variable} ${plusJakarta.variable} h-full antialiased`}
     >
       <body className="flex min-h-screen w-full flex-col">
         <Providers>{children}</Providers>
+        <JotformAgentEmbed />
       </body>
     </html>
   );

@@ -1,9 +1,14 @@
 "use client";
 
+import { AgentChatWidget } from "@/components/agent-chat-widget";
 import { Footer } from "@/components/footer";
 import { HashScroll } from "@/components/hash-scroll";
 import { MobileBottomNav } from "@/components/mobile-bottom-nav";
 import { Nav } from "@/components/nav";
+
+const useJotformScriptEmbed = Boolean(
+  process.env.NEXT_PUBLIC_JOTFORM_AGENT_EMBED_SRC?.trim()
+);
 
 export function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -15,6 +20,7 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
       </main>
       <Footer />
       <MobileBottomNav />
+      {!useJotformScriptEmbed ? <AgentChatWidget /> : null}
     </>
   );
 }

@@ -43,8 +43,8 @@ const es = {
       ],
       highlights: [
         { title: "Auditoría de sistemas", label: "desde $150" },
-        { title: "Sistema inicial", label: "desde $500" },
-        { title: "Automatización con IA", label: "desde $2,500" },
+        { title: "Sistema inicial", label: "desde $800" },
+        { title: "Automatización con IA", label: "desde $3,500" },
       ],
     },
     marquee: [
@@ -91,7 +91,7 @@ const es = {
       offers: [
         {
           id: "starter" as const,
-          price: "desde $500",
+          price: "desde $800",
           title: "Configuración de sistema inicial",
           description:
             "Una configuración simple para que tu negocio se vea más organizado y una parte de tu proceso sea más fácil de manejar.",
@@ -107,7 +107,7 @@ const es = {
         },
         {
           id: "intake" as const,
-          price: "desde $750",
+          price: "desde $1,200",
           title: "Sistemas de experiencia del cliente",
           description:
             "Construyo sistemas que organizan el recorrido del cliente desde el primer mensaje hasta el cliente reservado, para que se pierdan menos leads.",
@@ -125,7 +125,7 @@ const es = {
         },
         {
           id: "dashboard" as const,
-          price: "desde $1,500",
+          price: "desde $2,500",
           title: "Sistemas de operaciones del negocio",
           description:
             "Construyo dashboards, herramientas internas y flujos que hacen el negocio más fácil de manejar sin saltar entre varias apps.",
@@ -145,7 +145,7 @@ const es = {
         {
           id: "proposals" as const,
           tier: "premium" as const,
-          price: "desde $2,500",
+          price: "desde $3,500",
           title: "Automatización de ventas y flujos con IA",
           description:
             "Construyo sistemas con IA que automatizan trabajo repetitivo mientras tú mantienes el control del resultado final.",
@@ -251,7 +251,7 @@ const es = {
           id: "project",
           badge: "Construcción",
           label: "Listo para construir un sistema",
-          price: "desde $500+",
+          price: "desde $800+",
           description:
             "Ya sabes qué necesitas. Definimos alcance, precio y plazos para tu sistema inicial, captación, dashboard o automatización.",
           cta: "Empezar proyecto",
@@ -283,12 +283,12 @@ const es = {
       titleHighlight: "que realmente funciona.",
       subtitle:
         "Empieza con una Auditoría de Sistemas y te muestro qué arreglar primero, o agenda tu primera llamada gratis de 20 min.",
-      perks: ["Primera llamada gratis · 20 min", "Auditoría desde $150", "Sistemas desde $500"],
+      perks: ["Primera llamada gratis · 20 min", "Auditoría desde $150", "Sistemas desde $800"],
       cta: "Agendar auditoría",
     },
     footer: {
       tagline:
-        "Sistemas con IA para negocios pequeños: auditoría desde $150, configuración inicial desde $500 y sistemas completos a medida.",
+        "Sistemas con IA para negocios pequeños: auditoría desde $150, configuración inicial desde $800 y sistemas completos a medida.",
       navigation: "Navegación",
       services: "Servicios",
       legal: "Legal",
@@ -305,6 +305,15 @@ const es = {
         { label: "Política de privacidad", href: "#" },
         { label: "Términos de servicio", href: "#" },
       ],
+    },
+    chatWidget: {
+      agentName: "angieintech",
+      online: "En línea",
+      greeting: "¡Hola! 🌟",
+      prompt: "¿En qué te puedo ayudar?",
+      cta: "Escribir por Instagram",
+      open: "Abrir chat",
+      close: "Cerrar chat",
     },
 } as const;
 
@@ -351,8 +360,8 @@ const en = {
       ],
       highlights: [
         { title: "Systems audit", label: "from $150" },
-        { title: "Starter setup", label: "from $500" },
-        { title: "AI automation", label: "from $2,500" },
+        { title: "Starter setup", label: "from $800" },
+        { title: "AI automation", label: "from $3,500" },
       ],
     },
     marquee: [
@@ -399,7 +408,7 @@ const en = {
       offers: [
         {
           id: "starter" as const,
-          price: "Starting at $500",
+          price: "Starting at $800",
           title: "Starter System Setup",
           description:
             "A simple setup to help your business look more organized and make one part of your process easier to manage.",
@@ -415,7 +424,7 @@ const en = {
         },
         {
           id: "intake" as const,
-          price: "Starting at $750",
+          price: "Starting at $1,200",
           title: "Client Experience Systems",
           description:
             "I build systems that organize the client journey from first message to booked client, so fewer leads get lost.",
@@ -433,7 +442,7 @@ const en = {
         },
         {
           id: "dashboard" as const,
-          price: "Starting at $1,500",
+          price: "Starting at $2,500",
           title: "Business Operations Systems",
           description:
             "I build dashboards, internal tools, and workflows that make the business easier to manage without jumping between multiple apps.",
@@ -453,7 +462,7 @@ const en = {
         {
           id: "proposals" as const,
           tier: "premium" as const,
-          price: "Starting at $2,500",
+          price: "Starting at $3,500",
           title: "AI-Powered Sales & Workflow Automation",
           description:
             "I build AI-powered systems that help automate repetitive work while keeping the business owner in control of the final result.",
@@ -559,7 +568,7 @@ const en = {
           id: "project",
           badge: "Build",
           label: "Ready to build a system",
-          price: "from $500+",
+          price: "from $800+",
           description:
             "You know what you need. We define scope, price, and timeline for your starter setup, intake, dashboard, or automation system.",
           cta: "Start project",
@@ -591,12 +600,12 @@ const en = {
       titleHighlight: "that actually works.",
       subtitle:
         "Start with a Business Systems Audit and I'll show you what to fix first, or book your free 20-minute first call.",
-      perks: ["First call free · 20 min", "Audit from $150", "Systems from $500"],
+      perks: ["First call free · 20 min", "Audit from $150", "Systems from $800"],
       cta: "Book a Systems Audit",
     },
     footer: {
       tagline:
-        "AI systems for small businesses: audit from $150, starter setups from $500, and full custom builds.",
+        "AI systems for small businesses: audit from $150, starter setups from $800, and full custom builds.",
       navigation: "Navigation",
       services: "Services",
       legal: "Legal",
@@ -613,6 +622,15 @@ const en = {
         { label: "Privacy policy", href: "#" },
         { label: "Terms of service", href: "#" },
       ],
+    },
+    chatWidget: {
+      agentName: "angieintech",
+      online: "Online",
+      greeting: "Hi there! 🌟",
+      prompt: "How can I help you?",
+      cta: "Message on Instagram",
+      open: "Open chat",
+      close: "Close chat",
     },
 } as const;
 
