@@ -76,7 +76,7 @@ export function Nav() {
                 className={cn(
                   "flex min-h-[3rem] items-center rounded-xl px-4 text-base font-medium transition-colors",
                   isActive(link.href)
-                    ? "bg-[#eef2fb] text-[#3b4fd8]"
+                    ? "bg-[#ddf5f1] text-teal"
                     : "text-navy hover:bg-[#faf9f7]"
                 )}
               >

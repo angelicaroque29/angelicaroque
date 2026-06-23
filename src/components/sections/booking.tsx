@@ -69,7 +69,7 @@ export function Booking({ standalone = false }: BookingProps) {
             </div>
           </div>
 
-          <div className="grid gap-5 lg:grid-cols-3">
+          <div className="mx-auto max-w-xl">
             {t.booking.options.map((opt) => {
               const style = optionStyles[opt.id as keyof typeof optionStyles];
               const Cta = style.ctaIcon;
@@ -79,10 +79,8 @@ export function Booking({ standalone = false }: BookingProps) {
                   className="group relative flex flex-col overflow-hidden rounded-[1.35rem] border transition-all duration-300 hover:-translate-y-1"
                   style={{
                     background: style.bg,
-                    borderColor: opt.featured ? `${style.accent}40` : "#e7e2da",
-                    boxShadow: opt.featured
-                      ? `0 4px 32px ${style.accent}18`
-                      : "0 2px 10px rgb(24 32 51 / 0.04)",
+                    borderColor: `${style.accent}40`,
+                    boxShadow: `0 4px 32px ${style.accent}18`,
                   }}
                 >
                   <div
@@ -131,12 +129,8 @@ export function Booking({ standalone = false }: BookingProps) {
                           });
                         });
                       }}
-                      className="mt-6 flex items-center justify-center gap-2 rounded-full py-3 text-sm font-semibold transition-all duration-200 hover:brightness-105 hover:shadow-md"
-                      style={
-                        opt.featured || opt.id === "audit"
-                          ? { background: style.accent, color: "#ffffff" }
-                          : { background: style.accentBg, color: style.accent, border: `1.5px solid ${style.accent}33` }
-                      }
+                      className="mt-6 flex items-center justify-center gap-2 rounded-full py-3 text-sm font-semibold text-white transition-all duration-200 hover:brightness-105 hover:shadow-md"
+                      style={{ background: style.accent }}
                     >
                       <Cta className="size-4" strokeWidth={2.25} />
                       {opt.cta}

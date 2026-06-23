@@ -464,7 +464,7 @@
     bottom: -2px;
     height: 3px;
     border-radius: 999px;
-    background: linear-gradient(90deg, #3b4fd8, #2a9d8f);
+    background: linear-gradient(90deg, #1e3a5f, #2a9d8f);
   }
 
   .hero-stage {
@@ -549,7 +549,7 @@
 
   .hero-skill-dot {
     @apply absolute -left-[1.72rem] top-1/2 size-3 -translate-y-1/2 rounded-full border-2 border-white;
-    background: linear-gradient(135deg, #3b4fd8, #2a9d8f);
+    background: linear-gradient(135deg, #1e3a5f, #2a9d8f);
     box-shadow: 0 0 0 4px rgb(42 157 143 / 0.12);
   }
 
@@ -566,7 +566,7 @@
 
   .btn-talk {
     @apply inline-flex items-center justify-center rounded-full px-5 py-2.5 text-[11px] font-bold tracking-[0.14em] text-white uppercase transition-all duration-200;
-    background: linear-gradient(135deg, #3b4fd8, #2a9d8f);
+    background: linear-gradient(135deg, #1e3a5f, #2a9d8f);
     box-shadow: 0 8px 24px rgb(59 79 216 / 0.22);
   }
 
@@ -709,7 +709,7 @@
   .shimmer-text {
     background-image: linear-gradient(
       110deg,
-      #3b4fd8 0%, #5b7db8 30%, #2a9d8f 55%, #5b7db8 75%, #3b4fd8 100%
+      #1e3a5f 0%, #2a9d8f 35%, #5b8fa8 55%, #2a9d8f 75%, #1e3a5f 100%
     );
     background-size: 220% auto;
     -webkit-background-clip: text;
@@ -744,7 +744,7 @@
     padding: 1.5px;
     background: linear-gradient(
       var(--border-angle, 0deg),
-      #3b4fd8, #7c5cc4, #2a9d8f, #5b7db8, #3b4fd8
+      #1e3a5f, #2a9d8f, #5b8fa8, #2a9d8f, #1e3a5f
     );
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -771,6 +771,14 @@
   .bg-gradient-shift {
     background-size: 200% 200%;
     animation: gradientShift 8s ease infinite;
+  }
+
+  .deco-float {
+    animation: floatY 6s ease-in-out infinite;
+  }
+
+  .deco-float-slow {
+    animation: floatY 8.5s ease-in-out infinite;
   }
 }
 

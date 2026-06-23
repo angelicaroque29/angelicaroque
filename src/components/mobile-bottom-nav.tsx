@@ -39,13 +39,13 @@ export function MobileBottomNav() {
               href={tab.href}
               className={cn(
                 "flex min-h-[3.75rem] flex-col items-center justify-center gap-1 px-1 py-2 text-[10px] font-semibold transition-colors",
-                active ? "text-[#3b4fd8]" : "text-muted-foreground"
+                active ? "text-teal" : "text-muted-foreground"
               )}
             >
               <span
                 className={cn(
                   "flex size-9 items-center justify-center rounded-xl transition-colors",
-                  active ? "bg-[#eef2fb]" : "bg-transparent"
+                  active ? "bg-[#ddf5f1]" : "bg-transparent"
                 )}
               >
                 <Icon className="size-5" strokeWidth={active ? 2.25 : 2} />

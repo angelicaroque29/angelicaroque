@@ -2,29 +2,29 @@
 
 import Image from "next/image";
 import { AtSign, Briefcase, FolderKanban, Globe, Languages, Mail, MapPin } from "lucide-react";
-import { CurvedPath, DotMatrix, GradientBubble, ScatterDots } from "@/components/deco";
+import { CurvedPath, DotMatrix, GradientBubble, ScatterDots, SketchBotanical, SketchOrbit, SketchSquiggle, SketchStars } from "@/components/deco";
 import { CtaButton } from "@/components/cta-button";
 import { routes } from "@/lib/routes";
 import { useLocale } from "@/lib/i18n/context";
 import { siteConfig } from "@/lib/site-config";
 
 const statIcons = [Briefcase, FolderKanban, Languages, MapPin] as const;
-const outcomeColors = ["#3b4fd8", "#7c5cc4", "#2a9d8f"];
+const outcomeColors = ["#2a9d8f", "#1e3a5f", "#5b8fa8"];
 
 function PhotoFrame() {
   return (
     <>
       <GradientBubble
         size={420}
-        colorA="rgb(132 103 255 / 0.38)"
-        colorB="rgb(197 212 240 / 0.48)"
+        colorA="rgb(42 157 143 / 0.18)"
+        colorB="rgb(221 245 241 / 0.45)"
         className="hidden lg:block"
         style={{ top: "-14%", right: "-18%", zIndex: 0 }}
       />
       <GradientBubble
         size={180}
-        colorA="rgb(42 157 143 / 0.4)"
-        colorB="rgb(221 245 241 / 0.55)"
+        colorA="rgb(30 58 95 / 0.1)"
+        colorB="rgb(232 228 245 / 0.35)"
         className="hidden lg:block"
         style={{ bottom: "-5%", left: "-8%", zIndex: 0 }}
       />
@@ -43,19 +43,19 @@ function PhotoFrame() {
       />
 
       <div className="orbit-dot hidden size-3 lg:block" style={{ top: "2%", left: "50%", zIndex: 3 }} />
-      <div className="orbit-dot hidden size-2 lg:block" style={{ top: "48%", right: "0%", zIndex: 3, background: "rgb(132 103 255 / 0.55)" }} />
+      <div className="orbit-dot hidden size-2 lg:block" style={{ top: "48%", right: "0%", zIndex: 3, background: "rgb(42 157 143 / 0.4)" }} />
       <div className="orbit-dot hidden size-4 lg:block" style={{ bottom: "6%", left: "8%", zIndex: 3, background: "rgb(42 157 143 / 0.45)" }} />
-      <div className="orbit-dot hidden size-1.5 lg:block" style={{ top: "25%", right: "4%", zIndex: 3, background: "rgb(59 79 216 / 0.45)" }} />
-      <div className="orbit-dot hidden size-2.5 lg:block" style={{ top: "72%", left: "2%", zIndex: 3, background: "rgb(197 212 240 / 0.6)" }} />
+      <div className="orbit-dot hidden size-1.5 lg:block" style={{ top: "25%", right: "4%", zIndex: 3, background: "rgb(30 58 95 / 0.3)" }} />
+      <div className="orbit-dot hidden size-2.5 lg:block" style={{ top: "72%", left: "2%", zIndex: 3, background: "rgb(42 157 143 / 0.25)" }} />
 
-      <ScatterDots
-        className="hidden lg:block"
-        style={{ top: "-0.5rem", left: "60%", zIndex: 2 }}
-        dots={[
-          { cx: 10, cy: 10, r: 4, fill: "rgb(91 125 184 / 0.25)" },
-          { cx: 28, cy: 6, r: 2.5, fill: "rgb(132 103 255 / 0.35)" },
-          { cx: 44, cy: 14, r: 3.5, fill: "rgb(42 157 143 / 0.28)" },
-        ]}
+      <SketchBotanical
+        className="deco-float-slow absolute -left-4 bottom-12 hidden opacity-75 lg:block"
+        style={{ zIndex: 2 }}
+        flip
+      />
+      <SketchStars
+        className="deco-float absolute -right-1 top-16 hidden opacity-80 lg:block"
+        style={{ zIndex: 2, animationDelay: "0.8s" }}
       />
 
       <div
@@ -93,10 +93,21 @@ export function Hero() {
 
         <GradientBubble
           size={300}
-          colorA="rgb(132 103 255 / 0.35)"
-          colorB="rgb(197 212 240 / 0.45)"
+          colorA="rgb(42 157 143 / 0.12)"
+          colorB="rgb(232 228 245 / 0.35)"
           className="hidden lg:block"
           style={{ top: "-4%", right: "2%", zIndex: 0 }}
+        />
+
+        <SketchOrbit
+          className="deco-float-slow absolute left-[4%] top-[18%] hidden opacity-70 lg:block"
+          style={{ zIndex: 1 }}
+          size={72}
+        />
+        <SketchSquiggle
+          className="deco-float absolute right-[8%] top-[32%] hidden lg:block"
+          style={{ zIndex: 1, animationDelay: "1.2s" }}
+          width={120}
         />
 
         <DotMatrix
@@ -113,9 +124,9 @@ export function Hero() {
           className="hidden lg:block"
           style={{ top: "22%", left: "1rem", zIndex: 1 }}
           dots={[
-            { cx: 12, cy: 8, r: 8, fill: "rgb(132 103 255 / 0.18)" },
-            { cx: 36, cy: 28, r: 5, fill: "rgb(91 125 184 / 0.22)" },
-            { cx: 8, cy: 46, r: 12, fill: "rgb(42 157 143 / 0.14)" },
+            { cx: 12, cy: 8, r: 8, fill: "rgb(42 157 143 / 0.14)" },
+            { cx: 36, cy: 28, r: 5, fill: "rgb(30 58 95 / 0.12)" },
+            { cx: 8, cy: 46, r: 12, fill: "rgb(42 157 143 / 0.1)" },
           ]}
         />
 
@@ -123,7 +134,7 @@ export function Hero() {
           className="hidden lg:block"
           style={{ top: "6%", left: "28%", width: "50%", zIndex: 1 }}
           d="M 0 120 Q 140 20 300 80 T 520 40"
-          stroke="rgb(91 125 184 / 0.16)"
+          stroke="rgb(42 157 143 / 0.14)"
           strokeWidth={1.5}
           viewBox="0 0 520 140"
         />
@@ -135,7 +146,7 @@ export function Hero() {
           <div className="hero-deck-copy order-2 flex flex-col justify-center pb-2 text-center lg:order-1 lg:text-left">
             <div className="fade-in-1 flex justify-center lg:justify-start">
               <span className="micro-chip">
-                <span className="pulse-dot mr-1.5 inline-block size-1.5 rounded-full" style={{ background: "#5b7db8" }} />
+                <span className="pulse-dot mr-1.5 inline-block size-1.5 rounded-full" style={{ background: "#2a9d8f" }} />
                 {t.hero.chip}
               </span>
             </div>
@@ -173,12 +184,12 @@ export function Hero() {
 
             <div className="mt-6 flex flex-col items-center gap-4 lg:items-start">
               <a href={`mailto:${siteConfig.email}`} className="hero-email-pill">
-                <Mail className="mr-2 inline size-4 text-[#5b7db8]" />
+                <Mail className="mr-2 inline size-4 text-teal" />
                 {siteConfig.email}
               </a>
               <div className="flex items-center gap-3">
                 <a href={`mailto:${siteConfig.email}`} className="hero-social-btn" aria-label="Email">
-                  <Mail className="size-4 text-[#3b4fd8]" />
+                  <Mail className="size-4 text-teal" />
                 </a>
                 <a
                   href={siteConfig.social.instagram}
@@ -207,7 +218,7 @@ export function Hero() {
                 return (
                   <div key={item.label} className="flex items-center gap-2.5 text-left">
                     <span className="flex size-8 shrink-0 items-center justify-center rounded-full border border-[#e7e2da] bg-white shadow-xs">
-                      <Icon className="size-3.5 text-[#5b7db8]" />
+                      <Icon className="size-3.5 text-teal" />
                     </span>
                     <span>
                       <p className="text-xs font-semibold text-navy">{item.label}</p>

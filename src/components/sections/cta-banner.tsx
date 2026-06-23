@@ -2,7 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 import { CtaButton } from "@/components/cta-button";
-import { CurvedPath, DotMatrix, GradientBubble, ScatterDots } from "@/components/deco";
+import { CurvedPath, DotMatrix, GradientBubble, ScatterDots, SketchArcs, SketchBotanical, SketchSquiggle } from "@/components/deco";
 import { routes } from "@/lib/routes";
 import { Section } from "@/components/section";
 import { useLocale } from "@/lib/i18n/context";
@@ -17,15 +17,29 @@ export function CtaBanner() {
 
         <GradientBubble
           size={280}
-          colorA="rgb(132 103 255 / 0.45)"
-          colorB="rgb(197 212 240 / 0.55)"
+          colorA="rgb(42 157 143 / 0.14)"
+          colorB="rgb(232 228 245 / 0.4)"
           style={{ bottom: "-20%", right: "-8%", zIndex: 0 }}
         />
         <GradientBubble
           size={140}
-          colorA="rgb(42 157 143 / 0.4)"
-          colorB="rgb(221 245 241 / 0.5)"
+          colorA="rgb(30 58 95 / 0.08)"
+          colorB="rgb(221 245 241 / 0.45)"
           style={{ top: "-15%", left: "-4%", zIndex: 0 }}
+        />
+
+        <SketchBotanical
+          className="deco-float absolute bottom-6 left-4 hidden opacity-75 lg:block"
+          style={{ zIndex: 1 }}
+        />
+        <SketchSquiggle
+          className="deco-float-slow absolute right-10 top-6 hidden lg:block"
+          style={{ zIndex: 1 }}
+          width={130}
+        />
+        <SketchArcs
+          className="deco-float absolute bottom-4 right-24 hidden opacity-60 lg:block"
+          style={{ zIndex: 1, animationDelay: "0.6s" }}
         />
 
         <DotMatrix
@@ -42,7 +56,7 @@ export function CtaBanner() {
           className="hidden lg:block"
           style={{ top: 0, left: 0, width: "100%", height: "60%", zIndex: 1 }}
           d="M 0 100 Q 200 30 480 80 T 900 50"
-          stroke="rgb(91 125 184 / 0.18)"
+          stroke="rgb(42 157 143 / 0.14)"
           strokeWidth={1.5}
           viewBox="0 0 900 110"
         />
@@ -51,9 +65,9 @@ export function CtaBanner() {
           className="hidden lg:block"
           style={{ bottom: "1.5rem", left: "3rem", zIndex: 1 }}
           dots={[
-            { cx: 8, cy: 8, r: 5, fill: "rgb(91 125 184 / 0.22)" },
-            { cx: 24, cy: 20, r: 3, fill: "rgb(132 103 255 / 0.28)" },
-            { cx: 40, cy: 8, r: 4, fill: "rgb(42 157 143 / 0.22)" },
+            { cx: 8, cy: 8, r: 5, fill: "rgb(42 157 143 / 0.18)" },
+            { cx: 24, cy: 20, r: 3, fill: "rgb(30 58 95 / 0.12)" },
+            { cx: 40, cy: 8, r: 4, fill: "rgb(42 157 143 / 0.14)" },
           ]}
         />
 
@@ -64,7 +78,7 @@ export function CtaBanner() {
               {t.ctaBanner.title}{" "}
               <span
                 style={{
-                  background: "linear-gradient(105deg, #3b4fd8, #2a9d8f)",
+                  background: "linear-gradient(105deg, #1e3a5f, #2a9d8f)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -82,7 +96,7 @@ export function CtaBanner() {
                   key={p}
                   className="inline-flex items-center gap-1.5 rounded-full border border-[#e7e2da] bg-white/80 px-3 py-1 text-[11px] font-medium text-navy"
                 >
-                  <ArrowRight className="size-3 text-[#5b7db8]" />
+                  <ArrowRight className="size-3 text-teal" />
                   {p}
                 </span>
               ))}

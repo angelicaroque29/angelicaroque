@@ -1,7 +1,7 @@
 "use client";
 
 import { Check, Sparkles, Star } from "lucide-react";
-import { CurvedPath, DotMatrix, GradientBubble, ScatterDots } from "@/components/deco";
+import { CurvedPath, DotMatrix, GradientBubble, ScatterDots, SketchBotanical, SketchStars } from "@/components/deco";
 import { CtaButton } from "@/components/cta-button";
 import { Section } from "@/components/section";
 import { useLocale } from "@/lib/i18n/context";
@@ -22,7 +22,6 @@ type ServicesProps = {
 
 type ServiceOffer = {
   id: ServiceOfferId;
-  price: string;
   title: string;
   description: string;
   includes: readonly string[];
@@ -55,25 +54,22 @@ function AuditFeaturedCard({
       }}
     >
       <div
-        className="pointer-events-none absolute -right-16 -top-16 size-48 rounded-full opacity-40"
+        className="pointer-events-none absolute -right-16 -top-16 size-48 rounded-full opacity-35"
         style={{
           background:
-            "radial-gradient(circle, rgb(255 255 255 / 0.35) 0%, rgb(132 103 255 / 0.25) 45%, transparent 70%)",
+            "radial-gradient(circle, rgb(255 255 255 / 0.3) 0%, rgb(42 157 143 / 0.18) 45%, transparent 70%)",
         }}
       />
 
       <div className="relative z-10 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
         <div>
           <div className="mb-4 flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-1 rounded-full bg-white/95 px-3 py-1 text-[10px] font-bold tracking-wide text-[#3b4fd8] uppercase shadow-sm">
-              <Sparkles className="size-3" />
+            <span className="inline-flex items-center gap-1 rounded-full bg-white/95 px-3 py-1 text-[10px] font-bold tracking-wide text-navy uppercase shadow-sm">
+              <Sparkles className="size-3 text-teal" />
               {featuredLabel}
             </span>
-            <span className="rounded-full bg-[#eef2fb] px-3 py-1 text-[11px] font-semibold text-[#1e3a5f]">
+            <span className="rounded-full bg-[#ddf5f1] px-3 py-1 text-[11px] font-semibold text-navy">
               {freeCallNote}
-            </span>
-            <span className="rounded-full bg-white/20 px-3 py-1 text-[11px] font-semibold text-white backdrop-blur-sm">
-              {offer.price}
             </span>
           </div>
 
@@ -99,7 +95,7 @@ function AuditFeaturedCard({
                 key={item}
                 className="inline-flex items-center gap-1.5 rounded-full bg-white/12 px-3 py-1.5 text-xs text-white/95 ring-1 ring-white/15"
               >
-                <Check className="size-3 shrink-0 text-[#c5d4f7]" strokeWidth={2.5} />
+                <Check className="size-3 shrink-0 text-[#a8e0d8]" strokeWidth={2.5} />
                 {item}
               </li>
             ))}
@@ -109,7 +105,7 @@ function AuditFeaturedCard({
         <CtaButton
           href={routes.booking}
           showArrow
-          className="w-full shrink-0 !h-12 !border-0 !bg-white !text-navy shadow-md hover:!bg-[#eef2fb] lg:w-auto lg:!px-8"
+          className="w-full shrink-0 !h-12 !border-0 !bg-white !text-navy shadow-md hover:!bg-[#ddf5f1] lg:w-auto lg:!px-8"
         >
           {offer.cta}
         </CtaButton>
@@ -192,21 +188,13 @@ function StandardOfferCard({
         style={{ background: accent.bar }}
       />
 
-      <div className="mb-5 flex items-start justify-between gap-3">
+      <div className="mb-5 flex items-start gap-3">
         <div
           className="flex size-11 shrink-0 items-center justify-center rounded-xl shadow-sm"
           style={{ background: accent.iconBg }}
         >
           <Icon className="size-5 text-white" strokeWidth={1.75} />
         </div>
-        <span
-          className={cn(
-            "rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-wide",
-            accent.chip
-          )}
-        >
-          {offer.price}
-        </span>
       </div>
 
       <h3 className="font-heading text-lg font-semibold leading-snug text-navy">{offer.title}</h3>
@@ -241,7 +229,7 @@ function PremiumOfferCard({
 
   return (
     <article
-      className="group relative flex flex-col overflow-hidden rounded-[1.35rem] border-2 p-6 shadow-md transition-all duration-300 hover:-translate-y-1 sm:p-7"
+      className="group relative flex flex-col overflow-hidden rounded-[1.35rem] border p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 sm:p-7"
       style={{
         animation: "fadeIn 0.7s cubic-bezier(.22,.68,0,1.2) 0.35s both",
         background: accent.cardWash,
@@ -273,31 +261,26 @@ function PremiumOfferCard({
               accent.badge
             )}
           >
-            <Star className="size-3 fill-[#3b4fd8] text-[#3b4fd8]" />
+            <Star className="size-3 fill-teal text-teal" />
             {premiumLabel}
-          </span>
-          <span className={cn("rounded-full px-2.5 py-1 text-[10px] font-semibold", accent.chip)}>
-            {offer.price}
           </span>
         </div>
       </div>
 
-      <h3 className="font-heading text-lg font-semibold leading-snug text-white">{offer.title}</h3>
-      <p className="mt-3 text-sm leading-[1.75] text-white/85">{offer.description}</p>
+      <h3 className="font-heading text-lg font-semibold leading-snug text-navy">{offer.title}</h3>
+      <p className="mt-3 text-sm leading-[1.75] text-muted-foreground">{offer.description}</p>
 
       <OfferIncludes
         items={offer.includes}
         includesLabel={includesLabel}
         linkColor={accent.link}
-        labelClass="text-white/70"
-        textClass="text-white/80"
       />
 
       <div className="mt-6 pt-2">
         <CtaButton
           href={routes.booking}
           showArrow
-          className="w-full !h-11 !border-0 !bg-white !text-navy shadow-md hover:!bg-[#eef2fb]"
+          className="w-full !h-11"
         >
           {offer.cta}
         </CtaButton>
@@ -321,7 +304,7 @@ function CustomOfferCard({
   return (
     <article
       className={cn(
-        "group relative flex flex-col overflow-hidden rounded-[1.35rem] border-2 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 sm:p-7",
+        "group relative flex flex-col overflow-hidden rounded-[1.35rem] border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 sm:p-7",
         accent.ring
       )}
       style={{
@@ -356,9 +339,6 @@ function CustomOfferCard({
             )}
           >
             {customLabel}
-          </span>
-          <span className="rounded-full bg-[#faf9f7] px-2.5 py-1 text-[10px] font-semibold text-navy">
-            {offer.price}
           </span>
         </div>
       </div>
@@ -396,17 +376,17 @@ export function Services({ standalone = false }: ServicesProps) {
         flush
         className={cn("!py-10 lg:!py-14", standalone && "!pt-6 lg:!pt-10")}
       >
-        <div className="relative overflow-hidden rounded-[1.75rem] border border-[#e7e2da]/80 bg-[linear-gradient(118deg,rgb(232_228_245_/_0.38),rgb(250_248_243_/_0.82)_48%,rgb(221_232_250_/_0.32))] px-5 py-10 shadow-sm sm:px-8 lg:px-10 lg:py-12">
+        <div className="relative overflow-hidden rounded-[1.75rem] border border-[#e7e2da]/80 bg-[linear-gradient(145deg,#faf8f3_0%,#ffffff_42%,#f4faf9_100%)] px-5 py-10 shadow-sm sm:px-8 lg:px-10 lg:py-12">
           <GradientBubble
             size={220}
-            colorA="rgb(132 103 255 / 0.35)"
-            colorB="rgb(197 212 240 / 0.45)"
+            colorA="rgb(42 157 143 / 0.12)"
+            colorB="rgb(221 245 241 / 0.5)"
             style={{ top: "-10%", right: "-5%", zIndex: 0 }}
           />
           <GradientBubble
             size={160}
-            colorA="rgb(59 79 216 / 0.28)"
-            colorB="rgb(197 212 240 / 0.45)"
+            colorA="rgb(30 58 95 / 0.08)"
+            colorB="rgb(232 228 245 / 0.35)"
             style={{ bottom: "-8%", left: "-6%", zIndex: 0 }}
           />
 
@@ -424,7 +404,7 @@ export function Services({ standalone = false }: ServicesProps) {
             className="hidden lg:block"
             style={{ top: "1rem", left: "0", width: "60%", zIndex: 1 }}
             d="M 0 80 Q 120 20 280 60 T 480 30"
-            stroke="rgb(91 125 184 / 0.15)"
+            stroke="rgb(42 157 143 / 0.14)"
             strokeWidth={1.5}
             viewBox="0 0 480 100"
           />
@@ -433,10 +413,20 @@ export function Services({ standalone = false }: ServicesProps) {
             className="hidden lg:block"
             style={{ bottom: "1.5rem", left: "0.5rem", zIndex: 1 }}
             dots={[
-              { cx: 8, cy: 8, r: 5, fill: "rgb(132 103 255 / 0.22)" },
-              { cx: 22, cy: 22, r: 3, fill: "rgb(91 125 184 / 0.28)" },
-              { cx: 36, cy: 10, r: 4, fill: "rgb(30 58 95 / 0.18)" },
+              { cx: 8, cy: 8, r: 5, fill: "rgb(42 157 143 / 0.18)" },
+              { cx: 22, cy: 22, r: 3, fill: "rgb(30 58 95 / 0.14)" },
+              { cx: 36, cy: 10, r: 4, fill: "rgb(42 157 143 / 0.12)" },
             ]}
+          />
+
+          <SketchBotanical
+            className="deco-float-slow absolute -right-2 top-16 hidden opacity-70 lg:block"
+            style={{ zIndex: 1 }}
+            flip
+          />
+          <SketchStars
+            className="deco-float absolute bottom-20 left-6 hidden opacity-80 lg:block"
+            style={{ zIndex: 1, animationDelay: "0.7s" }}
           />
 
           <div className="relative z-10">
@@ -462,7 +452,7 @@ export function Services({ standalone = false }: ServicesProps) {
             <PricingNote text={services.pricingNote} />
 
             <div className="mt-10 mb-5">
-              <p className="text-xs font-semibold tracking-[0.2em] text-[#5b7db8] uppercase">
+              <p className="text-xs font-semibold tracking-[0.2em] text-teal uppercase">
                 {services.buildsLabel}
               </p>
             </div>
@@ -524,11 +514,11 @@ export function Services({ standalone = false }: ServicesProps) {
       </Section>
 
       <Section flush className="!pb-10 lg:!pb-14">
-        <div className="relative overflow-hidden rounded-[1.5rem] border border-[#3b4fd8]/20 bg-[linear-gradient(135deg,#eef2fb_0%,#faf9f7_55%,#ffffff_100%)] px-6 py-10 text-center shadow-sm sm:px-10 lg:py-12">
+        <div className="relative overflow-hidden rounded-[1.5rem] border border-[#e7e2da] bg-[linear-gradient(135deg,#f4faf9_0%,#faf8f3_55%,#ffffff_100%)] px-6 py-10 text-center shadow-sm sm:px-10 lg:py-12">
           <GradientBubble
             size={180}
-            colorA="rgb(59 79 216 / 0.28)"
-            colorB="rgb(197 212 240 / 0.35)"
+            colorA="rgb(42 157 143 / 0.1)"
+            colorB="rgb(221 245 241 / 0.4)"
             style={{ top: "-20%", right: "10%", zIndex: 0 }}
           />
           <div className="relative z-10 mx-auto max-w-lg">

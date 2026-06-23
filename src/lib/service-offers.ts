@@ -25,60 +25,66 @@ export const serviceOfferIcons: Record<ServiceOfferId, LucideIcon> = {
   custom: Code2,
 };
 
+/** Shared tokens — navy + teal + warm ivory only */
+const navy = "#1e3a5f";
+const navyMid = "#2d5278";
+const teal = "#2a9d8f";
+const tealLight = "#3bb3a4";
+const periwinkle = "#8fa8c8";
+const border = "rgb(231 226 218 / 0.95)";
+const shadowNavy = "0 12px 32px rgb(30 58 95 / 0.07)";
+const shadowTeal = "0 12px 32px rgb(42 157 143 / 0.09)";
+
 export const mainOfferAccents = [
   {
-    cardWash: "linear-gradient(180deg, #eef6f4 0%, #ffffff 52%)",
-    iconBg: "linear-gradient(135deg, #2a9d8f 0%, #5bb8a8 100%)",
-    bar: "linear-gradient(90deg, #1f7a6f, #2a9d8f)",
-    chip: "bg-[#e8f5f2] text-[#1f7a6f]",
-    link: "#2a9d8f",
-    border: "rgb(42 157 143 / 0.22)",
-    hoverShadow: "0 14px 36px rgb(42 157 143 / 0.12)",
+    cardWash: "linear-gradient(180deg, #ffffff 0%, #faf8f3 100%)",
+    iconBg: `linear-gradient(145deg, ${navy} 0%, ${navyMid} 100%)`,
+    bar: `linear-gradient(90deg, ${teal}, ${tealLight})`,
+    link: teal,
+    border,
+    hoverShadow: shadowNavy,
   },
   {
-    cardWash: "linear-gradient(180deg, #e8eeff 0%, #ffffff 52%)",
-    iconBg: "linear-gradient(135deg, #3b4fd8 0%, #5b7db8 100%)",
-    bar: "linear-gradient(90deg, #2563eb, #3b4fd8)",
-    chip: "bg-[#eef2fb] text-[#3b4fd8]",
-    link: "#2563eb",
-    border: "rgb(59 79 216 / 0.22)",
-    hoverShadow: "0 14px 36px rgb(59 79 216 / 0.12)",
+    cardWash: "linear-gradient(180deg, #ffffff 0%, #f7fcfb 100%)",
+    iconBg: `linear-gradient(145deg, ${teal} 0%, ${tealLight} 100%)`,
+    bar: `linear-gradient(90deg, ${navy}, ${navyMid})`,
+    link: navy,
+    border,
+    hoverShadow: shadowTeal,
   },
   {
-    cardWash: "linear-gradient(180deg, #f3ecff 0%, #ffffff 52%)",
-    iconBg: "linear-gradient(135deg, #7c5cc4 0%, #a07dd8 100%)",
-    bar: "linear-gradient(90deg, #6d28d9, #a855f7)",
-    chip: "bg-[#f0edf8] text-[#7c5cc4]",
-    link: "#7c5cc4",
-    border: "rgb(124 92 196 / 0.24)",
-    hoverShadow: "0 14px 36px rgb(124 92 196 / 0.12)",
+    cardWash: "linear-gradient(180deg, #ffffff 0%, #f5f8fc 100%)",
+    iconBg: `linear-gradient(145deg, ${navyMid} 0%, ${periwinkle} 100%)`,
+    bar: `linear-gradient(90deg, ${teal}, ${navy})`,
+    link: navyMid,
+    border,
+    hoverShadow: shadowNavy,
   },
 ] as const;
 
 export const auditAccent = {
-  gradient: "linear-gradient(135deg, #1e3a5f 0%, #3b4fd8 48%, #5b7db8 100%)",
-  glow: "0 24px 56px rgb(59 79 216 / 0.35)",
-  border: "rgb(91 125 184 / 0.5)",
+  gradient: `linear-gradient(145deg, ${navy} 0%, #254a6e 52%, #2a6570 100%)`,
+  glow: "0 16px 44px rgb(30 58 95 / 0.16)",
+  border: "rgb(42 157 143 / 0.28)",
 } as const;
 
 export const premiumAccent = {
-  cardWash: "linear-gradient(160deg, #1e3a5f 0%, #2d4a73 50%, #3b4fd8 100%)",
-  iconBg: "linear-gradient(135deg, #3b4fd8 0%, #5b7db8 100%)",
-  bar: "linear-gradient(90deg, #c5d4f7, #3b4fd8, #7c5cc4)",
-  chip: "bg-white/20 text-white backdrop-blur-sm",
-  link: "#c5d4f7",
-  border: "rgb(91 125 184 / 0.45)",
-  hoverShadow: "0 20px 48px rgb(59 79 216 / 0.28)",
-  badge: "bg-white/95 text-[#3b4fd8]",
+  cardWash: "linear-gradient(180deg, #f4f8f7 0%, #ffffff 55%, #eef6f4 100%)",
+  iconBg: `linear-gradient(145deg, ${navy} 0%, ${teal} 100%)`,
+  bar: `linear-gradient(90deg, ${teal}, ${navy})`,
+  link: teal,
+  border: "rgb(42 157 143 / 0.22)",
+  hoverShadow: shadowTeal,
+  badge: "bg-[#ddf5f1] text-[#1e3a5f]",
 } as const;
 
 export const customAccent = {
-  cardWash: "linear-gradient(135deg, #faf9f7 0%, #f0ece6 48%, #ffffff 100%)",
-  iconBg: "linear-gradient(135deg, #1e3a5f 0%, #5b7db8 100%)",
-  bar: "linear-gradient(90deg, #c5a572, #e8d5b5, #5b7db8)",
-  chip: "bg-[#1e3a5f] text-white",
-  link: "#1e3a5f",
-  border: "rgb(30 58 95 / 0.28)",
-  hoverShadow: "0 20px 48px rgb(30 58 95 / 0.15)",
-  ring: "ring-1 ring-[#c5a572]/30",
+  cardWash: "linear-gradient(180deg, #ffffff 0%, #faf8f3 100%)",
+  iconBg: `linear-gradient(145deg, ${navy} 0%, ${navyMid} 100%)`,
+  bar: `linear-gradient(90deg, ${navy}, ${teal})`,
+  chip: "bg-[#f0ece6] text-navy",
+  link: navy,
+  border,
+  hoverShadow: shadowNavy,
+  ring: "ring-1 ring-[#e7e2da]",
 } as const;
