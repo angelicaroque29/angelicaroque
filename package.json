@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "export:instagram-carousel": "node scripts/export-instagram-carousel.mjs",
+    "export:instagram-reel-cover": "node scripts/export-instagram-reel-cover.mjs"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
@@ -27,6 +29,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
+    "playwright": "^1.61.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
