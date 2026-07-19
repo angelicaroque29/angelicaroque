@@ -24,7 +24,7 @@ export function FounderPhoto({
     >
       <Image
         src={siteConfig.images.profile}
-        alt={`${siteConfig.founder}, fundadora de ${siteConfig.name}`}
+        alt={`${siteConfig.founder}, ingeniera de software`}
         fill
         priority={priority}
         quality={100}

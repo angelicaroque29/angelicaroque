@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Booking } from "@/components/sections/booking";
 
 export const metadata: Metadata = {
-  title: "Book a Call | AngieInTech",
+  title: "Agenda una llamada | Angélica Roque",
   description:
-    "Book a free 20-minute first call with Angelica Roque. No cost, no commitment. Leave with clarity on what to fix first.",
+    "Reserva una primera llamada gratis de 20 minutos con Angélica Roque. Sin costo ni compromiso. Sales con claridad sobre qué arreglar primero.",
 };
 
 export default function BookingPage() {

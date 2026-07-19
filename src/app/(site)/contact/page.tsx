@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Contact } from "@/components/sections/contact";
 
 export const metadata: Metadata = {
-  title: "Contact | AngieInTech",
+  title: "Contacto | Angélica Roque",
   description:
-    "Email, WhatsApp, or book online. Reach Angelica Roque at AngieInTech for websites, automations, and business systems.",
+    "Email, WhatsApp o agenda en línea. Escríbele a Angélica Roque para webs, automatizaciones y sistemas de negocio.",
 };
 
 export default function ContactPage() {
