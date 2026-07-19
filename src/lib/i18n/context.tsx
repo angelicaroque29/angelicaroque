@@ -12,7 +12,9 @@ import {
 import { translations } from "@/lib/i18n/translations";
 import { defaultLocale, type Locale } from "@/lib/i18n/types";
 
-const STORAGE_KEY = "angieintech-locale";
+// Versioned so older saved English preferences do not override the new
+// Spanish-first experience. New selections still persist normally.
+const STORAGE_KEY = "angelica-roque-locale-v2";
 
 type LocaleContextValue = {
   locale: Locale;
