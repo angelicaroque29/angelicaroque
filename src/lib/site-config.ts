@@ -13,26 +13,25 @@ function resolveCalLink(raw?: string) {
 const calLink = resolveCalLink(process.env.NEXT_PUBLIC_CAL_LINK);
 
 export const siteConfig = {
-  name: "AngieInTech",
-  handle: "@angieintech",
-  founder: "Angelica Roque",
-  studioName: "AngieInTech",
+  name: "Angélica Roque",
+  handle: "@aangelicaroque",
+  founder: "Angélica Roque",
+  studioName: "Angélica Roque",
   location: "Miami, FL",
   tagline:
-    "Angelica Roque · AngieInTech · Tecnología simple para negocios que quieren crecer.",
+    "Ingeniera de software en Miami. Webs, automatizaciones y sistemas con IA para negocios que quieren crecer con menos caos.",
   calLink,
   calEmbedUrl:
     process.env.NEXT_PUBLIC_CAL_EMBED_URL?.trim() ||
     `${calLink}?embed=true&theme=light`,
-  email:
-    process.env.NEXT_PUBLIC_CONTACT_EMAIL ??
-    "angieintech.business@gmail.com",
+  email: "angieintech.business@gmail.com",
   phone: process.env.NEXT_PUBLIC_CONTACT_PHONE ?? "7864610791",
   phoneDisplay: "(786) 461-0791",
   whatsappUrl:
     process.env.NEXT_PUBLIC_WHATSAPP_URL ?? "https://wa.me/17864610791",
   images: {
-    logo: "/images/logo.png",
+    logo: "/images/angelica-roque-logo.png",
+    logoIcon: "/images/angelica-roque-icon.png",
     profile: "/images/angelica-profile-hq.jpg",
     headshot: "/images/angelica-headshot.png",
     office: "/images/angelica-office.png",
@@ -40,13 +39,11 @@ export const siteConfig = {
     servicesFlow: "/images/operation-automation-flow.png",
   },
   social: {
-    instagram:
-      process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "https://instagram.com/angieintech",
+    instagram: "https://www.instagram.com/aangelicaroque/",
     tiktok: process.env.NEXT_PUBLIC_TIKTOK_URL ?? "#",
     youtube: process.env.NEXT_PUBLIC_YOUTUBE_URL ?? "#",
   },
-  instagramDmUrl:
-    process.env.NEXT_PUBLIC_INSTAGRAM_DM_URL ?? "https://ig.me/m/angieintech",
+  instagramDmUrl: "https://ig.me/m/aangelicaroque",
   agentAvatarUrl:
     process.env.NEXT_PUBLIC_JOTFORM_AGENT_AVATAR ??
     "https://cdn.jotfor.ms/assets/agent-avatars/avatar_icon_1270.png",

@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { useLocale } from "@/lib/i18n/context";
-import { localeLabels, type Locale } from "@/lib/i18n/types";
+import { locales, localeLabels } from "@/lib/i18n/types";
 
 export function LanguageToggle({ className }: { className?: string }) {
   const { locale, setLocale } = useLocale();
@@ -14,9 +14,9 @@ export function LanguageToggle({ className }: { className?: string }) {
         className
       )}
       role="group"
-      aria-label="Language"
+      aria-label="Idioma"
     >
-      {(["en", "es"] as Locale[]).map((code) => {
+      {locales.map((code) => {
         const active = locale === code;
         return (
           <button

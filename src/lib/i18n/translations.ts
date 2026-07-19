@@ -21,7 +21,7 @@ const es = {
       talkCta: "Hablemos",
     },
     hero: {
-      chip: "AngieInTech · Miami · Software Engineer",
+      chip: "Angélica Roque · Miami · Ingeniera de software",
       greeting: "Hola, soy",
       name: "ANGÉLICA",
       title: "Consulto contigo y construyo sistemas con",
@@ -37,10 +37,10 @@ const es = {
       secondaryCta: "Ver servicios",
       freeCallNote: "Primera llamada gratis · 20 min",
       stats: [
-        { label: "Software Engineer @ AmEx", detail: "Full-time role" },
-        { label: "Real client projects", detail: "Healthcare & services" },
-        { label: "English & Spanish", detail: "Bilingual support" },
-        { label: "Based in Miami", detail: "Local & remote" },
+        { label: "Ingeniera de software @ AmEx", detail: "Trabajo a tiempo completo" },
+        { label: "Proyectos con clientes reales", detail: "Salud y servicios" },
+        { label: "Inglés y español", detail: "Atención bilingüe" },
+        { label: "Basada en Miami", detail: "Clientes locales y remotos" },
       ],
       highlights: [
         { title: "Auditoría de sistemas", label: "Empieza con una llamada" },
@@ -238,7 +238,7 @@ const es = {
       label: "Founder-led studio",
       title: "Sobre mí",
       paragraph1:
-        "Soy Angelica Roque, fundadora de AngieInTech e ingeniera de software en Miami. Ayudo a negocios de servicios a verse más profesionales, captar clientes y organizar su operación sin más caos manual.",
+        "Soy Angélica Roque, ingeniera de software en Miami. Ayudo a negocios de servicios a verse más profesionales, captar clientes y organizar su operación sin más caos manual.",
       paragraph2:
         "Maestría en Computer Science. Construyo webs, automatizaciones y sistemas que devuelven tiempo, claridad y control, contigo de cerca, desde la idea hasta el lanzamiento.",
       principles: ["Simple antes que complejo", "Control humano", "Hecho para tu operación"],
@@ -341,7 +341,7 @@ const es = {
       ],
     },
     chatWidget: {
-      agentName: "angieintech",
+      agentName: "Angélica Roque",
       online: "En línea",
       greeting: "¡Hola! 🌟",
       prompt: "¿En qué te puedo ayudar?",
@@ -372,7 +372,7 @@ const en = {
       talkCta: "Let's talk",
     },
     hero: {
-      chip: "AngieInTech · Miami · Software Engineer",
+      chip: "Angélica Roque · Miami · Ingeniera de software",
       greeting: "Hello, I'm",
       name: "ANGELICA",
       title: "I consult with you and build systems with",
@@ -589,7 +589,7 @@ const en = {
       label: "Founder-led studio",
       title: "About me",
       paragraph1:
-        "I'm Angelica Roque, founder of AngieInTech and a software engineer in Miami. I help service businesses look more professional, capture clients, and run their operations with less manual chaos.",
+        "I'm Angélica Roque, a software engineer in Miami. I help service businesses look more professional, capture clients, and run their operations with less manual chaos.",
       paragraph2:
         "Master's in Computer Science. I build websites, automations, and systems that give you back time, clarity, and control, working closely with you from idea to launch.",
       principles: ["Simple before complex", "Human in the loop", "Built for how you work"],
@@ -692,7 +692,7 @@ const en = {
       ],
     },
     chatWidget: {
-      agentName: "angieintech",
+      agentName: "Angélica Roque",
       online: "Online",
       greeting: "Hi there! 🌟",
       prompt: "How can I help you?",

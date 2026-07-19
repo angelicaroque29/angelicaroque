@@ -10,7 +10,7 @@ export function PersonalProjects() {
     <Section id="projects" flush wash="teal">
       <SectionHeading
         label="Proyectos propios"
-        title="Construido por AngieInTech"
+        title="Construido por Angélica Roque"
         subtitle="La misma ingeniería que aplico con clientes, llevada a productos propios."
       />
       <div className="grid gap-5 md:grid-cols-2">

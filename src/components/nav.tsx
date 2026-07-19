@@ -18,7 +18,7 @@ export function Nav() {
   const close = () => setOpen(false);
 
   const isActive = (href: string) => {
-    if (href === routes.home || href === routes.services) {
+    if (href === routes.home || href === routes.services || href === routes.faq) {
       return pathname === routes.home;
     }
     if (href.startsWith("/#")) {

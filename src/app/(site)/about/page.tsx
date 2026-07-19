@@ -3,9 +3,9 @@ import { About } from "@/components/sections/about";
 import { CtaBanner } from "@/components/sections/cta-banner";
 
 export const metadata: Metadata = {
-  title: "About | AngieInTech",
+  title: "Sobre mí | Angélica Roque",
   description:
-    "Angelica Roque, software engineer and founder of AngieInTech. I help small businesses build websites, automations, and digital systems in Miami.",
+    "Angélica Roque, ingeniera de software en Miami. Ayudo a negocios pequeños con webs, automatizaciones y sistemas digitales.",
 };
 
 export default function AboutPage() {

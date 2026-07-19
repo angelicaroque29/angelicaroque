@@ -16,9 +16,9 @@ const plusJakarta = Plus_Jakarta_Sans({
   weight: ["500", "600", "700"],
 });
 
-const title = "Angelica Roque | AngieInTech · AI Systems for Small Business";
+const title = "Angélica Roque · Sistemas con IA para negocios";
 const description =
-  "Websites, automations, dashboards, and AI systems for businesses that want to save time, capture more leads, and run with less chaos. Miami · EN/ES.";
+  "Webs, automatizaciones, dashboards y sistemas con IA para negocios que quieren ahorrar tiempo, captar más clientes y operar con menos caos. Miami.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -30,12 +30,12 @@ export const metadata: Metadata = {
     title,
     description,
     type: "website",
-    locale: "en_US",
-    images: [{ url: siteConfig.images.profile, alt: "Angelica Roque" }],
+    locale: "es_US",
+    images: [{ url: siteConfig.images.profile, alt: "Angélica Roque" }],
   },
   icons: {
-    icon: siteConfig.images.logo,
-    apple: siteConfig.images.logo,
+    icon: "/icon.svg",
+    apple: "/images/angelica-roque-icon.png",
   },
 };
 
@@ -46,7 +46,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="es"
       className={`${inter.variable} ${plusJakarta.variable} h-full antialiased`}
     >
       <body className="flex min-h-screen w-full flex-col">
