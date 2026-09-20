@@ -492,7 +492,7 @@
   }
 
   .hero-deck-copy {
-    @apply max-w-xl;
+    @apply mx-auto max-w-xl lg:mx-0;
   }
 
   .hero-deck-photo {
