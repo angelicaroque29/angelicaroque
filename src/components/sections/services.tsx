@@ -1,15 +1,14 @@
 "use client";
 
-import { Check, Sparkles, Star } from "lucide-react";
-import { CurvedPath, DotMatrix, GradientBubble, ScatterDots, SketchBotanical, SketchStars } from "@/components/deco";
+import Link from "next/link";
+import { ArrowRight, Check } from "lucide-react";
 import { CtaButton } from "@/components/cta-button";
 import { Section } from "@/components/section";
 import { useLocale } from "@/lib/i18n/context";
 import {
   auditAccent,
-  customAccent,
-  mainOfferAccents,
-  premiumAccent,
+  offerIconBackgrounds,
+  serviceHref,
   serviceOfferIcons,
   type ServiceOfferId,
 } from "@/lib/service-offers";
@@ -20,32 +19,45 @@ type ServicesProps = {
   standalone?: boolean;
 };
 
-type ServiceOffer = {
-  id: ServiceOfferId;
+type AuditOffer = {
+  price: string;
   title: string;
   description: string;
   includes: readonly string[];
   cta: string;
-  tier?: "premium" | "custom";
+};
+
+type FirstMeeting = {
+  label: string;
+  regularPrice: string;
+  price: string;
+  savings: string;
+};
+
+type ServiceOffer = {
+  id: ServiceOfferId;
+  price: string;
+  note: string;
+  title: string;
+  summary: string;
+  priceHint?: string;
 };
 
 function AuditFeaturedCard({
   offer,
-  featuredLabel,
-  freeCallNote,
-  includesLabel,
+  categoryLabel,
+  firstMeeting,
+  detailsCta,
 }: {
-  offer: ServiceOffer;
-  featuredLabel: string;
-  freeCallNote: string;
-  includesLabel: string;
+  offer: AuditOffer;
+  categoryLabel: string;
+  firstMeeting: FirstMeeting;
+  detailsCta: string;
 }) {
-  const Icon = serviceOfferIcons.audit;
-
   return (
     <article
       id="audit"
-      className="group relative overflow-hidden rounded-[1.5rem] border-2 p-6 shadow-lg transition-all duration-300 hover:-translate-y-0.5 sm:p-8 lg:p-9"
+      className="relative overflow-hidden rounded-[1.5rem] border shadow-lg"
       style={{
         animation: "fadeIn 0.7s cubic-bezier(.22,.68,0,1.2) 0.05s both",
         background: auditAccent.gradient,
@@ -53,311 +65,109 @@ function AuditFeaturedCard({
         boxShadow: auditAccent.glow,
       }}
     >
-      <div
-        className="pointer-events-none absolute -right-16 -top-16 size-48 rounded-full opacity-35"
-        style={{
-          background:
-            "radial-gradient(circle, rgb(255 255 255 / 0.3) 0%, rgb(42 157 143 / 0.18) 45%, transparent 70%)",
-        }}
-      />
-
-      <div className="relative z-10 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
-        <div>
-          <div className="mb-4 flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-1 rounded-full bg-white/95 px-3 py-1 text-[10px] font-bold tracking-wide text-navy uppercase shadow-sm">
-              <Sparkles className="size-3 text-teal" />
-              {featuredLabel}
-            </span>
-            <span className="rounded-full bg-[#ddf5f1] px-3 py-1 text-[11px] font-semibold text-navy">
-              {freeCallNote}
-            </span>
-          </div>
-
-          <div className="mb-4 flex items-center gap-3">
-            <div className="flex size-12 items-center justify-center rounded-xl bg-white/15 backdrop-blur-sm ring-1 ring-white/25">
-              <Icon className="size-6 text-white" strokeWidth={1.75} />
-            </div>
-            <h3 className="font-heading text-[clamp(1.35rem,2.5vw,1.85rem)] font-semibold leading-snug text-white">
-              {offer.title}
-            </h3>
-          </div>
-
-          <p className="max-w-2xl text-sm leading-[1.85] text-white/90 sm:text-[0.9375rem]">
-            {offer.description}
-          </p>
-
-          <p className="mt-4 text-[11px] font-semibold tracking-wide text-white/80 uppercase">
-            {includesLabel}
-          </p>
-          <ul className="mt-3 flex flex-wrap gap-2">
+      <div className="grid lg:grid-cols-[1fr_minmax(19rem,22rem)]">
+        <div className="p-6 sm:p-8 lg:p-9">
+          <p className="text-[11px] font-semibold tracking-[0.18em] text-[#a8e0d8] uppercase">{categoryLabel}</p>
+          <h3 className="mt-3 font-heading text-[clamp(1.35rem,2.5vw,1.85rem)] font-semibold leading-snug text-white">
+            {offer.title}
+          </h3>
+          <p className="mt-3 max-w-xl text-[0.9375rem] leading-[1.75] text-white/85">{offer.description}</p>
+          <ul className="mt-6 hidden gap-2.5 sm:grid sm:grid-cols-3">
             {offer.includes.map((item) => (
-              <li
-                key={item}
-                className="inline-flex items-center gap-1.5 rounded-full bg-white/12 px-3 py-1.5 text-xs text-white/95 ring-1 ring-white/15"
-              >
-                <Check className="size-3 shrink-0 text-[#a8e0d8]" strokeWidth={2.5} />
-                {item}
+              <li key={item} className="flex items-start gap-2 text-sm text-white/90">
+                <Check className="mt-0.5 size-4 shrink-0 text-[#a8e0d8]" strokeWidth={2.5} />
+                <span>{item}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        <CtaButton
-          href={routes.booking}
-          showArrow
-          className="w-full shrink-0 !h-12 !border-0 !bg-white !text-navy shadow-md hover:!bg-[#ddf5f1] lg:w-auto lg:!px-8"
-        >
-          {offer.cta}
-        </CtaButton>
+        <div className="flex flex-col justify-center gap-4 border-t border-white/15 bg-black/10 p-6 sm:p-8 lg:border-t-0 lg:border-l">
+          <p className="font-heading text-[2.25rem] font-semibold leading-none tracking-tight text-white">
+            {offer.price}
+          </p>
+
+          <div className="rounded-xl bg-white p-4 text-navy shadow-md">
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-[11px] font-semibold tracking-wide whitespace-nowrap uppercase">{firstMeeting.label}</p>
+              <span className="shrink-0 rounded-full bg-teal px-2.5 py-1 text-[11px] font-bold whitespace-nowrap text-white">
+                {firstMeeting.savings}
+              </span>
+            </div>
+            <p className="mt-2 flex items-baseline gap-2">
+              <span className="font-heading text-[1.75rem] font-semibold leading-none">{firstMeeting.price}</span>
+              <span className="text-base text-muted-foreground line-through">{firstMeeting.regularPrice}</span>
+            </p>
+          </div>
+
+          <CtaButton
+            href={routes.booking}
+            showArrow
+            className="w-full !h-12 !border-0 !bg-teal !text-white shadow-md hover:!bg-[#238a7e]"
+          >
+            {offer.cta}
+          </CtaButton>
+          <Link
+            href={serviceHref("audit")}
+            className="inline-flex items-center justify-center gap-1 text-sm font-semibold text-white/85 transition-colors hover:text-white"
+          >
+            {detailsCta}
+            <ArrowRight className="size-4" />
+          </Link>
+        </div>
       </div>
     </article>
   );
 }
 
-function PricingNote({ text }: { text: string }) {
-  return (
-    <p className="mt-6 rounded-[1rem] border border-[#e7e2da]/90 bg-white/70 px-5 py-4 text-sm leading-[1.8] text-muted-foreground shadow-xs">
-      {text}
-    </p>
-  );
-}
-
-function OfferIncludes({
-  items,
-  includesLabel,
-  linkColor,
-  textClass = "text-muted-foreground",
-  labelClass = "text-navy uppercase opacity-70",
-}: {
-  items: readonly string[];
-  includesLabel: string;
-  linkColor: string;
-  textClass?: string;
-  labelClass?: string;
-}) {
-  return (
-    <div className="mt-5 flex-1">
-      <p className={cn("text-[11px] font-semibold tracking-wide", labelClass)}>
-        {includesLabel}
-      </p>
-      <ul className="mt-3 space-y-2">
-        {items.map((item) => (
-          <li key={item} className={cn("flex items-start gap-2 text-sm", textClass)}>
-            <Check
-              className="mt-0.5 size-3.5 shrink-0"
-              style={{ color: linkColor }}
-              strokeWidth={2.5}
-            />
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-function StandardOfferCard({
+function OfferCard({
   offer,
   index,
-  includesLabel,
+  priceFromLabel,
+  detailsCta,
 }: {
   offer: ServiceOffer;
   index: number;
-  includesLabel: string;
+  priceFromLabel: string;
+  detailsCta: string;
 }) {
-  const accent = mainOfferAccents[index] ?? mainOfferAccents[0];
   const Icon = serviceOfferIcons[offer.id];
 
   return (
-    <article
-      className="group relative flex flex-col overflow-hidden rounded-[1.35rem] border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 sm:p-7"
-      style={{
-        animation: `fadeIn 0.7s cubic-bezier(.22,.68,0,1.2) ${0.12 + index * 0.06}s both`,
-        background: accent.cardWash,
-        borderColor: accent.border,
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = accent.hoverShadow;
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = "";
-      }}
+    <Link
+      href={serviceHref(offer.id)}
+      className="group flex flex-col rounded-[1.25rem] border border-[#e7e2da] bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-teal/40 hover:shadow-md sm:p-6"
+      style={{ animation: `fadeIn 0.7s cubic-bezier(.22,.68,0,1.2) ${0.12 + index * 0.06}s both` }}
     >
-      <div
-        className="absolute inset-x-0 top-0 h-[3px] rounded-t-[1.35rem]"
-        style={{ background: accent.bar }}
-      />
-
-      <div className="mb-5 flex items-start gap-3">
+      <div className="flex items-center gap-3">
         <div
           className="flex size-11 shrink-0 items-center justify-center rounded-xl shadow-sm"
-          style={{ background: accent.iconBg }}
+          style={{ background: offerIconBackgrounds[offer.id] }}
         >
           <Icon className="size-5 text-white" strokeWidth={1.75} />
         </div>
-      </div>
-
-      <h3 className="font-heading text-lg font-semibold leading-snug text-navy">{offer.title}</h3>
-      <p className="mt-3 text-sm leading-[1.75] text-muted-foreground">{offer.description}</p>
-
-      <OfferIncludes
-        items={offer.includes}
-        includesLabel={includesLabel}
-        linkColor={accent.link}
-      />
-
-      <div className="mt-6 pt-2">
-        <CtaButton href={routes.booking} variant="secondary" className="w-full !h-11" showArrow>
-          {offer.cta}
-        </CtaButton>
-      </div>
-    </article>
-  );
-}
-
-function PremiumOfferCard({
-  offer,
-  includesLabel,
-  premiumLabel,
-}: {
-  offer: ServiceOffer;
-  includesLabel: string;
-  premiumLabel: string;
-}) {
-  const accent = premiumAccent;
-  const Icon = serviceOfferIcons.proposals;
-
-  return (
-    <article
-      className="group relative flex flex-col overflow-hidden rounded-[1.35rem] border p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 sm:p-7"
-      style={{
-        animation: "fadeIn 0.7s cubic-bezier(.22,.68,0,1.2) 0.35s both",
-        background: accent.cardWash,
-        borderColor: accent.border,
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = accent.hoverShadow;
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = "";
-      }}
-    >
-      <div
-        className="absolute inset-x-0 top-0 h-[4px] rounded-t-[1.35rem]"
-        style={{ background: accent.bar }}
-      />
-
-      <div className="mb-5 flex items-start justify-between gap-3">
-        <div
-          className="flex size-11 shrink-0 items-center justify-center rounded-xl shadow-sm"
-          style={{ background: accent.iconBg }}
-        >
-          <Icon className="size-5 text-white" strokeWidth={1.75} />
-        </div>
-        <div className="flex flex-col items-end gap-1.5">
-          <span
-            className={cn(
-              "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-bold tracking-wide uppercase",
-              accent.badge
-            )}
-          >
-            <Star className="size-3 fill-teal text-teal" />
-            {premiumLabel}
-          </span>
+        <div className="min-w-0">
+          <p className="text-[10px] font-semibold tracking-[0.14em] text-teal uppercase">{offer.note}</p>
+          <h3 className="font-heading text-lg font-semibold leading-snug text-navy">{offer.title}</h3>
         </div>
       </div>
 
-      <h3 className="font-heading text-lg font-semibold leading-snug text-navy">{offer.title}</h3>
-      <p className="mt-3 text-sm leading-[1.75] text-muted-foreground">{offer.description}</p>
+      <p className="mt-3 flex-1 text-[0.9375rem] leading-[1.65] text-muted-foreground">{offer.summary}</p>
 
-      <OfferIncludes
-        items={offer.includes}
-        includesLabel={includesLabel}
-        linkColor={accent.link}
-      />
-
-      <div className="mt-6 pt-2">
-        <CtaButton
-          href={routes.booking}
-          showArrow
-          className="w-full !h-11"
-        >
-          {offer.cta}
-        </CtaButton>
-      </div>
-    </article>
-  );
-}
-
-function CustomOfferCard({
-  offer,
-  includesLabel,
-  customLabel,
-}: {
-  offer: ServiceOffer;
-  includesLabel: string;
-  customLabel: string;
-}) {
-  const accent = customAccent;
-  const Icon = serviceOfferIcons.custom;
-
-  return (
-    <article
-      className={cn(
-        "group relative flex flex-col overflow-hidden rounded-[1.35rem] border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 sm:p-7",
-        accent.ring
-      )}
-      style={{
-        animation: "fadeIn 0.7s cubic-bezier(.22,.68,0,1.2) 0.42s both",
-        background: accent.cardWash,
-        borderColor: accent.border,
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = accent.hoverShadow;
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = "";
-      }}
-    >
-      <div
-        className="absolute inset-x-0 top-0 h-[4px] rounded-t-[1.35rem]"
-        style={{ background: accent.bar }}
-      />
-
-      <div className="mb-5 flex items-start justify-between gap-3">
-        <div
-          className="flex size-11 shrink-0 items-center justify-center rounded-xl shadow-sm"
-          style={{ background: accent.iconBg }}
-        >
-          <Icon className="size-5 text-white" strokeWidth={1.75} />
+      <div className="mt-5 flex items-end justify-between gap-3 border-t border-[#f0ece6] pt-4">
+        <div>
+          <p className="text-[11px] font-medium text-muted-foreground">{priceFromLabel}</p>
+          <p className="font-heading text-[1.6rem] font-semibold leading-none tracking-tight text-navy">
+            {offer.price}
+          </p>
+          {offer.priceHint && <p className="mt-1.5 text-[11px] text-muted-foreground">{offer.priceHint}</p>}
         </div>
-        <div className="flex flex-col items-end gap-1.5">
-          <span
-            className={cn(
-              "rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-wide",
-              accent.chip
-            )}
-          >
-            {customLabel}
-          </span>
-        </div>
+        <span className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-teal">
+          {detailsCta}
+          <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+        </span>
       </div>
-
-      <h3 className="font-heading text-lg font-semibold leading-snug text-navy">{offer.title}</h3>
-      <p className="mt-3 text-sm leading-[1.75] text-muted-foreground">{offer.description}</p>
-
-      <OfferIncludes
-        items={offer.includes}
-        includesLabel={includesLabel}
-        linkColor={accent.link}
-      />
-
-      <div className="mt-6 pt-2">
-        <CtaButton href={routes.booking} variant="secondary" className="w-full !h-11 !border-navy/20" showArrow>
-          {offer.cta}
-        </CtaButton>
-      </div>
-    </article>
+    </Link>
   );
 }
 
@@ -365,175 +175,37 @@ export function Services({ standalone = false }: ServicesProps) {
   const { t } = useLocale();
   const { services } = t;
 
-  const standardOffers = services.offers.filter((o) => !("tier" in o));
-  const premiumOffer = services.offers.find((o) => "tier" in o && o.tier === "premium");
-  const customOffer = services.offers.find((o) => "tier" in o && o.tier === "custom");
-
   return (
-    <>
-      <Section
-        id="services"
-        flush
-        className={cn("!py-10 lg:!py-14", standalone && "!pt-6 lg:!pt-10")}
-      >
-        <div className="relative overflow-hidden rounded-[1.75rem] border border-[#e7e2da]/80 bg-[linear-gradient(145deg,#faf8f3_0%,#ffffff_42%,#f4faf9_100%)] px-5 py-10 shadow-sm sm:px-8 lg:px-10 lg:py-12">
-          <GradientBubble
-            size={220}
-            colorA="rgb(42 157 143 / 0.12)"
-            colorB="rgb(221 245 241 / 0.5)"
-            style={{ top: "-10%", right: "-5%", zIndex: 0 }}
+    <Section id="services" flush className={cn("!py-10 lg:!py-14", standalone && "!pt-6 lg:!pt-10")}>
+      <div className="mb-7 lg:mb-8">
+        <span className="micro-chip mb-3 inline-flex">{services.label}</span>
+        <h2 className="font-heading text-[clamp(1.65rem,3vw,2.35rem)] font-semibold leading-[1.1] tracking-tight text-navy">
+          {services.title}
+        </h2>
+      </div>
+
+      <AuditFeaturedCard
+        offer={services.audit}
+        categoryLabel={services.auditCategoryLabel}
+        firstMeeting={services.firstMeeting}
+        detailsCta={services.detailsCta}
+      />
+
+      <p className="mt-10 mb-4 text-xs font-semibold tracking-[0.2em] text-teal uppercase">{services.buildsLabel}</p>
+
+      <div className="grid gap-4 md:grid-cols-3 md:gap-5">
+        {services.offers.map((offer, index) => (
+          <OfferCard
+            key={offer.id}
+            offer={offer}
+            index={index}
+            priceFromLabel={services.priceFromLabel}
+            detailsCta={services.detailsCta}
           />
-          <GradientBubble
-            size={160}
-            colorA="rgb(30 58 95 / 0.08)"
-            colorB="rgb(232 228 245 / 0.35)"
-            style={{ bottom: "-8%", left: "-6%", zIndex: 0 }}
-          />
+        ))}
+      </div>
 
-          <DotMatrix
-            cols={9}
-            rows={6}
-            gap={18}
-            r={1.6}
-            fill="rgb(30 58 95 / 0.08)"
-            className="hidden lg:block"
-            style={{ top: "1rem", right: "1rem", zIndex: 1 }}
-          />
-
-          <CurvedPath
-            className="hidden lg:block"
-            style={{ top: "1rem", left: "0", width: "60%", zIndex: 1 }}
-            d="M 0 80 Q 120 20 280 60 T 480 30"
-            stroke="rgb(42 157 143 / 0.14)"
-            strokeWidth={1.5}
-            viewBox="0 0 480 100"
-          />
-
-          <ScatterDots
-            className="hidden lg:block"
-            style={{ bottom: "1.5rem", left: "0.5rem", zIndex: 1 }}
-            dots={[
-              { cx: 8, cy: 8, r: 5, fill: "rgb(42 157 143 / 0.18)" },
-              { cx: 22, cy: 22, r: 3, fill: "rgb(30 58 95 / 0.14)" },
-              { cx: 36, cy: 10, r: 4, fill: "rgb(42 157 143 / 0.12)" },
-            ]}
-          />
-
-          <SketchBotanical
-            className="deco-float-slow absolute -right-2 top-16 hidden opacity-70 lg:block"
-            style={{ zIndex: 1 }}
-            flip
-          />
-          <SketchStars
-            className="deco-float absolute bottom-20 left-6 hidden opacity-80 lg:block"
-            style={{ zIndex: 1, animationDelay: "0.7s" }}
-          />
-
-          <div className="relative z-10">
-            <div className="mb-8 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-              <div className="max-w-xl">
-                <span className="micro-chip mb-3 inline-flex">{services.label}</span>
-                <h2 className="font-heading text-[clamp(1.65rem,3vw,2.35rem)] font-semibold leading-[1.1] tracking-tight text-navy">
-                  {services.title}
-                </h2>
-              </div>
-              <p className="max-w-md text-sm leading-[1.8] text-muted-foreground lg:pb-1 lg:text-right">
-                {services.subtitle}
-              </p>
-            </div>
-
-            <AuditFeaturedCard
-              offer={services.audit}
-              featuredLabel={services.auditFeaturedLabel}
-              freeCallNote={services.freeCallNote}
-              includesLabel={services.includesLabel}
-            />
-
-            <PricingNote text={services.pricingNote} />
-
-            <div className="mt-10 mb-5">
-              <p className="text-xs font-semibold tracking-[0.2em] text-teal uppercase">
-                {services.buildsLabel}
-              </p>
-            </div>
-
-            <div className="grid items-stretch gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {standardOffers.map((offer, index) => (
-                <StandardOfferCard
-                  key={offer.id}
-                  offer={offer}
-                  index={index}
-                  includesLabel={services.includesLabel}
-                />
-              ))}
-            </div>
-
-            {(premiumOffer || customOffer) && (
-              <div className="mt-5 grid items-stretch gap-5 lg:grid-cols-2">
-                {premiumOffer && (
-                  <PremiumOfferCard
-                    offer={premiumOffer}
-                    includesLabel={services.includesLabel}
-                    premiumLabel={services.premiumLabel}
-                  />
-                )}
-                {customOffer && (
-                  <CustomOfferCard
-                    offer={customOffer}
-                    includesLabel={services.includesLabel}
-                    customLabel={services.customLabel}
-                  />
-                )}
-              </div>
-            )}
-          </div>
-        </div>
-      </Section>
-
-      <Section id="how-it-works" flush className="!py-8 lg:!py-10">
-        <div className="rounded-[1.5rem] border border-[#e7e2da]/80 bg-white px-5 py-9 shadow-sm sm:px-8 lg:px-10">
-          <h2 className="font-heading text-[clamp(1.35rem,2.5vw,1.75rem)] font-semibold tracking-tight text-navy">
-            {services.howItWorks.title}
-          </h2>
-
-          <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {services.howItWorks.steps.map((step, index) => (
-              <div
-                key={step.title}
-                className="rounded-[1.15rem] border border-[#f0ece6] bg-[#faf9f7] p-5 transition-shadow duration-300 hover:shadow-sm"
-              >
-                <span className="inline-flex size-8 items-center justify-center rounded-full bg-navy text-xs font-bold text-white">
-                  {index + 1}
-                </span>
-                <h3 className="mt-4 text-sm font-semibold text-navy">{step.title}</h3>
-                <p className="mt-2 text-sm leading-[1.7] text-muted-foreground">{step.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      <Section flush className="!pb-10 lg:!pb-14">
-        <div className="relative overflow-hidden rounded-[1.5rem] border border-[#e7e2da] bg-[linear-gradient(135deg,#f4faf9_0%,#faf8f3_55%,#ffffff_100%)] px-6 py-10 text-center shadow-sm sm:px-10 lg:py-12">
-          <GradientBubble
-            size={180}
-            colorA="rgb(42 157 143 / 0.1)"
-            colorB="rgb(221 245 241 / 0.4)"
-            style={{ top: "-20%", right: "10%", zIndex: 0 }}
-          />
-          <div className="relative z-10 mx-auto max-w-lg">
-            <h2 className="font-heading text-[clamp(1.35rem,2.5vw,1.75rem)] font-semibold tracking-tight text-navy">
-              {services.finalCta.title}
-            </h2>
-            <p className="mt-3 text-sm leading-[1.8] text-muted-foreground">{services.finalCta.text}</p>
-            <div className="mt-7 flex justify-center">
-              <CtaButton href={routes.booking} showArrow className="!h-11 !px-7">
-                {services.finalCta.cta}
-              </CtaButton>
-            </div>
-          </div>
-        </div>
-      </Section>
-    </>
+      <p className="mt-5 text-center text-sm leading-[1.7] text-muted-foreground">{services.pricingNote}</p>
+    </Section>
   );
 }

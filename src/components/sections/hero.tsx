@@ -174,10 +174,10 @@ export function Hero() {
             </div>
 
             <div className="fade-in-4 mt-7 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
-              <CtaButton href={routes.booking} showArrow className="!h-11 !px-7">
+              <CtaButton href={routes.services} showArrow className="!h-11 !px-7">
                 {t.hero.primaryCta}
               </CtaButton>
-              <CtaButton variant="secondary" href={routes.services} showArrow className="!h-11 !px-7">
+              <CtaButton variant="secondary" href={routes.booking} showArrow className="!h-11 !px-7">
                 {t.hero.secondaryCta}
               </CtaButton>
             </div>

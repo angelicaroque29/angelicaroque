@@ -4,7 +4,7 @@ import { Booking } from "@/components/sections/booking";
 export const metadata: Metadata = {
   title: "Agenda una llamada | Angélica Roque",
   description:
-    "Reserva una primera llamada gratis de 20 minutos con Angélica Roque. Sin costo ni compromiso. Sales con claridad sobre qué arreglar primero.",
+    "Reserva el primer meeting de 1 hora con Angélica Roque. $50 de descuento. Vemos el proyecto, las horas y el precio.",
 };
 
 export default function BookingPage() {
