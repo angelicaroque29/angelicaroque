@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foreclosure Data MVP Proposal · Arthur Moritz · AngieInTech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #1e3a5f;
+      --teal: #2a9d8f;
+      --teal-soft: #ddf5f1;
+      --ivory: #faf8f3;
+      --ink: #182033;
+      --muted: #667085;
+      --border: #e7e2da;
+      --lavender: #e8e4f5;
+      --white: #ffffff;
+      --accent-gradient: linear-gradient(135deg, #3b4fd8, #2a9d8f);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    @page {
+      size: letter;
+      margin: 0;
+    }
+
+    html {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.55;
+      color: var(--ink);
+      background: #e8e6e1;
+    }
+
+    .page {
+      width: 8.5in;
+      min-height: 11in;
+      margin: 0 auto 24px;
+      background: var(--ivory);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(30, 58, 95, 0.08);
+    }
+
+    @media print {
+      body { background: white; }
+      .page {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+      }
+      .page:last-child { page-break-after: auto; }
+      .no-print { display: none !important; }
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .blob-1 { width: 280px; height: 280px; top: -60px; right: -40px; background: rgba(197, 212, 240, 0.5); }
+    .blob-2 { width: 220px; height: 220px; bottom: 60px; left: -50px; background: rgba(221, 245, 241, 0.6); }
+    .blob-3 { width: 180px; height: 180px; top: 45%; right: -30px; background: rgba(42, 157, 143, 0.15); }
+
+    .page-inner {
+      position: relative;
+      z-index: 1;
+      padding: 0.65in 0.75in 0.85in;
+      min-height: 11in;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Cover ── */
+    .cover {
+      justify-content: space-between;
+    }
+
+    .cover-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 0.5in;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 700;
+      font-size: 22pt;
+      letter-spacing: -0.04em;
+      color: var(--navy);
+    }
+    .logo .ai {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .consultant-block {
+      text-align: right;
+      font-size: 9.5pt;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .consultant-block strong {
+      display: block;
+      color: var(--navy);
+      font-size: 10.5pt;
+      font-weight: 600;
+    }
+
+    .cover-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0.4in 0;
+    }
+
+    .doc-type {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.8);
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 8.5pt;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #5b7db8;
+      margin-bottom: 24px;
+      width: fit-content;
+    }
+    .doc-type::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    .cover h1 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 700;
+      font-size: 32pt;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      color: var(--navy);
+      max-width: 6.5in;
+      margin-bottom: 16px;
+    }
+    .cover h1 .accent {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .cover-subtitle {
+      font-size: 13pt;
+      color: var(--muted);
+      max-width: 5.5in;
+      line-height: 1.5;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 36px;
+      max-width: 5.5in;
+    }
+    .meta-card {
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .meta-card .label {
+      font-size: 7.5pt;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .meta-card .value {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 10.5pt;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .cover-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-top: 0.35in;
+      border-top: 1px solid var(--border);
+      font-size: 8.5pt;
+      color: var(--muted);
+    }
+    .cover-footer .brand-tag {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    /* ── Interior pages ── */
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      margin-bottom: 22px;
+      border-bottom: 2px solid var(--navy);
+    }
+    .page-header .logo-sm {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 700;
+      font-size: 11pt;
+      letter-spacing: -0.03em;
+      color: var(--navy);
+    }
+    .page-header .logo-sm .ai {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .page-header .doc-ref {
+      font-size: 7.5pt;
+      color: var(--muted);
+      text-align: right;
+      max-width: 4.5in;
+      line-height: 1.4;
+    }
+
+    .page-footer {
+      margin-top: auto;
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 8pt;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    h2.section-title {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 15pt;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      margin: 22px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    h2.section-title:first-child { margin-top: 0; }
+
+    h3.subsection {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 11pt;
+      font-weight: 600;
+      color: var(--navy);
+      margin: 18px 0 8px;
+    }
+
+    p { margin-bottom: 10px; }
+    p:last-child { margin-bottom: 0; }
+
+    .lead-text {
+      font-size: 11pt;
+      color: var(--ink);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .callout {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--teal);
+      border-radius: 0 12px 12px 0;
+      padding: 14px 16px;
+      margin: 16px 0;
+    }
+    .callout.warning {
+      border-left-color: #d97706;
+      background: #fffbeb;
+    }
+    .callout .callout-label {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 6px;
+    }
+    .callout.warning .callout-label { color: #b45309; }
+
+    ol, ul {
+      margin: 8px 0 12px 20px;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+    li::marker {
+      color: var(--teal);
+      font-weight: 600;
+    }
+
+    /* ── Tables ── */
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 12px 0 16px;
+      font-size: 9.5pt;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    thead th {
+      background: var(--navy);
+      color: white;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      font-size: 8.5pt;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-align: left;
+      padding: 10px 12px;
+    }
+    thead th:last-child { text-align: right; width: 52px; }
+    tbody td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:nth-child(even) { background: rgba(250, 248, 243, 0.6); }
+    tbody tr.total-row td {
+      background: var(--teal-soft);
+      font-weight: 600;
+      color: var(--navy);
+      border-bottom: none;
+    }
+    tbody tr.total-row td:last-child { text-align: right; }
+    td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+    .workflow-table thead th:first-child { width: 36px; text-align: center; }
+    .workflow-table tbody td:first-child {
+      text-align: center;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 700;
+      color: var(--teal);
+      font-size: 10pt;
+    }
+  .workflow-table .status-future { color: var(--muted); font-style: italic; }
+  .workflow-table .status-mvp { color: var(--navy); font-weight: 500; }
+
+    .phase-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 4px 0 10px;
+    }
+    .phase-header h3 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 12pt;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 0;
+    }
+    .phase-meta {
+      font-size: 9pt;
+      color: var(--muted);
+    }
+    .phase-meta strong { color: var(--navy); }
+
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 12px 0 16px;
+    }
+    .ba-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .ba-card .ba-label {
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .ba-card.before .ba-label { color: #b45309; }
+    .ba-card.after .ba-label { color: var(--teal); }
+    .ba-card p { font-size: 9.5pt; margin: 0; }
+
+    .investment-highlight {
+      background: linear-gradient(135deg, rgba(30, 58, 95, 0.04), rgba(42, 157, 143, 0.08));
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin: 14px 0;
+    }
+    .investment-highlight p {
+      font-size: 9.5pt;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .tool-costs {
+      background: var(--lavender);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin: 14px 0;
+    }
+    .tool-costs .label {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .tool-costs p { font-size: 9.5pt; margin: 0; }
+
+    .signature-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 32px;
+      padding-top: 24px;
+    }
+    .sig-line {
+      border-top: 1px solid var(--ink);
+      padding-top: 8px;
+      font-size: 9.5pt;
+    }
+    .sig-line .name { font-weight: 600; color: var(--navy); }
+    .sig-line .role { color: var(--muted); font-size: 8.5pt; }
+    .sig-date {
+      margin-top: 20px;
+      font-size: 9.5pt;
+      color: var(--muted);
+    }
+
+    .appendix-label {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 8pt;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 4px;
+    }
+
+    .two-col-list {
+      columns: 1;
+    }
+
+    .screen-toolbar {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 100;
+      display: flex;
+      gap: 8px;
+    }
+    .screen-toolbar button {
+      font-family: Inter, sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--navy);
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .screen-toolbar button:hover { background: var(--teal-soft); }
+    .screen-toolbar button.primary {
+      background: var(--navy);
+      color: white;
+      border-color: var(--navy);
+    }
+    .screen-toolbar button.primary:hover { background: #2a4a73; }
+  </style>
+</head>
+<body>
+
+  <div class="screen-toolbar no-print">
+    <button onclick="window.print()">Print / Save as PDF</button>
+  </div>
+
+  <!-- PAGE 1: COVER -->
+  <section class="page cover">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="page-inner cover">
+      <div class="cover-top">
+        <div class="logo">A<span class="ai">I</span>T angieintech.</div>
+        <div class="consultant-block">
+          <strong>Angelica Roque</strong>
+          angieintech.business@gmail.com
+        </div>
+      </div>
+
+      <div class="cover-main">
+        <div class="doc-type">Time &amp; Materials Proposal</div>
+        <h1>Foreclosure Data <span class="accent">MVP</span></h1>
+        <p class="cover-subtitle">Phase 0 + Phase 1 — Scope definition and Step 4 data hub build for your Bay Area foreclosure workflow.</p>
+
+        <div class="meta-grid">
+          <div class="meta-card">
+            <div class="label">Prepared for</div>
+            <div class="value">Arthur Moritz</div>
+          </div>
+          <div class="meta-card">
+            <div class="label">Project</div>
+            <div class="value">Foreclosure Data MVP — Phase 0 + Phase 1</div>
+          </div>
+          <div class="meta-card">
+            <div class="label">Date</div>
+            <div class="value">July 1, 2026</div>
+          </div>
+          <div class="meta-card">
+            <div class="label">Valid for</div>
+            <div class="value">30 days</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cover-footer">
+        <span class="brand-tag">AngieInTech · Business Proposal</span>
+        <span>Confidential · For client review only</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 2 -->
+  <section class="page">
+    <div class="blob blob-3"></div>
+    <div class="page-inner">
+      <header class="page-header">
+        <div class="logo-sm">A<span class="ai">I</span>T angieintech.</div>
+        <div class="doc-ref">Arthur Moritz · Foreclosure Data MVP Proposal · Angelica Roque · angieintech.business@gmail.com</div>
+      </header>
+
+      <h2 class="section-title">Business Proposal</h2>
+      <p class="lead-text">This proposal covers the first two phases of your foreclosure data product: Phase 0 to lock scope and business rules, and Phase 1 to build the internal MVP for Step 4 in your workflow, the data upload/update process currently handled through Google Drive Excel 2 to 4 times per week.</p>
+
+      <div class="callout warning">
+        <div class="callout-label">Important Scope Note</div>
+        <p>This proposal does not assume GoHighLevel or any specific CRM. Your workflow shows a future CRM/database step, but the current starting point is your Excel/Google Drive process. In Phase 0, we confirm the best data hub platform before anything is built.</p>
+      </div>
+
+      <p>The goal is not to automate all 14 steps at once. The goal is to turn the highest-value manual data work into a structured, repeatable system that can support future automation, skip tracing, and subscriptions later.</p>
+
+      <h2 class="section-title">1. Business goal and MVP focus</h2>
+      <p>Based on the workflow diagram and our discovery calls, your business has two potential sellable data products:</p>
+      <ol>
+        <li><strong>Product 1, foreclosure and tax lien data:</strong> up-to-date Bay Area Peninsula opportunities, focused on properties with strong equity, especially above $500,000.</li>
+        <li><strong>Product 2, future skip-traced owner data:</strong> owner names and phone numbers for high-equity opportunities, likely as a later premium tier or add-on.</li>
+      </ol>
+      <p>The MVP quoted here focuses only on Product 1 operations and the Step 4 data hub. Product 2, skip tracing, and client subscriptions are not included in this proposal.</p>
+
+      <h2 class="section-title">2. Workflow alignment: what is quoted now</h2>
+      <table class="workflow-table">
+        <thead>
+          <tr>
+            <th>Step</th>
+            <th>Workflow activity</th>
+            <th>This proposal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1–3</td>
+            <td>County recorder NOTS, courthouse auction data, and PPD/AF validation</td>
+            <td class="status-mvp">Manual, your operations. Phase 0 documents these inputs and rules.</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Data upload/update currently done in Google Drive Excel 2–4 times/week</td>
+            <td class="status-mvp"><strong>Phase 1 MVP:</strong> structured data hub, import/update workflow, filters, and rules.</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Skip tracing: owner phone numbers, emails, relatives, and contact enrichment</td>
+            <td class="status-future">Future premium add-on. Not quoted now.</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Trustee PPD verification across trustee, attorney, and foreclosure-posting websites</td>
+            <td class="status-future">Future verification automation. Not quoted now.</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Auction day preparation: trustee pages, Auction.com, Xome, and auction checks</td>
+            <td class="status-future">Manual, your operations. Not quoted now.</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Database subscription / client purchase workflow</td>
+            <td class="status-future">Future client platform. Not quoted now.</td>
+          </tr>
+          <tr>
+            <td>9–14</td>
+            <td>Outreach, homeowner calls, purchase, sale, and monetization workflows</td>
+            <td class="status-future">Future phases. Not quoted now.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <footer class="page-footer">
+        <span>AngieInTech · Foreclosure Data MVP Proposal</span>
+        <span>Page 2 of 7</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- PAGE 3 -->
+  <section class="page">
+    <div class="page-inner">
+      <header class="page-header">
+        <div class="logo-sm">A<span class="ai">I</span>T angieintech.</div>
+        <div class="doc-ref">Arthur Moritz · Foreclosure Data MVP Proposal · Angelica Roque · angieintech.business@gmail.com</div>
+      </header>
+
+      <p>Phase 1 is a manual-in, structured-data-out MVP. It will make your current research easier to update, verify, filter, and eventually sell. It will not automatically scrape every county, trustee, auction, or skip-trace source in this first phase.</p>
+
+      <p>Two lookup workflows are important, but they are intentionally future automation:</p>
+      <ol>
+        <li><strong>Trustee/auction-status lookup (Step 6, with Step 7 checks):</strong> use TS number, trustee name, and source links to verify the current auction status across trustee, attorney, and foreclosure-posting websites. Phase 1 only stores and tracks these fields; it does not automate the lookups.</li>
+        <li><strong>Property-owner contact lookup (Step 5 skip tracing):</strong> use owner name, property address, and related property fields to enrich records with phone numbers, emails, and relatives. This can become a later premium data tier; it is not included in Phases 0–1.</li>
+      </ol>
+
+      <h2 class="section-title">3. Business rules to confirm in Phase 0</h2>
+      <p>Phase 0 will turn your current know-how into written rules before build starts. The working rule set includes:</p>
+      <ol>
+        <li><strong>County coverage:</strong> San Francisco, San Mateo, Santa Clara, and any Bay Area Peninsula counties you confirm.</li>
+        <li><strong>Source tracking:</strong> county recorder data, trustee/company pages, attorney/posting websites, auction information, and manual verification notes.</li>
+        <li><strong>Status logic:</strong> PPD/postponed, AF/aged foreclosure, new auction, first auction vs. second auction.</li>
+        <li><strong>Auction math:</strong> first auction minimum bid logic, second/aged foreclosure balance logic, and any trustee-specific exceptions.</li>
+        <li><strong>Financial logic:</strong> estimated market value, unpaid balance, estimated equity/profit, 15% estimated transaction/documentation cost, and ROI.</li>
+        <li><strong>Product filters:</strong> equity above $500,000 for the main data product; future lower threshold or skip-trace product can be scoped later.</li>
+        <li><strong>Validation rules:</strong> missing TS number, county, auction date, source link, trustee, address, or status should be flagged before publishing.</li>
+      </ol>
+
+      <h2 class="section-title">4. Phase 0 — Scope and build specification</h2>
+      <div class="phase-header">
+        <h3>Phase 0 deliverables</h3>
+        <div class="phase-meta">Timeline: <strong>3–5 business days</strong> after receiving your Excel skeleton and sample rows · Cap: <strong>8 hours</strong> · Not-to-exceed: <strong>$1,200</strong></div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Deliverable</th>
+            <th>What you get</th>
+            <th>Hrs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Workflow review</td>
+            <td>Review your 14-step diagram and confirm Step 4 as the MVP boundary.</td>
+            <td class="num">1.0</td>
+          </tr>
+          <tr>
+            <td>Excel/data map</td>
+            <td>Map columns, calculated fields, required fields, optional fields, and missing data warnings.</td>
+            <td class="num">1.5</td>
+          </tr>
+          <tr>
+            <td>Source and validation map</td>
+            <td>Document where data comes from, how it is verified, and which checks stay manual.</td>
+            <td class="num">1.5</td>
+          </tr>
+          <tr>
+            <td>Business-rule spec</td>
+            <td>Define AF/PPD, first vs. second auction, equity, cost, ROI, and filtering rules for your written approval.</td>
+            <td class="num">2.0</td>
+          </tr>
+          <tr>
+            <td>Platform recommendation</td>
+            <td>Recommend the best MVP platform after reviewing your file and budget. No CRM is assumed upfront.</td>
+            <td class="num">1.0</td>
+          </tr>
+          <tr>
+            <td>Final scope doc</td>
+            <td>Deliver the Phase 1 build spec, assumptions, and acceptance checklist for email approval.</td>
+            <td class="num">1.0</td>
+          </tr>
+          <tr class="total-row">
+            <td colspan="2">Phase 0 cap</td>
+            <td class="num">8 hr · $1,200</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <div class="callout-label">Phase 0 output</div>
+        <p>A written build specification that we both approve before any Phase 1 build work starts.</p>
+      </div>
+
+      <footer class="page-footer">
+        <span>AngieInTech · Foreclosure Data MVP Proposal</span>
+        <span>Page 3 of 7</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- PAGE 4 -->
+  <section class="page">
+    <div class="page-inner">
+      <header class="page-header">
+        <div class="logo-sm">A<span class="ai">I</span>T angieintech.</div>
+        <div class="doc-ref">Arthur Moritz · Foreclosure Data MVP Proposal · Angelica Roque · angieintech.business@gmail.com</div>
+      </header>
+
+      <h2 class="section-title">5. Phase 1 — Data Hub MVP for Step 4</h2>
+      <div class="phase-header">
+        <h3>Phase 1 deliverables</h3>
+        <div class="phase-meta">Timeline: <strong>2–4 weeks</strong> after Phase 0 approval · Cap: <strong>42 hours</strong> · Not-to-exceed: <strong>$6,300</strong></div>
+      </div>
+
+      <div class="before-after">
+        <div class="ba-card before">
+          <div class="ba-label">Before</div>
+          <p>Key foreclosure/auction data is gathered manually and updated in Google Drive Excel multiple times per week.</p>
+        </div>
+        <div class="ba-card after">
+          <div class="ba-label">After</div>
+          <p>The data is organized in a structured hub with import/update flow, business-rule fields, source tracking, filters, and a repeatable runbook.</p>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Deliverable</th>
+            <th>Features included</th>
+            <th>Hrs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Data hub setup</td>
+            <td>Core property/opportunity records: address, county, APN, TS number, trustee, auction date, status, source, owner, financials, notes.</td>
+            <td class="num">6</td>
+          </tr>
+          <tr>
+            <td>Import/update workflow</td>
+            <td>Upload/import from your Excel or spreadsheet format; duplicate handling; required-field warnings; update logs.</td>
+            <td class="num">7</td>
+          </tr>
+          <tr>
+            <td>Business logic fields</td>
+            <td>Estimated equity/profit, 15% cost adjustment, ROI, min-bid logic, AF/PPD flags, and status fields based on Phase 0 rules.</td>
+            <td class="num">6</td>
+          </tr>
+          <tr>
+            <td>Views and filters</td>
+            <td>High-equity view, upcoming auctions, AF/PPD, county filters, missing-verification list, and export-ready view.</td>
+            <td class="num">5</td>
+          </tr>
+          <tr>
+            <td>Source and verification tracking</td>
+            <td>Track where each record came from, last checked date, validation status, and notes for trustee/county checks.</td>
+            <td class="num">4</td>
+          </tr>
+          <tr>
+            <td>QA with real sample data</td>
+            <td>Test 2–3 import/update cycles using your anonymized data and correct issues found during testing.</td>
+            <td class="num">7</td>
+          </tr>
+          <tr>
+            <td>Handoff and runbook</td>
+            <td>Recorded walkthrough plus written instructions for the weekly update process.</td>
+            <td class="num">3</td>
+          </tr>
+          <tr>
+            <td>Revision round</td>
+            <td>One included fix/polish round after your written review, within the agreed MVP scope.</td>
+            <td class="num">3</td>
+          </tr>
+          <tr>
+            <td>Communication/admin</td>
+            <td>Short email updates and focused Google Meet sessions only when needed or blocked.</td>
+            <td class="num">1</td>
+          </tr>
+          <tr class="total-row">
+            <td colspan="2">Phase 1 cap</td>
+            <td class="num">42 hr · $6,300</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>This estimate assumes Phase 1 is a structured data hub MVP using data provided by Arthur's current Excel/manual process. It does not include automated trustee website lookups, county record scraping, skip tracing, OCR/PDF extraction, client subscriptions, or external website automation. Those items will be scoped separately after the MVP is in use.</p>
+
+      <p>Phase 1 hours reflect AF/PPD logic, first vs. second auction rules, minimum bid rules, equity filters, county differences, trustee fields, and future skip-trace fields. A low-code data hub (Airtable, SmartSuite, Softr, Retool, Glide, or similar) is assumed unless Phase 0 recommends otherwise.</p>
+
+      <footer class="page-footer">
+        <span>AngieInTech · Foreclosure Data MVP Proposal</span>
+        <span>Page 4 of 7</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- PAGE 5 -->
+  <section class="page">
+    <div class="page-inner">
+      <header class="page-header">
+        <div class="logo-sm">A<span class="ai">I</span>T angieintech.</div>
+        <div class="doc-ref">Arthur Moritz · Foreclosure Data MVP Proposal · Angelica Roque · angieintech.business@gmail.com</div>
+      </header>
+
+      <h2 class="section-title">6. Explicitly not included in Phases 0–1</h2>
+      <ol>
+        <li>Automated scraping of county recorder websites, trustee/attorney/posting websites, Auction.com, Xome, or paid/property data platforms.</li>
+        <li>Bypassing captchas, login restrictions, paywalls, or terms of service on third-party websites.</li>
+        <li>Trustee PPD daily verification automation or automatic status updates from trustee, attorney, or foreclosure-posting sites.</li>
+        <li>Skip tracing, phone number enrichment, owner-contact matching, SMS, email, or calling workflows.</li>
+        <li>Client-facing subscription portal, payment processing, member access, or client database for resale.</li>
+        <li>Social media, Lucie, Google, outbound sales automation, or homeowner call scripts.</li>
+        <li>Legal/compliance advice, data resale rights review, or guarantee of data accuracy/revenue.</li>
+      </ol>
+
+      <div class="callout">
+        <div class="callout-label">Why this matters</div>
+        <p>The value of this project is the quality and freshness of the data. Phase 1 protects that value by creating a reliable internal system first. Once the workflow is working with real data, later phases can safely automate more of the collection, verification, skip tracing, and subscription delivery.</p>
+      </div>
+
+      <h2 class="section-title">7. Investment summary</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Phase</th>
+            <th>Hours cap</th>
+            <th>Not-to-exceed</th>
+            <th>Timeline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Phase 0 — Scope and build spec</td>
+            <td class="num">8</td>
+            <td class="num">$1,200</td>
+            <td>3–5 business days</td>
+          </tr>
+          <tr>
+            <td>Phase 1 — Step 4 Data Hub MVP</td>
+            <td class="num">42</td>
+            <td class="num">$6,300</td>
+            <td>2–4 weeks</td>
+          </tr>
+          <tr class="total-row">
+            <td>Total Phases 0 + 1</td>
+            <td class="num">50</td>
+            <td class="num">$7,500</td>
+            <td>Approximately 3–5 weeks</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="investment-highlight">
+        <p><strong>Rate:</strong> $150/hour, Time &amp; Materials, with a not-to-exceed cap per phase. You never pay above the cap without written approval. A time log is included with each invoice.</p>
+      </div>
+
+      <div class="tool-costs">
+        <div class="label">Tool costs</div>
+        <p>Third-party software and platform subscriptions are not included in the fees above and are paid directly by Arthur (for example: Airtable, SmartSuite, database hosting, or automation tools).</p>
+      </div>
+
+      <h2 class="section-title">8. Payment terms</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Milestone</th>
+            <th>Amount</th>
+            <th>When due</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Phase 0 deposit</td>
+            <td class="num">$600 (50%)</td>
+            <td>Due on signing; work begins once the Excel skeleton/sample rows are received.</td>
+          </tr>
+          <tr>
+            <td>Phase 0 balance</td>
+            <td class="num">$600 (50%)</td>
+            <td>Due when you approve the Phase 0 scope/build spec by email.</td>
+          </tr>
+          <tr>
+            <td>Phase 1 deposit</td>
+            <td class="num">$3,150 (50%)</td>
+            <td>Due after Phase 1 is approved, before build work starts.</td>
+          </tr>
+          <tr>
+            <td>Phase 1 balance</td>
+            <td class="num">$3,150 (50%)</td>
+            <td>Due when you approve the Phase 1 MVP by email.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Invoices are due within 7 days. Payment will be requested and paid through Mercury Request.</p>
+
+      <footer class="page-footer">
+        <span>AngieInTech · Foreclosure Data MVP Proposal</span>
+        <span>Page 5 of 7</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- PAGE 6 -->
+  <section class="page">
+    <div class="page-inner">
+      <header class="page-header">
+        <div class="logo-sm">A<span class="ai">I</span>T angieintech.</div>
+        <div class="doc-ref">Arthur Moritz · Foreclosure Data MVP Proposal · Angelica Roque · angieintech.business@gmail.com</div>
+      </header>
+
+      <h2 class="section-title">9. Work style and communication</h2>
+      <p>Communication is async-first. We will use email for approvals and short Google Meet sessions when a decision is blocked or a walkthrough is needed. Meetings can be recorded with Fireflies for review.</p>
+
+      <h2 class="section-title">10. Client responsibilities and assumptions</h2>
+      <ol>
+        <li>Arthur provides the Excel/Google Drive skeleton, current columns, sample anonymized rows, and any formulas currently used.</li>
+        <li>Arthur confirms the business rules in writing before build work starts.</li>
+        <li>Arthur creates, owns, and pays for all third-party platform accounts and subscriptions needed to run the MVP (for example: Airtable, SmartSuite, Softr, Retool, Glide, database hosting, automation tools, or similar). Consultant fees cover design, configuration, and build labor only, not ongoing software costs.</li>
+        <li>Arthur provides access to any required accounts, files, or paid tools under his own billing.</li>
+        <li>Arthur is responsible for confirming the legal right to collect, use, and resell the data and for complying with applicable laws and platform terms.</li>
+        <li>Estimated equity/profit values are business estimates for internal decision-making. They are not appraisals, legal advice, or financial guarantees.</li>
+      </ol>
+
+      <h2 class="section-title">11. Change orders</h2>
+      <p>If a requested feature is materially outside this proposal, I will flag it before doing the work. Additional work requires written approval and is billed at $150/hour. Examples include new integrations, automated web scraping, skip tracing, customer logins, payment processing, or new monetization workflows.</p>
+
+      <h2 class="section-title">12. What I need to start</h2>
+      <ol>
+        <li>Signed approval of this proposal and Phase 0 deposit of $600.</li>
+        <li>Excel/Google Drive skeleton with current column headers and 5–10 anonymized sample rows if available.</li>
+        <li>Any current formulas or examples used to calculate equity, cost adjustment, ROI, and status.</li>
+        <li>Source examples: county links, trustee examples, auction examples, or screenshots you want reflected in the workflow spec.</li>
+      </ol>
+
+      <h2 class="section-title">13. Next steps after Phase 1</h2>
+      <p>After the Step 4 data hub is working with real data, we can quote the next phase based on actual usage and priorities. Likely options include trustee PPD status automation, skip-trace enrichment, client-facing subscriptions, export packages, or sales/outreach workflows. Those are intentionally not priced until the internal MVP is proven.</p>
+
+      <div class="signature-block">
+        <div>
+          <div class="sig-line">
+            <div class="name">Arthur Moritz</div>
+            <div class="role">Client</div>
+          </div>
+          <div class="sig-date">Date: _______________________</div>
+        </div>
+        <div>
+          <div class="sig-line">
+            <div class="name">Angelica Roque</div>
+            <div class="role">Consultant</div>
+          </div>
+          <div class="sig-date">Date: _______________________</div>
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <span>AngieInTech · Foreclosure Data MVP Proposal</span>
+        <span>Page 6 of 7</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- PAGE 7: APPENDIX -->
+  <section class="page">
+    <div class="blob blob-2"></div>
+    <div class="page-inner">
+      <header class="page-header">
+        <div class="logo-sm">A<span class="ai">I</span>T angieintech.</div>
+        <div class="doc-ref">Arthur Moritz · Foreclosure Data MVP Proposal · Appendix A</div>
+      </header>
+
+      <div class="appendix-label">Appendix A</div>
+      <h2 class="section-title" style="margin-top: 0;">Client workflow reference used for scope</h2>
+      <p>The following simplified map reflects the workflow diagram provided by Arthur and is included only to show how the MVP boundary was selected.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Area</th>
+            <th>Scope interpretation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Current intake</strong></td>
+            <td>County recorder / courthouse research, NOTS, PPD/AF checks, auction and trustee information.</td>
+          </tr>
+          <tr>
+            <td><strong>Current manual update point</strong></td>
+            <td>Step 4: data upload/update into Google Drive Excel worksheet 2–4 times per week.</td>
+          </tr>
+          <tr>
+            <td><strong>MVP build point</strong></td>
+            <td>Create a structured internal data hub for Step 4 with import, validation, status, and filtering.</td>
+          </tr>
+          <tr>
+            <td><strong>Future trustee lookup automation</strong></td>
+            <td>Step 6, with Step 7 checks: use TS number, trustee name, and source links to verify auction status across trustee, attorney, and foreclosure-posting websites.</td>
+          </tr>
+          <tr>
+            <td><strong>Future owner-contact lookup</strong></td>
+            <td>Step 5: skip tracing to enrich property records with owner phone numbers, emails, relatives, and contact details.</td>
+          </tr>
+          <tr>
+            <td><strong>Other future phases</strong></td>
+            <td>Database subscriptions, auction day prep, outreach, homeowner calls, property purchase/sale workflows, and monetization automation.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout" style="margin-top: 20px;">
+        <p>The full workflow diagram remains Arthur's source document. This proposal does not replace the workflow; it defines the first practical build scope from it.</p>
+      </div>
+
+      <footer class="page-footer">
+        <span>Angelica Roque · angieintech.business@gmail.com · July 1, 2026</span>
+        <span>Page 7 of 7</span>
+      </footer>
+    </div>
+  </section>
+
+</body>
+</html>
