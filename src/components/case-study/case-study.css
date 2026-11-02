@@ -1,46 +1,164 @@
 .case-study {
   --cs-ink: var(--ink);
   --cs-muted: var(--muted-text);
-  --cs-slab: var(--border);
+  --cs-slab: #dfe5ec;
   --cs-cell: #ffffff;
-  --cs-concrete: #f4f7fb;
+  --cs-concrete: var(--marfil);
   --cs-rebar: var(--verde);
-  --cs-on-rebar: #ffffff;
   --cs-flag: #b42318;
   --cs-flag-bg: #fbe9e7;
-  --cs-ok: #2f6b4f;
-  --cs-ok-bg: #e5f2ea;
+  --cs-ok: #0b6b4f;
+  --cs-ok-bg: #e3f5ee;
   color: var(--cs-ink);
-}
-
-.case-study .prose-measure {
-  max-width: 66ch;
-}
-
-.case-study a.btn-secondary {
-  background-color: #fff;
-  background-image: none;
-  border-color: var(--cs-slab);
-  color: var(--cs-ink);
-  box-shadow: none;
-}
-
-.case-study .btn-secondary:hover {
-  background: var(--cs-concrete);
-  transform: none;
 }
 
 .case-study h1 {
-  font-size: clamp(2.15rem, 6vw, 3.75rem);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.35rem, 6.4vw, 4.25rem);
+  font-weight: 600;
+  line-height: 1.03;
+  letter-spacing: -0.04em;
 }
 
 .case-study h2 {
-  font-size: 1.75rem;
-  font-weight: 700;
-  line-height: 1.15;
+  font-size: clamp(1.6rem, 3.6vw, 2.35rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  scroll-margin-top: 6rem;
+}
+
+.case-study .chapter {
+  margin-top: 4.5rem;
+}
+
+@media (min-width: 64rem) {
+  .case-study .chapter {
+    margin-top: 7rem;
+  }
+}
+
+.case-study .chapter-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cs-rebar);
+}
+
+.case-study .chapter-label span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 1.5rem;
+  padding-inline: 0.4rem;
+  border-radius: 6px;
+  background: var(--cs-ink);
+  color: var(--lime);
+  letter-spacing: 0.04em;
+}
+
+.case-study .chapter-image {
+  overflow: hidden;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid var(--cs-slab);
+  aspect-ratio: 16 / 9;
+}
+
+.case-study .chapter-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.case-study .system-chip {
+  display: flex;
+  align-items: center;
+  min-height: 3rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px dashed #768493;
+  border-radius: 12px;
+  background: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.case-study .system-chip.is-linked {
+  border: 1px solid var(--cs-rebar);
+  box-shadow: inset 3px 0 0 var(--emerald);
+}
+
+.case-study .spine__bar {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: var(--cs-rebar);
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+}
+
+.case-study .finding-card {
+  padding: 1.1rem 1.15rem 1.2rem;
+  border: 1px solid var(--cs-slab);
+  border-top: 3px solid var(--cs-flag);
+  border-radius: 14px;
+  background: #fff;
+}
+
+.case-study .check-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--cs-slab);
+  border-radius: 12px;
+  background: #fff;
+  font-size: 1.0625rem;
+  line-height: 1.4;
+}
+
+.case-study .check-box {
+  flex-shrink: 0;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.12rem;
+  border: 2px solid var(--cs-rebar);
+  border-radius: 4px;
+}
+
+.case-study .case-close {
+  margin-top: 4.5rem;
+  padding: 2.5rem 1.25rem;
+  border-radius: 20px;
+  background: var(--cs-rebar);
+  color: #fff;
+}
+
+@media (min-width: 40rem) {
+  .case-study .case-close {
+    padding: 3.5rem 3rem;
+  }
+}
+
+.case-study .sheet-card {
+  padding: 0.75rem;
+  border: 1px solid var(--cs-slab);
+  border-radius: 16px;
+  background: var(--cs-cell);
+}
+
+@media (min-width: 40rem) {
+  .case-study .sheet-card {
+    padding: 1.25rem;
+  }
 }
 
 .case-study .sheet-scroll {
@@ -48,15 +166,11 @@
   -webkit-overflow-scrolling: touch;
 }
 
-.case-study table.sheet-labor {
-  min-width: 34rem;
-}
-
 .case-study table.sheet {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.875rem;
-  line-height: 1.35;
+  font-size: 0.8125rem;
+  line-height: 1.3;
   font-variant-numeric: tabular-nums;
 }
 
@@ -69,9 +183,16 @@
 .case-study .sheet th,
 .case-study .sheet td {
   border: 1px solid var(--cs-slab);
-  padding: 0.4rem 0.45rem;
+  padding: 0.4rem 0.35rem;
   text-align: left;
   vertical-align: top;
+}
+
+@media (min-width: 40rem) {
+  .case-study .sheet th,
+  .case-study .sheet td {
+    padding: 0.4rem 0.45rem;
+  }
 }
 
 .case-study .sheet thead th,
@@ -121,6 +242,7 @@
 }
 
 .case-study .fx {
+  border-radius: 8px;
   overflow-wrap: anywhere;
 }
 
@@ -140,11 +262,10 @@
   border-bottom: 1px dashed currentColor;
 }
 
-.case-study .tab:focus-visible,
 .case-study .action:focus-visible,
 .case-study a:focus-visible {
-  outline: 3px solid var(--cs-rebar);
-  outline-offset: 2px;
+  outline: 3px solid var(--emerald);
+  outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {

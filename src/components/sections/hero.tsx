@@ -1,257 +1,61 @@
 "use client";
 
 import Image from "next/image";
-import { AtSign, Briefcase, FolderKanban, Globe, Languages, Mail, MapPin } from "lucide-react";
-import { CurvedPath, DotMatrix, GradientBubble, ScatterDots, SketchBotanical, SketchOrbit, SketchSquiggle, SketchStars } from "@/components/deco";
-import { CtaButton } from "@/components/cta-button";
-import { routes } from "@/lib/routes";
+import Link from "next/link";
 import { useLocale } from "@/lib/i18n/context";
-import { siteConfig } from "@/lib/site-config";
-
-const statIcons = [Briefcase, FolderKanban, Languages, MapPin] as const;
-
-function PhotoFrame() {
-  return (
-    <>
-      <GradientBubble
-        size={420}
-        colorA="rgb(29 78 216 / 0.18)"
-        colorB="rgb(232 240 254 / 0.45)"
-        className="hidden lg:block"
-        style={{ top: "-14%", right: "-18%", zIndex: 0 }}
-      />
-      <GradientBubble
-        size={180}
-        colorA="rgb(14 23 38 / 0.1)"
-        colorB="rgb(232 240 254 / 0.35)"
-        className="hidden lg:block"
-        style={{ bottom: "-5%", left: "-8%", zIndex: 0 }}
-      />
-
-      <div
-        className="ring-deco hidden lg:block"
-        style={{ width: 510, height: 510, top: "50%", left: "50%", transform: "translate(-50%,-50%)", zIndex: 1 }}
-      />
-      <div
-        className="glow-ring hidden lg:block"
-        style={{ width: 410, height: 410, top: "50%", left: "50%", transform: "translate(-50%,-50%)", zIndex: 1, animationDelay: "1.5s" }}
-      />
-      <div
-        className="ring-deco-sm hidden lg:block"
-        style={{ width: 318, height: 318, top: "50%", left: "50%", transform: "translate(-50%,-50%)", zIndex: 1 }}
-      />
-
-      <div className="orbit-dot hidden size-3 lg:block" style={{ top: "2%", left: "50%", zIndex: 3 }} />
-      <div className="orbit-dot hidden size-2 lg:block" style={{ top: "48%", right: "0%", zIndex: 3, background: "rgb(29 78 216 / 0.4)" }} />
-      <div className="orbit-dot hidden size-4 lg:block" style={{ bottom: "6%", left: "8%", zIndex: 3, background: "rgb(29 78 216 / 0.45)" }} />
-      <div className="orbit-dot hidden size-1.5 lg:block" style={{ top: "25%", right: "4%", zIndex: 3, background: "rgb(14 23 38 / 0.3)" }} />
-      <div className="orbit-dot hidden size-2.5 lg:block" style={{ top: "72%", left: "2%", zIndex: 3, background: "rgb(29 78 216 / 0.25)" }} />
-
-      <SketchBotanical
-        className="deco-float-slow absolute -left-4 bottom-12 hidden opacity-75 lg:block"
-        style={{ zIndex: 2 }}
-        flip
-      />
-      <SketchStars
-        className="deco-float absolute -right-1 top-16 hidden opacity-80 lg:block"
-        style={{ zIndex: 2, animationDelay: "0.8s" }}
-      />
-
-      <div
-        className="pointer-events-none absolute -right-2.5 bottom-3 left-3 top-2.5 hidden rounded-[1.75rem] border border-[#3e5c8a]/15 lg:block"
-        style={{ zIndex: 2 }}
-      />
-
-      <DotMatrix
-        cols={5}
-        rows={4}
-        gap={14}
-        r={1.5}
-        fill="rgb(14 23 38 / 0.1)"
-        className="hidden lg:block"
-        style={{ bottom: "0.5rem", right: "-0.5rem", zIndex: 2 }}
-      />
-    </>
-  );
-}
+import { routes } from "@/lib/routes";
 
 export function Hero() {
   const { t } = useLocale();
+  const { hero } = t;
 
   return (
-    <section id="hero" className="hero-stage">
-      <div className="hero-deck">
-        <div
-          className="deco-blob"
-          style={{ width: 520, height: 520, top: "-22%", left: "-14%", background: "rgb(214 191 140 / 0.22)" }}
-        />
-        <div
-          className="deco-blob"
-          style={{ width: 380, height: 380, bottom: "-18%", right: "-8%", background: "rgb(232 240 254 / 0.24)" }}
-        />
-
-        <GradientBubble
-          size={300}
-          colorA="rgb(29 78 216 / 0.12)"
-          colorB="rgb(232 240 254 / 0.35)"
-          className="hidden lg:block"
-          style={{ top: "-4%", right: "2%", zIndex: 0 }}
-        />
-
-        <SketchOrbit
-          className="deco-float-slow absolute left-[4%] top-[18%] hidden opacity-70 lg:block"
-          style={{ zIndex: 1 }}
-          size={72}
-        />
-        <SketchSquiggle
-          className="deco-float absolute right-[8%] top-[32%] hidden lg:block"
-          style={{ zIndex: 1, animationDelay: "1.2s" }}
-          width={120}
-        />
-
-        <DotMatrix
-          cols={8}
-          rows={6}
-          gap={18}
-          r={1.6}
-          fill="rgb(14 23 38 / 0.08)"
-          className="hidden lg:block"
-          style={{ top: "1.5rem", right: "1.5rem", zIndex: 1 }}
-        />
-
-        <ScatterDots
-          className="hidden lg:block"
-          style={{ top: "22%", left: "1rem", zIndex: 1 }}
-          dots={[
-            { cx: 12, cy: 8, r: 8, fill: "rgb(29 78 216 / 0.14)" },
-            { cx: 36, cy: 28, r: 5, fill: "rgb(14 23 38 / 0.12)" },
-            { cx: 8, cy: 46, r: 12, fill: "rgb(29 78 216 / 0.1)" },
-          ]}
-        />
-
-        <CurvedPath
-          className="hidden lg:block"
-          style={{ top: "6%", left: "28%", width: "50%", zIndex: 1 }}
-          d="M 0 120 Q 140 20 300 80 T 520 40"
-          stroke="rgb(29 78 216 / 0.14)"
-          strokeWidth={1.5}
-          viewBox="0 0 520 140"
-        />
-
-        <div className="hero-deco-torus hidden lg:block" style={{ width: 88, height: 88, top: "14%", left: "6%" }} />
-        <div className="hero-deco-sphere hidden lg:block" style={{ width: 54, height: 54, top: "10%", right: "22%" }} />
-
-        <div className="hero-deck-grid">
-          <div className="hero-deck-copy order-2 flex flex-col justify-center pb-2 text-center lg:order-1 lg:text-left">
-            <div className="fade-in-1 flex justify-center lg:justify-start">
-              <span className="micro-chip">
-                <span className="pulse-dot mr-1.5 inline-block size-1.5 rounded-full" style={{ background: "#1d4ed8" }} />
-                {t.hero.chip}
-              </span>
-            </div>
-
-            <p className="hero-greeting mt-3 lg:mt-5">{t.hero.greeting}</p>
-            <h1 className="hero-name mt-1 lg:mt-2">{t.hero.name}</h1>
-            <p className="fade-in-2 mt-2 font-heading text-[1.05rem] font-semibold leading-snug tracking-tight text-navy sm:text-[clamp(1.15rem,2.2vw,1.45rem)] lg:mt-4">
-              {t.hero.title}{" "}
-              <span className="shimmer-text">{t.hero.titleHighlight}</span>
-            </p>
-            <p className="fade-in-3 mx-auto mt-2 max-w-md text-[13px] leading-snug text-muted-foreground sm:text-[0.9375rem] sm:leading-[1.85] lg:mx-0 lg:mt-5">
-              {t.hero.subtitle}
-            </p>
-
-            <div className="fade-in-4 mt-4 flex flex-row flex-wrap items-center justify-center gap-2.5 lg:mt-7 lg:justify-start">
-              <CtaButton href={routes.services} showArrow className="!h-11 !px-7">
-                {t.hero.primaryCta}
-              </CtaButton>
-              <CtaButton variant="secondary" href={routes.booking} showArrow className="!h-11 !px-7">
-                {t.hero.secondaryCta}
-              </CtaButton>
-            </div>
-
-            <div className="mt-6 flex flex-col items-center gap-4 lg:items-start">
-              <a href={`mailto:${siteConfig.email}`} className="hero-email-pill">
-                <Mail className="mr-2 inline size-4 text-teal" />
-                {siteConfig.email}
-              </a>
-              <div className="flex items-center gap-3">
-                <a href={`mailto:${siteConfig.email}`} className="hero-social-btn" aria-label="Email">
-                  <Mail className="size-4 text-teal" />
-                </a>
-                <a
-                  href={siteConfig.social.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hero-social-btn"
-                  aria-label="Instagram"
-                >
-                  <Globe className="size-4 text-[#1d4ed8]" />
-                </a>
-                <a
-                  href={siteConfig.calLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hero-social-btn"
-                  aria-label="Cal.com"
-                >
-                  <AtSign className="size-4 text-navy" />
-                </a>
-              </div>
-            </div>
-
-            <div className="fade-in-4 mt-8 hidden border-t border-[#e2e8f0]/70 pt-6 lg:grid lg:grid-cols-2 lg:gap-3">
-              {t.hero.stats.map((item, i) => {
-                const Icon = statIcons[i] ?? Briefcase;
-                return (
-                  <div key={item.label} className="flex items-center gap-2.5 text-left">
-                    <span className="flex size-8 shrink-0 items-center justify-center rounded-full border border-[#e2e8f0] bg-white shadow-xs">
-                      <Icon className="size-3.5 text-teal" />
-                    </span>
-                    <span>
-                      <p className="text-xs font-semibold text-navy">{item.label}</p>
-                      <p className="text-[11px] text-muted-foreground">{item.detail}</p>
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="hero-deck-photo order-1 lg:order-2">
-            <PhotoFrame />
-
-            <div className="hero-deck-photo-inner">
-              <div className="overflow-hidden rounded-[1.5rem] border border-[#e2e8f0] bg-white shadow-xl">
-                <Image
-                  src={siteConfig.images.profile}
-                  alt={siteConfig.founder}
-                  width={768}
-                  height={1024}
-                  priority
-                  quality={100}
-                  unoptimized
-                  sizes="(max-width: 1024px) 70vw, 420px"
-                  className="aspect-[4/5] w-full object-cover object-[center_18%] lg:aspect-[4/5]"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="border-t border-[#e2e8f0]/70 px-5 py-5 lg:hidden">
-          <div className="grid grid-cols-2 gap-3">
-            {t.hero.stats.map((item) => (
-              <div key={item.label}>
-                <p className="text-xs font-semibold text-navy">{item.label}</p>
-                <p className="text-[11px] text-muted-foreground">{item.detail}</p>
-              </div>
-            ))}
-          </div>
-          <CtaButton href={routes.booking} showArrow className="btn-talk mt-5 w-full !h-11">
-            {t.nav.talkCta}
-          </CtaButton>
+    <section id="hero" className="ar-hero" aria-labelledby="hero-title">
+      <div className="min-w-0">
+        <p className="ar-eyebrow">{hero.eyebrow}</p>
+        <h1 className="ar-hero__title" id="hero-title">
+          {hero.titleLines.map((line) => (
+            <span key={line}>{line} </span>
+          ))}
+        </h1>
+        <p className="ar-hero__description">{hero.description}</p>
+        <div className="ar-hero__actions">
+          <Link className="ar-button" href={routes.services}>
+            {hero.primaryCta}
+            <span className="ar-button__arrow" aria-hidden="true">
+              →
+            </span>
+          </Link>
+          <Link className="ar-link" href={routes.booking}>
+            {hero.secondaryCta}
+          </Link>
         </div>
       </div>
+
+      <figure className="ar-workflow">
+        <div className="ar-workflow__media">
+          <Image
+            className="ar-workflow__image"
+            src="/brand/hero/emerald-workflow.png"
+            width={1722}
+            height={893}
+            alt=""
+            preload
+            fetchPriority="high"
+            sizes="(min-width: 1600px) 780px, (min-width: 960px) 52vw, 100vw"
+          />
+        </div>
+        <div className="ar-workflow__labels" aria-hidden="true">
+          {hero.flowLabels.map((label) => (
+            <span key={label}>{label}</span>
+          ))}
+        </div>
+        <figcaption className="sr-only">{hero.flowCaption}</figcaption>
+        <p className="ar-workflow__signature" aria-hidden="true">
+          angelica.build()
+          <span />
+        </p>
+      </figure>
     </section>
   );
 }

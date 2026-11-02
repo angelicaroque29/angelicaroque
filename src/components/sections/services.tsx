@@ -63,7 +63,7 @@ function AuditFeaturedCard({
       <div className="grid lg:grid-cols-[1fr_minmax(19rem,22rem)]">
         <div className="p-6 sm:p-8 lg:p-9">
           <div className="flex items-center gap-3">
-            <ServiceIcon id="audit" tone="dorado" size="sm" />
+            <ServiceIcon id="audit" tone="white" size="sm" />
             <p className="font-mono text-[11px] font-medium tracking-[0.16em] text-dorado uppercase">{categoryLabel}</p>
           </div>
           <h3 className="mt-3 font-heading text-[clamp(1.35rem,2.5vw,1.85rem)] font-semibold leading-snug text-white">
@@ -101,7 +101,7 @@ function AuditFeaturedCard({
           <CtaButton
             href={routes.booking}
             showArrow
-            className="w-full !h-12 !border-0 !bg-dorado !text-espresso shadow-md hover:!bg-[#0284c7]"
+            className="w-full !h-12 !border-0 !bg-dorado !text-espresso shadow-md hover:!bg-[#b4ea57]"
           >
             {offer.cta}
           </CtaButton>
@@ -132,7 +132,7 @@ function OfferCard({
   return (
     <Link
       href={serviceHref(offer.id)}
-      className="group flex flex-col rounded-[1.25rem] border border-[#e2e8f0] bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-teal/40 hover:shadow-md sm:p-6"
+      className="group flex flex-col rounded-[1.25rem] border border-[#dfe5ec] bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-teal/40 hover:shadow-md sm:p-6"
       style={{ animation: `fadeIn 0.7s cubic-bezier(.22,.68,0,1.2) ${0.12 + index * 0.06}s both` }}
     >
       <div className="flex items-center gap-3">
@@ -145,7 +145,7 @@ function OfferCard({
 
       <p className="mt-3 flex-1 text-[0.9375rem] leading-[1.65] text-muted-foreground">{offer.summary}</p>
 
-      <div className="mt-5 flex items-end justify-between gap-3 border-t border-[#e8eef5] pt-4">
+      <div className="mt-5 flex items-end justify-between gap-3 border-t border-[#edf1f5] pt-4">
         <div>
           <p className="text-[11px] font-medium text-muted-foreground">{priceFromLabel}</p>
           <p className="font-heading text-[1.6rem] font-semibold leading-none tracking-tight text-navy">

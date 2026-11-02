@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { JotformAgentEmbed } from "@/components/jotform-agent-embed";
 import { Providers } from "@/components/providers";
@@ -26,9 +26,13 @@ const jetbrainsMono = localFont({
   display: "swap",
 });
 
-const title = "Angélica Roque · Sistemas con IA para negocios";
+const title = "Angélica Roque | Software, IA y automatización";
 const description =
-  "Webs, automatizaciones, dashboards y sistemas con IA para negocios que quieren ahorrar tiempo, captar más clientes y operar con menos caos. Miami.";
+  "Diseño sistemas, conecto herramientas y automatizo procesos para negocios. Webs desde $200, automatizaciones desde $300 y SaaS a la medida. Miami y trabajo remoto.";
+
+export const viewport: Viewport = {
+  themeColor: "#111820",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -46,7 +50,7 @@ export const metadata: Metadata = {
         url: siteConfig.images.socialShare,
         width: 1200,
         height: 630,
-        alt: "Angélica Roque · Software, IA y automatización",
+        alt: "Angélica Roque. Software, IA y automatización.",
       },
     ],
   },

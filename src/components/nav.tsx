@@ -18,17 +18,13 @@ export function Nav() {
   const close = () => setOpen(false);
 
   const isActive = (href: string) => {
-    if (href === routes.home || href === routes.services || href === routes.faq) {
-      return pathname === routes.home;
-    }
-    if (href.startsWith("/#")) {
-      return pathname === routes.home;
-    }
+    if (href.includes("#")) return false;
+    if (href === routes.home) return pathname === routes.home;
     return pathname === href || pathname.startsWith(`${href}/`);
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#e2e8f0]/80 bg-ivory/96 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-[#dfe5ec]/80 bg-ivory/96 backdrop-blur-md">
       <nav className="mx-auto grid min-h-[4.5rem] w-full max-w-6xl grid-cols-[1fr_auto] items-center gap-4 px-5 sm:px-8 lg:grid-cols-[auto_1fr_auto_auto] lg:gap-6 lg:px-10">
         <BrandLogo onClick={close} size="md" className="min-w-0 shrink" />
 
@@ -46,8 +42,11 @@ export function Nav() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <LanguageToggle />
-          <Link href={routes.booking} className="btn-primary h-10 px-5 text-xs">
+          <Link href={routes.booking} className="btn-primary h-11 px-5">
             {t.nav.cta}
+            <span className="btn-arrow" aria-hidden="true">
+              →
+            </span>
           </Link>
         </div>
 
@@ -76,8 +75,8 @@ export function Nav() {
                 className={cn(
                   "flex min-h-[3rem] items-center rounded-xl px-4 text-base font-medium transition-colors",
                   isActive(link.href)
-                    ? "bg-[#e8f0fe] text-teal"
-                    : "text-navy hover:bg-[#f7f9fc]"
+                    ? "bg-[#e3f5ee] text-verde"
+                    : "text-navy hover:bg-sand"
                 )}
               >
                 {link.label}

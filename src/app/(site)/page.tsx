@@ -1,3 +1,5 @@
+import { About } from "@/components/sections/about";
+import { CaseTeaser } from "@/components/sections/case-teaser";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { Faq } from "@/components/sections/faq";
 import { Hero } from "@/components/sections/hero";
@@ -12,6 +14,8 @@ export default function HomePage() {
       <MarqueeStrip />
       <Services />
       <HowItWorks />
+      <CaseTeaser />
+      <About />
       <Faq />
       <CtaBanner />
     </>

@@ -5,6 +5,8 @@ export const routes = {
   about: "/about",
   booking: "/booking",
   contact: "/contact",
+  caseStudy: "/casos/contratista-estructura",
+  caseStudyEn: "/en/cases/structural-contractor",
 } as const;
 
 export type AppRoute = (typeof routes)[keyof typeof routes];

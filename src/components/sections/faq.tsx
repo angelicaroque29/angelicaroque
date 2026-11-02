@@ -2,16 +2,6 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import {
-  CurvedPath,
-  DotMatrix,
-  GradientBubble,
-  SketchArcs,
-  SketchBotanical,
-  SketchSquiggle,
-  SketchStars,
-  SketchWorkspace,
-} from "@/components/deco";
 import { CtaButton } from "@/components/cta-button";
 import { Section } from "@/components/section";
 import { useLocale } from "@/lib/i18n/context";
@@ -23,54 +13,8 @@ export function Faq() {
   const [openId, setOpenId] = useState<string | null>(t.faq.items[0]?.id ?? null);
 
   return (
-    <Section id="faq" flush wash="lavender" className="!py-14 lg:!py-20">
-      <div className="relative overflow-hidden rounded-[1.75rem] border border-[#e2e8f0]/80 bg-[linear-gradient(155deg,#faf8f3_0%,#ffffff_45%,#f4faf9_100%)] px-5 py-10 shadow-sm sm:px-8 lg:px-12 lg:py-14">
-        <GradientBubble
-          size={200}
-          colorA="rgb(29 78 216 / 0.1)"
-          colorB="rgb(232 240 254 / 0.4)"
-          style={{ top: "-12%", left: "-6%", zIndex: 0 }}
-        />
-        <GradientBubble
-          size={160}
-          colorA="rgb(14 23 38 / 0.06)"
-          colorB="rgb(232 240 254 / 0.45)"
-          style={{ bottom: "-10%", right: "-4%", zIndex: 0 }}
-        />
-
-        <DotMatrix
-          cols={6}
-          rows={5}
-          gap={16}
-          r={1.4}
-          fill="rgb(14 23 38 / 0.07)"
-          className="hidden lg:block"
-          style={{ top: "1rem", right: "1.25rem", zIndex: 1 }}
-        />
-
-        <CurvedPath
-          className="hidden lg:block"
-          style={{ bottom: "2rem", left: "0", width: "45%", zIndex: 1 }}
-          d="M 0 60 Q 80 20 200 50 T 360 30"
-          stroke="rgb(29 78 216 / 0.14)"
-          strokeWidth={1.5}
-          viewBox="0 0 360 80"
-        />
-
-        <SketchBotanical
-          className="deco-float absolute -left-2 top-8 hidden opacity-80 lg:block"
-          style={{ zIndex: 1 }}
-        />
-        <SketchStars
-          className="deco-float-slow absolute right-6 top-10 hidden opacity-90 lg:block"
-          style={{ zIndex: 1, animationDelay: "1s" }}
-        />
-        <SketchSquiggle
-          className="deco-float absolute bottom-16 right-8 hidden lg:block"
-          style={{ zIndex: 1, animationDelay: "0.5s" }}
-          width={140}
-        />
-
+    <Section id="faq" flush className="!py-14 lg:!py-20">
+      <div className="relative overflow-hidden rounded-[20px] border border-[#dfe5ec] bg-white px-5 py-10 sm:px-8 lg:px-12 lg:py-14">
         <div className="relative z-10 grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-14 lg:items-start">
           <div className="lg:sticky lg:top-28">
             <span className="micro-chip mb-4 inline-flex">{t.faq.label}</span>
@@ -81,12 +25,7 @@ export function Faq() {
               {t.faq.subtitle}
             </p>
 
-            <div className="relative mt-8 hidden lg:block">
-              <SketchWorkspace className="mx-auto opacity-90" />
-              <SketchArcs className="absolute -bottom-2 -left-4 opacity-70" />
-            </div>
-
-            <div className="mt-8 hidden rounded-[1.15rem] border border-[#e2e8f0] bg-white/80 p-5 shadow-xs lg:block">
+            <div className="mt-8 hidden rounded-[1.15rem] border border-[#dfe5ec] bg-white/80 p-5 shadow-xs lg:block">
               <p className="text-sm font-semibold text-navy">{t.faq.stillCurious}</p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.faq.stillCuriousText}</p>
               <CtaButton href={routes.booking} showArrow className="mt-4 !h-10">
@@ -104,8 +43,8 @@ export function Faq() {
                   className={cn(
                     "overflow-hidden rounded-[1.15rem] border bg-white/90 transition-all duration-300",
                     isOpen
-                      ? "border-teal/25 shadow-[0_8px_28px_rgb(42_157_143_/_0.08)]"
-                      : "border-[#e2e8f0]/90 shadow-xs hover:border-[#e2e8f0]"
+                      ? "border-teal/25 shadow-[0_8px_28px_rgb(6_63_53_/_0.08)]"
+                      : "border-[#dfe5ec]/90 shadow-xs hover:border-[#dfe5ec]"
                   )}
                   style={{
                     animation: `fadeIn 0.6s cubic-bezier(.22,.68,0,1.2) ${0.05 + index * 0.04}s both`,
@@ -126,8 +65,8 @@ export function Faq() {
                       className={cn(
                         "mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full border transition-all duration-300",
                         isOpen
-                          ? "border-teal/30 bg-[#e8f0fe] text-teal"
-                          : "border-[#e2e8f0] bg-[#f4f7fb] text-muted-foreground"
+                          ? "border-verde/30 bg-[#e3f5ee] text-verde"
+                          : "border-[#dfe5ec] bg-[#f5f7fa] text-muted-foreground"
                       )}
                     >
                       <ChevronDown
@@ -146,7 +85,7 @@ export function Faq() {
                     )}
                   >
                     <div className="overflow-hidden">
-                      <p className="border-t border-[#e8eef5] px-5 pb-5 pt-3 text-sm leading-[1.85] text-muted-foreground sm:px-6 sm:pb-6">
+                      <p className="border-t border-[#edf1f5] px-5 pb-5 pt-3 text-sm leading-[1.85] text-muted-foreground sm:px-6 sm:pb-6">
                         {item.answer}
                       </p>
                     </div>
@@ -155,7 +94,7 @@ export function Faq() {
               );
             })}
 
-            <div className="rounded-[1.15rem] border border-[#e2e8f0] bg-white/80 p-5 shadow-xs lg:hidden">
+            <div className="rounded-[1.15rem] border border-[#dfe5ec] bg-white/80 p-5 shadow-xs lg:hidden">
               <p className="text-sm font-semibold text-navy">{t.faq.stillCurious}</p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.faq.stillCuriousText}</p>
               <CtaButton href={routes.booking} showArrow className="mt-4 w-full !h-10">

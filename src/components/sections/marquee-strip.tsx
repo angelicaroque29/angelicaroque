@@ -2,7 +2,7 @@
 
 import { useLocale } from "@/lib/i18n/context";
 
-const dots = ["#1d4ed8", "#0ea5e9", "#1d4ed8", "#1d4ed8", "#0ea5e9", "#1d4ed8", "#1d4ed8", "#0ea5e9", "#1d4ed8"];
+const dots = ["#063f35", "#08ba83", "#063f35", "#063f35", "#08ba83", "#063f35", "#063f35", "#08ba83", "#063f35"];
 
 export function MarqueeStrip() {
   const { t } = useLocale();
@@ -10,7 +10,7 @@ export function MarqueeStrip() {
 
   return (
     <div
-      className="w-full overflow-hidden border-y border-[#e2e8f0]/60 bg-white/50 py-3.5 backdrop-blur-sm"
+      className="w-full overflow-hidden border-y border-[#dfe5ec]/60 bg-white/50 py-3.5 backdrop-blur-sm"
       aria-hidden
     >
       <div className="marquee-track">

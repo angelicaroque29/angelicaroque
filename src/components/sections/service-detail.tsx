@@ -19,7 +19,7 @@ function DetailList({
   icon: typeof Check;
 }) {
   return (
-    <div className="rounded-[1.25rem] border border-[#e2e8f0] bg-white p-5 shadow-sm sm:p-6">
+    <div className="rounded-[1.25rem] border border-[#dfe5ec] bg-white p-5 shadow-sm sm:p-6">
       <h2 className="font-heading text-lg font-semibold text-navy">{title}</h2>
       <ul className="mt-4 space-y-3">
         {items.map((item) => (
@@ -49,7 +49,7 @@ export function ServiceDetail({ id }: { id: ServiceOfferId }) {
         {details.back}
       </Link>
 
-      <div className="mt-5 overflow-hidden rounded-[1.5rem] border border-[#e2e8f0] bg-[linear-gradient(145deg,#faf8f3_0%,#ffffff_50%,#f4faf9_100%)] shadow-sm">
+      <div className="mt-5 overflow-hidden rounded-[1.5rem] border border-[#dfe5ec] bg-[linear-gradient(145deg,#faf8f3_0%,#ffffff_50%,#f4faf9_100%)] shadow-sm">
         <div className="grid lg:grid-cols-[1fr_minmax(18rem,21rem)]">
           <div className="p-6 sm:p-8 lg:p-10">
             <ServiceIcon id={id} size="lg" />
@@ -60,7 +60,7 @@ export function ServiceDetail({ id }: { id: ServiceOfferId }) {
             <p className="mt-4 max-w-xl text-base leading-[1.75] text-muted-foreground">{item.intro}</p>
           </div>
 
-          <div className="flex flex-col justify-center gap-4 border-t border-[#e2e8f0] bg-white/70 p-6 sm:p-8 lg:border-t-0 lg:border-l">
+          <div className="flex flex-col justify-center gap-4 border-t border-[#dfe5ec] bg-white/70 p-6 sm:p-8 lg:border-t-0 lg:border-l">
             <div>
               <p className="text-xs font-medium text-muted-foreground">{item.priceLabel}</p>
               <p className="mt-1 font-heading text-[2.5rem] font-semibold leading-none tracking-tight text-navy">
@@ -92,7 +92,7 @@ export function ServiceDetail({ id }: { id: ServiceOfferId }) {
           <CtaButton
             href={routes.booking}
             showArrow
-            className="w-full !h-12 !border-0 !bg-teal !text-white hover:!bg-[#1e40af] sm:w-auto"
+            className="w-full !h-12 !border-0 !bg-teal !text-white hover:!bg-[#0b2a25] sm:w-auto"
           >
             {details.cta}
           </CtaButton>
@@ -110,7 +110,7 @@ export function ServiceDetail({ id }: { id: ServiceOfferId }) {
               <Link
                 key={otherId}
                 href={serviceHref(otherId)}
-                className="group flex items-center gap-3 rounded-[1rem] border border-[#e2e8f0] bg-white p-4 transition-colors hover:border-teal/40"
+                className="group flex items-center gap-3 rounded-[1rem] border border-[#dfe5ec] bg-white p-4 transition-colors hover:border-teal/40"
               >
                 <ServiceIcon id={otherId} size="sm" />
                 <span className="min-w-0 flex-1">

@@ -1,11 +1,10 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
-import { CtaButton } from "@/components/cta-button";
-import { CurvedPath, DotMatrix, GradientBubble, ScatterDots, SketchArcs, SketchBotanical, SketchSquiggle } from "@/components/deco";
-import { routes } from "@/lib/routes";
+import Link from "next/link";
 import { Section } from "@/components/section";
 import { useLocale } from "@/lib/i18n/context";
+import { routes } from "@/lib/routes";
+import { siteConfig } from "@/lib/site-config";
 
 export function CtaBanner() {
   const { t } = useLocale();
@@ -13,98 +12,31 @@ export function CtaBanner() {
   return (
     <Section id="contact" flush className="!py-14 lg:!py-16">
       <div className="cta-banner">
-        <div className="dot-grid pointer-events-none absolute inset-0 opacity-18" />
-
-        <GradientBubble
-          size={280}
-          colorA="rgb(29 78 216 / 0.14)"
-          colorB="rgb(232 240 254 / 0.4)"
-          style={{ bottom: "-20%", right: "-8%", zIndex: 0 }}
-        />
-        <GradientBubble
-          size={140}
-          colorA="rgb(14 23 38 / 0.08)"
-          colorB="rgb(232 240 254 / 0.45)"
-          style={{ top: "-15%", left: "-4%", zIndex: 0 }}
-        />
-
-        <SketchBotanical
-          className="deco-float absolute bottom-6 left-4 hidden opacity-75 lg:block"
-          style={{ zIndex: 1 }}
-        />
-        <SketchSquiggle
-          className="deco-float-slow absolute right-10 top-6 hidden lg:block"
-          style={{ zIndex: 1 }}
-          width={130}
-        />
-        <SketchArcs
-          className="deco-float absolute bottom-4 right-24 hidden opacity-60 lg:block"
-          style={{ zIndex: 1, animationDelay: "0.6s" }}
-        />
-
-        <DotMatrix
-          cols={7}
-          rows={5}
-          gap={16}
-          r={1.5}
-          fill="rgb(14 23 38 / 0.08)"
-          className="hidden lg:block"
-          style={{ top: "0.75rem", right: "1rem", zIndex: 1 }}
-        />
-
-        <CurvedPath
-          className="hidden lg:block"
-          style={{ top: 0, left: 0, width: "100%", height: "60%", zIndex: 1 }}
-          d="M 0 100 Q 200 30 480 80 T 900 50"
-          stroke="rgb(29 78 216 / 0.14)"
-          strokeWidth={1.5}
-          viewBox="0 0 900 110"
-        />
-
-        <ScatterDots
-          className="hidden lg:block"
-          style={{ bottom: "1.5rem", left: "3rem", zIndex: 1 }}
-          dots={[
-            { cx: 8, cy: 8, r: 5, fill: "rgb(29 78 216 / 0.18)" },
-            { cx: 24, cy: 20, r: 3, fill: "rgb(14 23 38 / 0.12)" },
-            { cx: 40, cy: 8, r: 4, fill: "rgb(29 78 216 / 0.14)" },
-          ]}
-        />
-
-        <div className="relative z-10 flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
-          <div className="max-w-xl">
-            <span className="micro-chip mb-4 inline-flex">{t.ctaBanner.label}</span>
-            <h2 className="font-heading text-[clamp(1.55rem,2.8vw,2.15rem)] font-semibold leading-[1.12] tracking-tight text-navy">
-              {t.ctaBanner.title}{" "}
-              <span
-                style={{
-                  background: "linear-gradient(105deg, #0e1726, #1d4ed8)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
-                {t.ctaBanner.titleHighlight}
-              </span>
-            </h2>
-            <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              {t.ctaBanner.subtitle}
+        <div className="relative z-10 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
+          <div className="max-w-2xl">
+            <p className="font-mono text-[11px] font-medium tracking-[0.18em] text-lime uppercase">
+              {t.ctaBanner.label}
             </p>
-            <div className="mt-5 flex flex-wrap gap-2">
-              {t.ctaBanner.perks.map((p) => (
-                <span
-                  key={p}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[#e2e8f0] bg-white/80 px-3 py-1 text-[11px] font-medium text-navy"
-                >
-                  <ArrowRight className="size-3 text-teal" />
-                  {p}
-                </span>
-              ))}
-            </div>
+            <h2 className="mt-4 font-heading text-[clamp(1.75rem,3.4vw,2.75rem)] font-semibold leading-[1.08] tracking-tight !text-white">
+              {t.ctaBanner.title}
+            </h2>
+            <p className="mt-4 max-w-lg text-base leading-relaxed text-white/80">{t.ctaBanner.subtitle}</p>
+            <p className="mt-5 text-sm text-white/80">
+              {t.ctaBanner.emailLabel}{" "}
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="font-semibold text-white underline decoration-white/40 underline-offset-4 hover:decoration-white"
+              >
+                {siteConfig.email}
+              </a>
+            </p>
           </div>
-          <CtaButton href={routes.booking} showArrow className="shrink-0 !h-12 !px-8 text-base">
+          <Link href={routes.booking} className="cta-banner__button">
             {t.ctaBanner.cta}
-          </CtaButton>
+            <span aria-hidden="true" className="text-2xl leading-none">
+              →
+            </span>
+          </Link>
         </div>
       </div>
     </Section>
