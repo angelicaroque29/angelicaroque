@@ -43,7 +43,14 @@ export function CtaButton({
   const inner = (
     <>
       {children}
-      {showArrow && <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />}
+      {showArrow && (
+        <ArrowRight
+          className={cn(
+            "size-4 transition-transform group-hover:translate-x-0.5",
+            variant === "primary" && "text-lime"
+          )}
+        />
+      )}
     </>
   );
 

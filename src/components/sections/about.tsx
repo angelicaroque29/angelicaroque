@@ -18,49 +18,35 @@ export function About({ standalone = false }: AboutProps) {
 
   return (
     <Section id="about" flush className={cn(standalone && "!pt-10 lg:!pt-14")}>
-      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        <div className="relative">
-          <div className="thin-path -bottom-4 -right-4 hidden h-32 w-2/3 lg:block" />
-          <div className="soft-sphere -left-8 -top-8 size-24 opacity-70" />
-          <div className="relative overflow-hidden rounded-[1.75rem] border border-border bg-white shadow-md">
+      <div className="grid items-center gap-10 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
+        <div className="mx-auto w-full max-w-sm md:max-w-none">
+          <div className="overflow-hidden rounded-[20px] border border-silver bg-white">
             <Image
-              src={siteConfig.images.office}
-              alt={`${siteConfig.founder} at work`}
-              width={766}
-              height={1024}
-              quality={100}
-              unoptimized
-              className="aspect-[4/5] w-full object-cover object-[center_35%]"
-              sizes="(max-width: 1024px) 90vw, 480px"
+              src={siteConfig.images.profile}
+              alt={t.about.photoAlt}
+              width={720}
+              height={774}
+              className="h-auto w-full"
+              sizes="(max-width: 768px) 90vw, 420px"
             />
           </div>
         </div>
 
         <div>
-          <span className="micro-chip mb-4">{t.about.label}</span>
+          <p className="section-eyebrow">{t.about.label}</p>
           <h2 className="heading-editorial text-navy">{t.about.title}</h2>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground">{t.about.paragraph1}</p>
+          <p className="mt-5 text-base leading-relaxed text-muted-foreground">{t.about.paragraph1}</p>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">{t.about.paragraph2}</p>
-          <div className="mt-6 grid gap-3 sm:grid-cols-3">
-            {t.about.principles.map((item) => (
-              <div
-                key={item}
-                className="rounded-2xl border border-border bg-white px-4 py-3 text-sm font-semibold text-navy shadow-sm"
-              >
-                {item}
-              </div>
-            ))}
-          </div>
           <ul className="mt-8 grid gap-3 sm:grid-cols-2">
             {t.about.experience.map((item) => (
-              <li key={item} className="flex items-start gap-2.5 text-sm">
-                <Check className="mt-0.5 size-4 shrink-0 text-accent-blue" />
+              <li key={item} className="flex items-start gap-2.5 text-sm font-medium text-navy">
+                <Check className="mt-0.5 size-4 shrink-0 text-verde" strokeWidth={2.5} />
                 {item}
               </li>
             ))}
           </ul>
           <div className="mt-8">
-            <CtaButton href={routes.booking} showArrow>
+            <CtaButton href={routes.booking} showArrow className="w-full sm:w-auto">
               {t.about.cta}
             </CtaButton>
           </div>

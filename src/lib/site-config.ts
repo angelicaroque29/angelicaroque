@@ -30,12 +30,12 @@ export const siteConfig = {
   whatsappUrl:
     process.env.NEXT_PUBLIC_WHATSAPP_URL ?? "https://wa.me/17864610791",
   images: {
-    logo: "/brand/logos/logo-espresso.png",
-    logoOnDark: "/brand/logos/logo-marfil.png",
-    monogram: "/brand/logos/monograma-espresso.png",
-    socialShare: "/brand/social/compartir-web-1200x630.png",
-    workflowModel: "/brand/hero/modelo-workflow.png",
-    profile: "/images/angelica-profile-hq.jpg",
+    logo: "/brand/logos/logo-graphite.png",
+    logoOnDark: "/brand/logos/logo-white.png",
+    monogram: "/brand/logos/monogram-graphite.png",
+    socialShare: "/brand/social/og-image.png",
+    workflowHero: "/brand/hero/emerald-workflow-1200.png",
+    profile: "/brand/about/angelica-profile.webp",
     headshot: "/images/angelica-headshot.png",
     office: "/images/angelica-office.png",
     heroIllustration: "/images/hero-illustration.png",

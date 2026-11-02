@@ -38,7 +38,7 @@ export function AgentChatWidget() {
         aria-label={chatWidget.agentName}
         aria-hidden={!open}
         className={cn(
-          "pointer-events-auto mb-3 w-full overflow-hidden rounded-[1.25rem] border border-[#e2e8f0] bg-white shadow-lg",
+          "pointer-events-auto mb-3 w-full overflow-hidden rounded-[1.25rem] border border-[#dfe5ec] bg-white shadow-lg",
           "transition-[transform,opacity,visibility] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]",
           open
             ? "visible translate-y-0 opacity-100"
@@ -46,14 +46,14 @@ export function AgentChatWidget() {
         )}
       >
         <div className="relative flex items-center gap-5 p-4">
-          <div className="relative flex size-12 shrink-0 items-center justify-center rounded-full bg-[#f8f5ee] p-0.5">
+          <div className="relative flex size-12 shrink-0 items-center justify-center rounded-full bg-[#f5f7fa] p-0.5">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={siteConfig.agentAvatarUrl}
               alt=""
               width={44}
               height={44}
-              className="size-11 rounded-full bg-[#f8f5ee] object-cover"
+              className="size-11 rounded-full bg-[#f5f7fa] object-cover"
             />
             <span className="absolute -bottom-0.5 -right-0.5 flex size-4 items-center justify-center rounded-full bg-white">
               <span className="size-3 rounded-full bg-emerald-500" />
@@ -73,7 +73,7 @@ export function AgentChatWidget() {
           </button>
         </div>
 
-        <div className="border-t border-[#e2e8f0]" />
+        <div className="border-t border-[#dfe5ec]" />
 
         <div className="flex items-start gap-5 p-4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -82,7 +82,7 @@ export function AgentChatWidget() {
             alt=""
             width={40}
             height={40}
-            className="size-10 shrink-0 rounded-full bg-[#f8f5ee] object-cover"
+            className="size-10 shrink-0 rounded-full bg-[#f5f7fa] object-cover"
           />
           <div className="rounded-md bg-[#fafafa] py-2 pl-4 pr-3">
             <p className="m-0 text-sm text-slate-700">{chatWidget.greeting}</p>
@@ -95,7 +95,7 @@ export function AgentChatWidget() {
             href={siteConfig.instagramDmUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#1d4ed8] px-4 text-base font-medium text-white transition-colors hover:bg-[#1d4ed8]"
+            className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#063f35] px-4 text-base font-medium text-white transition-colors hover:bg-[#063f35]"
           >
             <InstagramIcon />
             <span>{chatWidget.cta}</span>
@@ -109,7 +109,7 @@ export function AgentChatWidget() {
         aria-label={chatWidget.open}
         aria-expanded={open}
         className={cn(
-          "pointer-events-auto inline-flex size-12 items-center justify-center rounded-full border border-[#e2e8f0] bg-white text-slate-600 shadow-md",
+          "pointer-events-auto inline-flex size-12 items-center justify-center rounded-full border border-[#dfe5ec] bg-white text-slate-600 shadow-md",
           "transition-[transform,opacity,visibility] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:bg-[#f8fafc]",
           open
             ? "invisible translate-y-full opacity-0"

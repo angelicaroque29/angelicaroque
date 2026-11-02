@@ -3,14 +3,14 @@ export type ServiceOfferId = "audit" | "website" | "automation" | "saas";
 export const serviceOfferIds: readonly ServiceOfferId[] = ["audit", "website", "automation", "saas"];
 
 const serviceIconNames: Record<ServiceOfferId, string> = {
-  audit: "ia",
-  website: "desarrollo",
-  automation: "automatizacion",
-  saas: "sistemas",
+  audit: "systems",
+  website: "code",
+  automation: "automation",
+  saas: "ai",
 };
 
-export function serviceIconSrc(id: ServiceOfferId, tone: "espresso" | "dorado" = "espresso") {
-  return `/brand/iconos/${serviceIconNames[id]}-${tone}.png`;
+export function serviceIconSrc(id: ServiceOfferId, tone: "graphite" | "white" = "graphite") {
+  return `/brand/icons/svg/${serviceIconNames[id]}-${tone}.svg`;
 }
 
 export const serviceSlugs: Record<ServiceOfferId, string> = {
@@ -29,7 +29,7 @@ export function serviceIdFromSlug(slug: string): ServiceOfferId | undefined {
 }
 
 export const auditAccent = {
-  gradient: "linear-gradient(145deg, #0e1726 0%, #152238 55%, #1d4ed8 100%)",
-  glow: "0 16px 44px rgb(14 23 38 / 0.18)",
-  border: "rgb(14 165 233 / 0.35)",
+  gradient: "linear-gradient(145deg, #111820 0%, #0b2a25 55%, #063f35 100%)",
+  glow: "0 16px 44px rgb(17 24 32 / 0.18)",
+  border: "rgb(8 186 131 / 0.35)",
 } as const;

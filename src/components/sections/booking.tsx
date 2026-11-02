@@ -10,24 +10,24 @@ import { cn } from "@/lib/utils";
 const optionStyles = {
   free: {
     ctaIcon: Calendar,
-    bar: "linear-gradient(90deg, #1d4ed8, #3e5c8a)",
-    bg: "linear-gradient(160deg, #f8fafc 0%, #f4efe3 100%)",
-    accent: "#1d4ed8",
-    accentBg: "#f1ebdd",
+    bar: "linear-gradient(90deg, #063f35, #526171)",
+    bg: "linear-gradient(160deg, #f8fafc 0%, #f5f7fa 100%)",
+    accent: "#063f35",
+    accentBg: "#edf1f5",
   },
   audit: {
     ctaIcon: Calendar,
-    bar: "linear-gradient(90deg, #0ea5e9, #0ea5e9)",
-    bg: "linear-gradient(160deg, #f8fafc 0%, #eef3fb 100%)",
-    accent: "#0ea5e9",
-    accentBg: "#f1ebdf",
+    bar: "linear-gradient(90deg, #08ba83, #08ba83)",
+    bg: "linear-gradient(160deg, #f8fafc 0%, #edf1f5 100%)",
+    accent: "#08795a",
+    accentBg: "#edf1f5",
   },
   project: {
     ctaIcon: Sparkles,
-    bar: "linear-gradient(90deg, #0e1726, #3e5c8a)",
-    bg: "linear-gradient(160deg, #f5f1e7 0%, #f1ebdd 100%)",
-    accent: "#0e1726",
-    accentBg: "#f1ebdd",
+    bar: "linear-gradient(90deg, #111820, #526171)",
+    bg: "linear-gradient(160deg, #f5f7fa 0%, #edf1f5 100%)",
+    accent: "#111820",
+    accentBg: "#edf1f5",
   },
 } as const;
 
@@ -41,13 +41,13 @@ export function Booking({ standalone = false }: BookingProps) {
 
   return (
     <Section id="booking" flush className={cn("!py-14 lg:!py-20", standalone && "!pt-10 lg:!pt-14")}>
-      <div className="relative overflow-hidden rounded-[1.75rem] border border-[#e2e8f0]/70 bg-white/60 px-5 py-10 shadow-sm sm:px-8 lg:px-12 lg:py-14">
+      <div className="relative overflow-hidden rounded-[1.75rem] border border-[#dfe5ec]/70 bg-white/60 px-5 py-10 shadow-sm sm:px-8 lg:px-12 lg:py-14">
         <div className="corner-grid right-4 top-4" />
         <div
           className="pointer-events-none absolute -bottom-16 -left-16 size-40 rounded-full"
           style={{
             background:
-              "radial-gradient(circle at 35% 35%, rgb(255 255 255 / 0.95) 0 10%, rgb(214 191 140 / 0.88) 26%, rgb(14 165 233 / 0.38) 56%, transparent 70%)",
+              "radial-gradient(circle at 35% 35%, rgb(255 255 255 / 0.95) 0 10%, rgb(197 206 216 / 0.88) 26%, rgb(8 186 131 / 0.38) 56%, transparent 70%)",
           }}
         />
 
@@ -64,7 +64,7 @@ export function Booking({ standalone = false }: BookingProps) {
               </p>
             </div>
             <div className="hidden items-center gap-2 text-xs text-muted-foreground lg:flex">
-              <Star className="size-4 fill-[#0ea5e9] text-[#0ea5e9]" />
+              <Star className="size-4 fill-[#08ba83] text-[#08ba83]" />
               <span>{t.booking.region}</span>
             </div>
           </div>
@@ -96,7 +96,7 @@ export function Booking({ standalone = false }: BookingProps) {
                         {opt.badge}
                       </span>
                       {opt.featured && (
-                        <span className="text-[10px] font-semibold tracking-wide text-[#1d4ed8] uppercase">
+                        <span className="text-[10px] font-semibold tracking-wide text-[#063f35] uppercase">
                           {t.booking.mostPopular}
                         </span>
                       )}
@@ -143,7 +143,7 @@ export function Booking({ standalone = false }: BookingProps) {
           </div>
 
           {/* Calendar */}
-          <div id="booking-calendar" className="mt-10 overflow-hidden rounded-[1.35rem] border-2 border-[#1d4ed8]/25 bg-[linear-gradient(135deg,#eef2fb_0%,#ffffff_55%,#faf9f7_100%)] shadow-md">
+          <div id="booking-calendar" className="mt-10 overflow-hidden rounded-[1.35rem] border-2 border-[#063f35]/25 bg-[linear-gradient(135deg,#eef2fb_0%,#ffffff_55%,#faf9f7_100%)] shadow-md">
             <button
               type="button"
               onClick={() => setShowCalendar(!showCalendar)}
@@ -151,7 +151,7 @@ export function Booking({ standalone = false }: BookingProps) {
               aria-expanded={showCalendar}
             >
               <div className="flex min-w-0 items-center gap-4">
-                <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-[#1d4ed8] shadow-[0_4px_14px_rgb(59_79_216_/_0.35)] sm:size-14">
+                <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-[#063f35] shadow-[0_4px_14px_rgb(59_79_216_/_0.35)] sm:size-14">
                   <Calendar className="size-6 text-white sm:size-7" strokeWidth={2} />
                 </div>
                 <div className="min-w-0">
@@ -164,25 +164,25 @@ export function Booking({ standalone = false }: BookingProps) {
                 </div>
               </div>
               <span
-                className="flex size-9 shrink-0 items-center justify-center rounded-full border border-[#1d4ed8]/20 bg-white shadow-xs"
+                className="flex size-9 shrink-0 items-center justify-center rounded-full border border-[#063f35]/20 bg-white shadow-xs"
                 aria-hidden
               >
                 <ChevronDown
-                  className="size-5 text-[#1d4ed8] transition-transform duration-200"
+                  className="size-5 text-[#063f35] transition-transform duration-200"
                   style={{ transform: showCalendar ? "rotate(180deg)" : "rotate(0deg)" }}
                 />
               </span>
             </button>
 
             {showCalendar && (
-              <div className="border-t border-[#1d4ed8]/15 bg-white">
-                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#e2e8f0]/60 px-5 py-3 sm:px-6">
+              <div className="border-t border-[#063f35]/15 bg-white">
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#dfe5ec]/60 px-5 py-3 sm:px-6">
                   <p className="text-sm font-semibold text-navy">{t.booking.calendarTitle}</p>
                   <a
                     href={siteConfig.calLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-full bg-[#f1ebdd] px-3 py-1.5 text-xs font-semibold text-[#1d4ed8] transition-colors hover:bg-[#1d4ed8] hover:text-white"
+                    className="inline-flex items-center gap-1.5 rounded-full bg-[#edf1f5] px-3 py-1.5 text-xs font-semibold text-[#063f35] transition-colors hover:bg-[#063f35] hover:text-white"
                   >
                     {t.booking.openCalendar}
                     <ExternalLink className="size-3" />
@@ -199,7 +199,7 @@ export function Booking({ standalone = false }: BookingProps) {
           </div>
 
           {/* Footer */}
-          <div className="mt-8 flex flex-col items-center gap-3 border-t border-[#e2e8f0]/60 pt-6 sm:flex-row sm:justify-between">
+          <div className="mt-8 flex flex-col items-center gap-3 border-t border-[#dfe5ec]/60 pt-6 sm:flex-row sm:justify-between">
             <p className="text-center text-xs leading-relaxed text-muted-foreground">
               {t.booking.footer}
             </p>
@@ -207,7 +207,7 @@ export function Booking({ standalone = false }: BookingProps) {
               href={siteConfig.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-[#1d4ed8] hover:text-navy"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-[#063f35] hover:text-navy"
             >
               <MessageCircle className="size-4" />
               {t.booking.whatsapp}
