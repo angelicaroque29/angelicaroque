@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 672" role="img" aria-labelledby="t d">
+<title id="t">Sistemas antes y hacia dónde vamos</title>
+<desc id="d">Antes: estimación, control de costos, pagos a subcontratistas y producción en archivos separados, conectados copiando y pegando, con varias copias de la plantilla. Hacia dónde vamos: los cuatro conectados por un mismo ID de cliente y proyecto.</desc>
+<style>
+  .box { fill: var(--cell, #FFFFFF); stroke: var(--ink, #1C2630); stroke-width: 2; }
+  .ghost { fill: var(--cell, #FFFFFF); stroke: var(--slab, #D5D8D4); stroke-width: 2; }
+  .lbl { fill: var(--ink, #1C2630); font: 600 20px Archivo, "Helvetica Neue", Arial, sans-serif; }
+  .head { fill: var(--muted, #4A5560); font: 700 20px Archivo, "Helvetica Neue", Arial, sans-serif; }
+  .note { fill: var(--flag, #B42318); font: 500 16px Archivo, "Helvetica Neue", Arial, sans-serif; }
+  .dash { stroke: var(--flag, #B42318); stroke-width: 2.5; stroke-dasharray: 8 6; fill: none; }
+  .spine { fill: var(--rebar, #7A4A2E); }
+  .spine-lbl { fill: var(--on-rebar, #FFFFFF); font: 700 20px Archivo, "Helvetica Neue", Arial, sans-serif; }
+  .link { stroke: var(--rebar, #7A4A2E); stroke-width: 3; }
+</style>
+<text class="head" x="24" y="36">Antes</text>
+<rect class="ghost" x="36" y="58" width="272" height="64" rx="4"/>
+<rect class="ghost" x="30" y="64" width="272" height="64" rx="4"/>
+<rect class="box" x="24" y="70" width="272" height="64" rx="4"/><text class="lbl" x="160" y="109" text-anchor="middle">Estimación</text>
+<rect class="box" x="344" y="70" width="272" height="64" rx="4"/><text class="lbl" x="480" y="109" text-anchor="middle">Control de costos</text>
+<rect class="box" x="24" y="200" width="272" height="64" rx="4"/><text class="lbl" x="160" y="239" text-anchor="middle">Pagos a subcontratistas</text>
+<rect class="box" x="344" y="200" width="272" height="64" rx="4"/><text class="lbl" x="480" y="239" text-anchor="middle">Producción</text>
+<line class="dash" x1="296" y1="102" x2="344" y2="102"/>
+<line class="dash" x1="160" y1="134" x2="160" y2="200"/>
+<line class="dash" x1="480" y1="134" x2="480" y2="200"/>
+<text class="note" x="176" y="173">¿Cuál copia es la oficial?</text>
+<line class="dash" x1="24" y1="298" x2="64" y2="298"/>
+<text class="note" x="76" y="304">Copiar y pegar a mano</text>
+<text class="head" x="24" y="380">Hacia dónde vamos</text>
+<rect class="box" x="24" y="400" width="272" height="64" rx="4"/><text class="lbl" x="160" y="439" text-anchor="middle">Estimación</text>
+<rect class="box" x="344" y="400" width="272" height="64" rx="4"/><text class="lbl" x="480" y="439" text-anchor="middle">Control de costos</text>
+<line class="link" x1="160" y1="464" x2="160" y2="500"/>
+<line class="link" x1="480" y1="464" x2="480" y2="500"/>
+<rect class="spine" x="24" y="500" width="592" height="48" rx="4"/>
+<text class="spine-lbl" x="320" y="531" text-anchor="middle">Un ID por cliente y proyecto</text>
+<line class="link" x1="160" y1="548" x2="160" y2="584"/>
+<line class="link" x1="480" y1="548" x2="480" y2="584"/>
+<rect class="box" x="24" y="584" width="272" height="64" rx="4"/><text class="lbl" x="160" y="623" text-anchor="middle">Pagos a subcontratistas</text>
+<rect class="box" x="344" y="584" width="272" height="64" rx="4"/><text class="lbl" x="480" y="623" text-anchor="middle">Producción</text>
+</svg>

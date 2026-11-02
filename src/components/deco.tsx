@@ -4,8 +4,8 @@
 export function GradientBubble({
   size = 360,
   style,
-  colorA = "rgb(132 103 255 / 0.35)",
-  colorB = "rgb(197 212 240 / 0.55)",
+  colorA = "rgb(14 165 233 / 0.35)",
+  colorB = "rgb(214 191 140 / 0.55)",
   colorC = "transparent",
   className = "",
 }: {
@@ -36,7 +36,7 @@ export function CurvedPath({
   className = "",
   style,
   d,
-  stroke = "rgb(91 125 184 / 0.3)",
+  stroke = "rgb(62 92 138 / 0.3)",
   strokeWidth = 1.5,
   viewBox = "0 0 400 200",
 }: {
@@ -103,7 +103,7 @@ export function DotMatrix({
   rows = 6,
   gap = 18,
   r = 1.5,
-  fill = "rgb(30 58 95 / 0.1)",
+  fill = "rgb(14 23 38 / 0.1)",
   className = "",
   style,
 }: {
@@ -142,7 +142,7 @@ export function DotMatrix({
 /** Connecting dashed line between two points */
 export function ConnectLine({
   x1, y1, x2, y2,
-  stroke = "rgb(91 125 184 / 0.25)",
+  stroke = "rgb(62 92 138 / 0.25)",
   strokeWidth = 1,
   dashed = true,
   width = 200,
@@ -176,8 +176,8 @@ export function ConnectLine({
   );
 }
 
-const sketchStroke = "rgb(30 58 95 / 0.22)";
-const sketchStrokeLight = "rgb(42 157 143 / 0.35)";
+const sketchStroke = "rgb(14 23 38 / 0.22)";
+const sketchStrokeLight = "rgb(29 78 216 / 0.35)";
 
 /** Hand-drawn botanical branch */
 export function SketchBotanical({
@@ -236,11 +236,11 @@ export function SketchStars({
       fill="none"
       style={style}
     >
-      <path d="M12 18 L14 24 L20 24 L15 28 L17 34 L12 30 L7 34 L9 28 L4 24 L10 24 Z" stroke={sketchStrokeLight} strokeWidth={1} fill="rgb(42 157 143 / 0.08)" />
+      <path d="M12 18 L14 24 L20 24 L15 28 L17 34 L12 30 L7 34 L9 28 L4 24 L10 24 Z" stroke={sketchStrokeLight} strokeWidth={1} fill="rgb(29 78 216 / 0.08)" />
       <path d="M58 8 L59.5 12 L64 12 L60.5 14.5 L62 18.5 L58 16 L54 18.5 L55.5 14.5 L52 12 L56.5 12 Z" stroke={sketchStroke} strokeWidth={0.9} fill="none" />
-      <path d="M68 48 L69 51 L72 51 L69.5 53 L70.5 56 L68 54 L65.5 56 L66.5 53 L64 51 L67 51 Z" stroke={sketchStrokeLight} strokeWidth={0.8} fill="rgb(42 157 143 / 0.06)" />
-      <circle cx="36" cy="58" r="2" fill="rgb(30 58 95 / 0.12)" />
-      <circle cx="44" cy="22" r="1.5" fill="rgb(42 157 143 / 0.2)" />
+      <path d="M68 48 L69 51 L72 51 L69.5 53 L70.5 56 L68 54 L65.5 56 L66.5 53 L64 51 L67 51 Z" stroke={sketchStrokeLight} strokeWidth={0.8} fill="rgb(29 78 216 / 0.06)" />
+      <circle cx="36" cy="58" r="2" fill="rgb(14 23 38 / 0.12)" />
+      <circle cx="44" cy="22" r="1.5" fill="rgb(29 78 216 / 0.2)" />
     </svg>
   );
 }
@@ -303,9 +303,9 @@ export function SketchWorkspace({
     >
       <rect x="24" y="28" width="112" height="76" rx="8" stroke={sketchStroke} strokeWidth={1.4} />
       <path d="M24 48 H136" stroke={sketchStroke} strokeWidth={1} opacity={0.5} />
-      <circle cx="36" cy="38" r="3" fill="rgb(42 157 143 / 0.25)" />
-      <circle cx="46" cy="38" r="3" fill="rgb(30 58 95 / 0.12)" />
-      <circle cx="56" cy="38" r="3" fill="rgb(30 58 95 / 0.12)" />
+      <circle cx="36" cy="38" r="3" fill="rgb(29 78 216 / 0.25)" />
+      <circle cx="46" cy="38" r="3" fill="rgb(14 23 38 / 0.12)" />
+      <circle cx="56" cy="38" r="3" fill="rgb(14 23 38 / 0.12)" />
       <path d="M40 72 H88 M40 84 H72" stroke={sketchStrokeLight} strokeWidth={1.2} strokeLinecap="round" />
       <path d="M148 52 L176 36 V124 L148 108 Z" stroke={sketchStroke} strokeWidth={1.3} strokeLinejoin="round" />
       <path d="M156 64 H168 M156 76 H164 M156 88 H168" stroke={sketchStrokeLight} strokeWidth={1} strokeLinecap="round" />
@@ -316,7 +316,7 @@ export function SketchWorkspace({
         strokeLinecap="round"
       />
       <circle cx="168" cy="44" r="14" stroke={sketchStrokeLight} strokeWidth={1.2} />
-      <path d="M162 44 L166 48 L176 36" stroke="rgb(42 157 143 / 0.5)" strokeWidth={1.2} strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M162 44 L166 48 L176 36" stroke="rgb(29 78 216 / 0.5)" strokeWidth={1.2} strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -367,8 +367,8 @@ export function SketchOrbit({
     >
       <circle cx="44" cy="44" r="36" stroke={sketchStroke} strokeWidth={1.2} strokeDasharray="3 5" />
       <circle cx="44" cy="44" r="24" stroke={sketchStrokeLight} strokeWidth={1} />
-      <circle cx="76" cy="30" r="4" fill="rgb(42 157 143 / 0.3)" />
-      <circle cx="18" cy="58" r="3" fill="rgb(30 58 95 / 0.15)" />
+      <circle cx="76" cy="30" r="4" fill="rgb(29 78 216 / 0.3)" />
+      <circle cx="18" cy="58" r="3" fill="rgb(14 23 38 / 0.15)" />
     </svg>
   );
 }

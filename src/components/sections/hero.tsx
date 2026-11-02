@@ -9,22 +9,21 @@ import { useLocale } from "@/lib/i18n/context";
 import { siteConfig } from "@/lib/site-config";
 
 const statIcons = [Briefcase, FolderKanban, Languages, MapPin] as const;
-const outcomeColors = ["#2a9d8f", "#1e3a5f", "#5b8fa8"];
 
 function PhotoFrame() {
   return (
     <>
       <GradientBubble
         size={420}
-        colorA="rgb(42 157 143 / 0.18)"
-        colorB="rgb(221 245 241 / 0.45)"
+        colorA="rgb(29 78 216 / 0.18)"
+        colorB="rgb(232 240 254 / 0.45)"
         className="hidden lg:block"
         style={{ top: "-14%", right: "-18%", zIndex: 0 }}
       />
       <GradientBubble
         size={180}
-        colorA="rgb(30 58 95 / 0.1)"
-        colorB="rgb(232 228 245 / 0.35)"
+        colorA="rgb(14 23 38 / 0.1)"
+        colorB="rgb(232 240 254 / 0.35)"
         className="hidden lg:block"
         style={{ bottom: "-5%", left: "-8%", zIndex: 0 }}
       />
@@ -43,10 +42,10 @@ function PhotoFrame() {
       />
 
       <div className="orbit-dot hidden size-3 lg:block" style={{ top: "2%", left: "50%", zIndex: 3 }} />
-      <div className="orbit-dot hidden size-2 lg:block" style={{ top: "48%", right: "0%", zIndex: 3, background: "rgb(42 157 143 / 0.4)" }} />
-      <div className="orbit-dot hidden size-4 lg:block" style={{ bottom: "6%", left: "8%", zIndex: 3, background: "rgb(42 157 143 / 0.45)" }} />
-      <div className="orbit-dot hidden size-1.5 lg:block" style={{ top: "25%", right: "4%", zIndex: 3, background: "rgb(30 58 95 / 0.3)" }} />
-      <div className="orbit-dot hidden size-2.5 lg:block" style={{ top: "72%", left: "2%", zIndex: 3, background: "rgb(42 157 143 / 0.25)" }} />
+      <div className="orbit-dot hidden size-2 lg:block" style={{ top: "48%", right: "0%", zIndex: 3, background: "rgb(29 78 216 / 0.4)" }} />
+      <div className="orbit-dot hidden size-4 lg:block" style={{ bottom: "6%", left: "8%", zIndex: 3, background: "rgb(29 78 216 / 0.45)" }} />
+      <div className="orbit-dot hidden size-1.5 lg:block" style={{ top: "25%", right: "4%", zIndex: 3, background: "rgb(14 23 38 / 0.3)" }} />
+      <div className="orbit-dot hidden size-2.5 lg:block" style={{ top: "72%", left: "2%", zIndex: 3, background: "rgb(29 78 216 / 0.25)" }} />
 
       <SketchBotanical
         className="deco-float-slow absolute -left-4 bottom-12 hidden opacity-75 lg:block"
@@ -59,7 +58,7 @@ function PhotoFrame() {
       />
 
       <div
-        className="pointer-events-none absolute -right-2.5 bottom-3 left-3 top-2.5 hidden rounded-[1.75rem] border border-[#5b7db8]/15 lg:block"
+        className="pointer-events-none absolute -right-2.5 bottom-3 left-3 top-2.5 hidden rounded-[1.75rem] border border-[#3e5c8a]/15 lg:block"
         style={{ zIndex: 2 }}
       />
 
@@ -68,7 +67,7 @@ function PhotoFrame() {
         rows={4}
         gap={14}
         r={1.5}
-        fill="rgb(30 58 95 / 0.1)"
+        fill="rgb(14 23 38 / 0.1)"
         className="hidden lg:block"
         style={{ bottom: "0.5rem", right: "-0.5rem", zIndex: 2 }}
       />
@@ -84,17 +83,17 @@ export function Hero() {
       <div className="hero-deck">
         <div
           className="deco-blob"
-          style={{ width: 520, height: 520, top: "-22%", left: "-14%", background: "rgb(197 212 240 / 0.22)" }}
+          style={{ width: 520, height: 520, top: "-22%", left: "-14%", background: "rgb(214 191 140 / 0.22)" }}
         />
         <div
           className="deco-blob"
-          style={{ width: 380, height: 380, bottom: "-18%", right: "-8%", background: "rgb(221 245 241 / 0.24)" }}
+          style={{ width: 380, height: 380, bottom: "-18%", right: "-8%", background: "rgb(232 240 254 / 0.24)" }}
         />
 
         <GradientBubble
           size={300}
-          colorA="rgb(42 157 143 / 0.12)"
-          colorB="rgb(232 228 245 / 0.35)"
+          colorA="rgb(29 78 216 / 0.12)"
+          colorB="rgb(232 240 254 / 0.35)"
           className="hidden lg:block"
           style={{ top: "-4%", right: "2%", zIndex: 0 }}
         />
@@ -115,7 +114,7 @@ export function Hero() {
           rows={6}
           gap={18}
           r={1.6}
-          fill="rgb(30 58 95 / 0.08)"
+          fill="rgb(14 23 38 / 0.08)"
           className="hidden lg:block"
           style={{ top: "1.5rem", right: "1.5rem", zIndex: 1 }}
         />
@@ -124,9 +123,9 @@ export function Hero() {
           className="hidden lg:block"
           style={{ top: "22%", left: "1rem", zIndex: 1 }}
           dots={[
-            { cx: 12, cy: 8, r: 8, fill: "rgb(42 157 143 / 0.14)" },
-            { cx: 36, cy: 28, r: 5, fill: "rgb(30 58 95 / 0.12)" },
-            { cx: 8, cy: 46, r: 12, fill: "rgb(42 157 143 / 0.1)" },
+            { cx: 12, cy: 8, r: 8, fill: "rgb(29 78 216 / 0.14)" },
+            { cx: 36, cy: 28, r: 5, fill: "rgb(14 23 38 / 0.12)" },
+            { cx: 8, cy: 46, r: 12, fill: "rgb(29 78 216 / 0.1)" },
           ]}
         />
 
@@ -134,7 +133,7 @@ export function Hero() {
           className="hidden lg:block"
           style={{ top: "6%", left: "28%", width: "50%", zIndex: 1 }}
           d="M 0 120 Q 140 20 300 80 T 520 40"
-          stroke="rgb(42 157 143 / 0.14)"
+          stroke="rgb(29 78 216 / 0.14)"
           strokeWidth={1.5}
           viewBox="0 0 520 140"
         />
@@ -146,34 +145,22 @@ export function Hero() {
           <div className="hero-deck-copy order-2 flex flex-col justify-center pb-2 text-center lg:order-1 lg:text-left">
             <div className="fade-in-1 flex justify-center lg:justify-start">
               <span className="micro-chip">
-                <span className="pulse-dot mr-1.5 inline-block size-1.5 rounded-full" style={{ background: "#2a9d8f" }} />
+                <span className="pulse-dot mr-1.5 inline-block size-1.5 rounded-full" style={{ background: "#1d4ed8" }} />
                 {t.hero.chip}
               </span>
             </div>
 
-            <p className="hero-greeting mt-5">{t.hero.greeting}</p>
-            <h1 className="hero-name mt-2">{t.hero.name}</h1>
-            <p className="fade-in-2 mt-4 font-heading text-[clamp(1.15rem,2.2vw,1.45rem)] font-semibold leading-snug tracking-tight text-navy">
+            <p className="hero-greeting mt-3 lg:mt-5">{t.hero.greeting}</p>
+            <h1 className="hero-name mt-1 lg:mt-2">{t.hero.name}</h1>
+            <p className="fade-in-2 mt-2 font-heading text-[1.05rem] font-semibold leading-snug tracking-tight text-navy sm:text-[clamp(1.15rem,2.2vw,1.45rem)] lg:mt-4">
               {t.hero.title}{" "}
               <span className="shimmer-text">{t.hero.titleHighlight}</span>
             </p>
-            <p className="fade-in-3 mx-auto mt-5 max-w-md text-sm leading-[1.85] text-muted-foreground sm:text-[0.9375rem] lg:mx-0">
+            <p className="fade-in-3 mx-auto mt-2 max-w-md text-[13px] leading-snug text-muted-foreground sm:text-[0.9375rem] sm:leading-[1.85] lg:mx-0 lg:mt-5">
               {t.hero.subtitle}
             </p>
 
-            <div className="fade-in-3 mx-auto mt-5 flex flex-wrap justify-center gap-2 lg:justify-start">
-              {t.hero.outcomes.map((o, i) => (
-                <span
-                  key={o}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[#e7e2da] bg-white px-3 py-1.5 text-[11px] font-medium text-navy shadow-xs"
-                >
-                  <span className="size-1.5 rounded-full" style={{ background: outcomeColors[i] }} />
-                  {o}
-                </span>
-              ))}
-            </div>
-
-            <div className="fade-in-4 mt-7 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
+            <div className="fade-in-4 mt-4 flex flex-row flex-wrap items-center justify-center gap-2.5 lg:mt-7 lg:justify-start">
               <CtaButton href={routes.services} showArrow className="!h-11 !px-7">
                 {t.hero.primaryCta}
               </CtaButton>
@@ -198,7 +185,7 @@ export function Hero() {
                   className="hero-social-btn"
                   aria-label="Instagram"
                 >
-                  <Globe className="size-4 text-[#2a9d8f]" />
+                  <Globe className="size-4 text-[#1d4ed8]" />
                 </a>
                 <a
                   href={siteConfig.calLink}
@@ -212,12 +199,12 @@ export function Hero() {
               </div>
             </div>
 
-            <div className="fade-in-4 mt-8 hidden border-t border-[#e7e2da]/70 pt-6 lg:grid lg:grid-cols-2 lg:gap-3">
+            <div className="fade-in-4 mt-8 hidden border-t border-[#e2e8f0]/70 pt-6 lg:grid lg:grid-cols-2 lg:gap-3">
               {t.hero.stats.map((item, i) => {
                 const Icon = statIcons[i] ?? Briefcase;
                 return (
                   <div key={item.label} className="flex items-center gap-2.5 text-left">
-                    <span className="flex size-8 shrink-0 items-center justify-center rounded-full border border-[#e7e2da] bg-white shadow-xs">
+                    <span className="flex size-8 shrink-0 items-center justify-center rounded-full border border-[#e2e8f0] bg-white shadow-xs">
                       <Icon className="size-3.5 text-teal" />
                     </span>
                     <span>
@@ -234,7 +221,7 @@ export function Hero() {
             <PhotoFrame />
 
             <div className="hero-deck-photo-inner">
-              <div className="overflow-hidden rounded-[1.5rem] border border-[#e7e2da] bg-white shadow-xl">
+              <div className="overflow-hidden rounded-[1.5rem] border border-[#e2e8f0] bg-white shadow-xl">
                 <Image
                   src={siteConfig.images.profile}
                   alt={siteConfig.founder}
@@ -244,14 +231,14 @@ export function Hero() {
                   quality={100}
                   unoptimized
                   sizes="(max-width: 1024px) 70vw, 420px"
-                  className="aspect-[4/5] w-full object-cover object-[center_22%]"
+                  className="aspect-[4/5] w-full object-cover object-[center_18%] lg:aspect-[4/5]"
                 />
               </div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-[#e7e2da]/70 px-5 py-5 lg:hidden">
+        <div className="border-t border-[#e2e8f0]/70 px-5 py-5 lg:hidden">
           <div className="grid grid-cols-2 gap-3">
             {t.hero.stats.map((item) => (
               <div key={item.label}>

@@ -1,0 +1,205 @@
+{
+  "_nota": "Edita aquí los estados y tu link de contacto. Estados posibles: done, in_progress, next. Los estados actuales salen de los documentos del proyecto al 2 de noviembre de 2026: confírmalos antes de publicar.",
+  "meta": {
+    "slug_es": "/casos/contratista-estructura",
+    "slug_en": "/en/cases/structural-contractor",
+    "indexable": false,
+    "title_es": "Su estimado se ve perfecto. Ese es el problema.",
+    "title_en": "Your estimate looks perfect. That's the problem.",
+    "description_es": "Cómo encontramos nueve errores silenciosos en la plantilla de estimación de un contratista de estructura, y qué estamos construyendo para que no vuelvan.",
+    "description_en": "How we found nine silent errors in a structural contractor's estimating template, and what we're building so they don't come back."
+  },
+  "cta": {
+    "url": "[TU_LINK_DE_AGENDA, por ejemplo Calendly]",
+    "email": "[TU_EMAIL_DE_NEGOCIO]",
+    "label_primary_es": "Revisar mi plantilla",
+    "label_primary_en": "Review my template",
+    "label_secondary_es": "Ver qué encontramos",
+    "label_secondary_en": "See what we found",
+    "label_closing_es": "Agendar 20 minutos",
+    "label_closing_en": "Book 20 minutes"
+  },
+  "status_labels": {
+    "es": { "done": "Hecho", "in_progress": "En curso", "next": "Siguiente" },
+    "en": { "done": "Done", "in_progress": "In progress", "next": "Next" }
+  },
+  "process": [
+    {
+      "id": "diagnosis",
+      "status": "done",
+      "title_es": "Diagnóstico",
+      "body_es": "Revisar cada sistema y auditar la plantilla contra un estimado real.",
+      "title_en": "Diagnosis",
+      "body_en": "Review every system and audit the template against a real estimate."
+    },
+    {
+      "id": "quick-fixes",
+      "status": "in_progress",
+      "title_es": "Arreglos inmediatos",
+      "body_es": "Corregir las fórmulas, validar los datos de entrada y marcar en rojo cualquier margen negativo.",
+      "title_en": "Immediate fixes",
+      "body_en": "Correct the formulas, validate input data and flag any negative margin in red."
+    },
+    {
+      "id": "project-id",
+      "status": "in_progress",
+      "title_es": "Un ID para cada proyecto",
+      "body_es": "El mismo código de cliente y proyecto viaja del estimado a la propuesta, al control de costos y a los pagos.",
+      "title_en": "One ID per project",
+      "body_en": "The same customer and project code travels from the estimate to the proposal, cost control and payments."
+    },
+    {
+      "id": "cost-control",
+      "status": "next",
+      "title_es": "Control de costos desde el estimado",
+      "body_es": "El presupuesto de cada proyecto sale directo del estimado ganado, sin volver a teclearlo.",
+      "title_en": "Cost control from the estimate",
+      "body_en": "Each project's budget comes straight from the winning estimate, with no retyping."
+    },
+    {
+      "id": "engine",
+      "status": "next",
+      "title_es": "Nuevo motor de cálculo",
+      "body_es": "Separar el cálculo de cantidades del precio, con tablas de factores que el equipo puede editar.",
+      "title_en": "New calculation engine",
+      "body_en": "Separate quantity calculations from pricing, with factor tables the team can edit."
+    },
+    {
+      "id": "single-source",
+      "status": "next",
+      "title_es": "Una sola versión oficial",
+      "body_es": "Un archivo central con historial de versiones.",
+      "title_en": "One official version",
+      "body_en": "A single central file with version history."
+    }
+  ],
+  "also": {
+    "status": "done",
+    "title_es": "Además",
+    "body_es": "Organizamos la documentación de la empresa en una biblioteca ordenada por sistema y montamos un asistente de IA que responde preguntas sobre cómo funciona la empresa a partir de esos documentos. El conocimiento deja de depender de quién esté en la oficina ese día.",
+    "title_en": "Also",
+    "body_en": "We organized the company's documentation into a library sorted by system and set up an AI assistant that answers questions about how the company works, using those documents. Knowledge no longer depends on who happens to be in the office that day."
+  },
+  "findings_count": 9,
+  "findings": [
+    {
+      "title_es": "Una fase completa fuera del total.",
+      "body_es": "Sus costos llegaban al detalle, pero nunca al costo total. Cualquier proyecto con esa fase saldría más barato de lo que realmente cuesta.",
+      "title_en": "A whole phase left out of the total.",
+      "body_en": "Its costs reached the detail lines but never the total cost. Any project with that phase would be priced below what it actually costs."
+    },
+    {
+      "title_es": "Una sección del edificio sin mano de obra.",
+      "body_es": "El total de mano de obra se saltaba una sección completa.",
+      "title_en": "A section of the building with no labor.",
+      "body_en": "The labor total skipped an entire section."
+    },
+    {
+      "title_es": "Materiales leídos de la fase equivocada.",
+      "body_es": "Dos fases tomaban sus cantidades de otra fase.",
+      "title_en": "Materials read from the wrong phase.",
+      "body_en": "Two phases pulled their quantities from another phase."
+    },
+    {
+      "title_es": "Un espacio que vale cero.",
+      "body_es": "Un espacio en blanco en una celda dejaba en cero la mano de obra de un elemento. Ningún error en rojo: el resumen se veía limpio.",
+      "title_en": "A space that counts as zero.",
+      "body_en": "A single blank space in a cell zeroed out the labor on a member. No red error: the summary looked clean."
+    },
+    {
+      "title_es": "Códigos duplicados.",
+      "body_es": "Dos partidas compartían el mismo código.",
+      "title_en": "Duplicate codes.",
+      "body_en": "Two line items shared the same code."
+    }
+  ],
+  "checklist_es": [
+    "Estiman en Excel, con macros que solo entiende una persona.",
+    "Hay más de una versión de la plantilla circulando.",
+    "El control de costos se arma a mano después de ganar el trabajo.",
+    "Los pagos a subcontratistas viven en otro archivo.",
+    "Nadie revisa la plantilla hasta que un trabajo pierde dinero."
+  ],
+  "checklist_en": [
+    "You estimate in Excel, with macros only one person understands.",
+    "More than one version of the template is going around.",
+    "Cost control gets built by hand after you win the job.",
+    "Subcontractor payments live in a separate file.",
+    "Nobody reviews the template until a job loses money."
+  ],
+  "demo": {
+    "_nota": "Números inventados, solo para ilustrar. No son del cliente.",
+    "labor": {
+      "factor_hours_per_ft": 0.5,
+      "rate_per_hour": 62,
+      "rows": [
+        { "id": "V-1", "length": 24, "qty": 6 },
+        { "id": "V-2", "length": " ", "qty": 4, "fixed_length": 20 },
+        { "id": "V-3", "length": 18, "qty": 8 },
+        { "id": "V-4", "length": 30, "qty": 2 }
+      ]
+    },
+    "phases": {
+      "rows": [
+        { "name_es": "Cimentación", "name_en": "Foundations", "cost": 186400 },
+        { "name_es": "Losas", "name_en": "Slabs", "cost": 241900 },
+        { "name_es": "Columnas y vigas", "name_en": "Columns and beams", "cost": 158300 },
+        { "name_es": "Terrazas", "name_en": "Decks", "cost": 37600, "excluded": true }
+      ]
+    },
+    "es": {
+      "heading": "Encuentre el error",
+      "intro": "Así se ve una plantilla con un error silencioso. Los números son ilustrativos.",
+      "tab_labor": "Una celda con un espacio",
+      "tab_phases": "Una fase fuera del total",
+      "col_element": "Elemento",
+      "col_length": "Largo (ft)",
+      "col_qty": "Cantidad",
+      "col_hours": "Mano de obra (h)",
+      "row_total_hours": "Total horas",
+      "row_labor_cost": "Costo de mano de obra a $62/h",
+      "col_phase": "Fase",
+      "col_cost": "Costo",
+      "row_total": "Costo total",
+      "formula_labor": "=HORAS_MO(B3;C3)",
+      "formula_phases_bad": "=SUMA(B2:B4)",
+      "formula_phases_good": "=SUMA(B2:B5)",
+      "btn_reveal": "Mostrar el error",
+      "btn_fix": "Corregir",
+      "btn_reset": "Volver a empezar",
+      "msg_labor_start": "Todo suma y no hay ningún error en rojo. ¿Lo ve?",
+      "msg_labor_reveal": "B3 tiene un espacio, no un número. La macro de la plantilla convierte el error en 0, así que la fila no aporta mano de obra y nada se marca.",
+      "msg_labor_fix": "Una sola celda: $2,480 de mano de obra que no estaban en el estimado. Una plantilla real tiene cientos de filas como esta.",
+      "msg_phases_start": "Cuatro fases, un total. Se ve bien.",
+      "msg_phases_reveal": "El total suma B2:B4. Terrazas está en B5 y nunca entra al precio.",
+      "msg_phases_fix": "$37,600 fuera del precio. Con márgenes de un solo dígito, eso puede ser toda la ganancia del trabajo."
+    },
+    "en": {
+      "heading": "Find the error",
+      "intro": "This is what a template with a silent error looks like. The numbers are illustrative.",
+      "tab_labor": "A cell with a space",
+      "tab_phases": "A phase left out of the total",
+      "col_element": "Member",
+      "col_length": "Length (ft)",
+      "col_qty": "Qty",
+      "col_hours": "Labor (h)",
+      "row_total_hours": "Total hours",
+      "row_labor_cost": "Labor cost at $62/h",
+      "col_phase": "Phase",
+      "col_cost": "Cost",
+      "row_total": "Total cost",
+      "formula_labor": "=LABOR_HRS(B3,C3)",
+      "formula_phases_bad": "=SUM(B2:B4)",
+      "formula_phases_good": "=SUM(B2:B5)",
+      "btn_reveal": "Show the error",
+      "btn_fix": "Fix it",
+      "btn_reset": "Start over",
+      "msg_labor_start": "Everything adds up and there's no red error. Can you spot it?",
+      "msg_labor_reveal": "B3 holds a space, not a number. The template's macro turns the error into 0, so the row adds no labor and nothing gets flagged.",
+      "msg_labor_fix": "One cell: $2,480 of labor that wasn't in the estimate. A real template has hundreds of rows like this.",
+      "msg_phases_start": "Four phases, one total. Looks fine.",
+      "msg_phases_reveal": "The total adds B2:B4. Decks sits in B5 and never makes it into the price.",
+      "msg_phases_fix": "$37,600 left out of the price. With single-digit margins, that can be the job's entire profit."
+    }
+  }
+}

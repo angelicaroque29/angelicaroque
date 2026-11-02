@@ -1,19 +1,29 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import { JotformAgentEmbed } from "@/components/jotform-agent-embed";
 import { Providers } from "@/components/providers";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
-const inter = Inter({
+const inter = localFont({
+  src: "../fonts/Inter-Variable.woff2",
   variable: "--font-inter",
-  subsets: ["latin"],
+  weight: "100 900",
+  display: "swap",
 });
 
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
+const spaceGrotesk = localFont({
+  src: "../fonts/SpaceGrotesk-Variable.woff2",
+  variable: "--font-space-grotesk",
+  weight: "300 700",
+  display: "swap",
+});
+
+const jetbrainsMono = localFont({
+  src: "../fonts/JetBrainsMono-Variable.woff2",
+  variable: "--font-jetbrains-mono",
+  weight: "100 800",
+  display: "swap",
 });
 
 const title = "Angélica Roque · Sistemas con IA para negocios";
@@ -31,11 +41,20 @@ export const metadata: Metadata = {
     description,
     type: "website",
     locale: "es_US",
-    images: [{ url: siteConfig.images.profile, alt: "Angélica Roque" }],
+    images: [
+      {
+        url: siteConfig.images.socialShare,
+        width: 1200,
+        height: 630,
+        alt: "Angélica Roque · Software, IA y automatización",
+      },
+    ],
   },
-  icons: {
-    icon: "/icon.svg",
-    apple: "/images/angelica-roque-icon.png",
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [siteConfig.images.socialShare],
   },
 };
 
@@ -47,7 +66,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${inter.variable} ${plusJakarta.variable} h-full antialiased`}
+      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-screen w-full flex-col">
         <Providers>{children}</Providers>

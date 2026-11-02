@@ -17,14 +17,14 @@ export function CtaBanner() {
 
         <GradientBubble
           size={280}
-          colorA="rgb(42 157 143 / 0.14)"
-          colorB="rgb(232 228 245 / 0.4)"
+          colorA="rgb(29 78 216 / 0.14)"
+          colorB="rgb(232 240 254 / 0.4)"
           style={{ bottom: "-20%", right: "-8%", zIndex: 0 }}
         />
         <GradientBubble
           size={140}
-          colorA="rgb(30 58 95 / 0.08)"
-          colorB="rgb(221 245 241 / 0.45)"
+          colorA="rgb(14 23 38 / 0.08)"
+          colorB="rgb(232 240 254 / 0.45)"
           style={{ top: "-15%", left: "-4%", zIndex: 0 }}
         />
 
@@ -47,7 +47,7 @@ export function CtaBanner() {
           rows={5}
           gap={16}
           r={1.5}
-          fill="rgb(30 58 95 / 0.08)"
+          fill="rgb(14 23 38 / 0.08)"
           className="hidden lg:block"
           style={{ top: "0.75rem", right: "1rem", zIndex: 1 }}
         />
@@ -56,7 +56,7 @@ export function CtaBanner() {
           className="hidden lg:block"
           style={{ top: 0, left: 0, width: "100%", height: "60%", zIndex: 1 }}
           d="M 0 100 Q 200 30 480 80 T 900 50"
-          stroke="rgb(42 157 143 / 0.14)"
+          stroke="rgb(29 78 216 / 0.14)"
           strokeWidth={1.5}
           viewBox="0 0 900 110"
         />
@@ -65,9 +65,9 @@ export function CtaBanner() {
           className="hidden lg:block"
           style={{ bottom: "1.5rem", left: "3rem", zIndex: 1 }}
           dots={[
-            { cx: 8, cy: 8, r: 5, fill: "rgb(42 157 143 / 0.18)" },
-            { cx: 24, cy: 20, r: 3, fill: "rgb(30 58 95 / 0.12)" },
-            { cx: 40, cy: 8, r: 4, fill: "rgb(42 157 143 / 0.14)" },
+            { cx: 8, cy: 8, r: 5, fill: "rgb(29 78 216 / 0.18)" },
+            { cx: 24, cy: 20, r: 3, fill: "rgb(14 23 38 / 0.12)" },
+            { cx: 40, cy: 8, r: 4, fill: "rgb(29 78 216 / 0.14)" },
           ]}
         />
 
@@ -78,7 +78,7 @@ export function CtaBanner() {
               {t.ctaBanner.title}{" "}
               <span
                 style={{
-                  background: "linear-gradient(105deg, #1e3a5f, #2a9d8f)",
+                  background: "linear-gradient(105deg, #0e1726, #1d4ed8)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -94,7 +94,7 @@ export function CtaBanner() {
               {t.ctaBanner.perks.map((p) => (
                 <span
                   key={p}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[#e7e2da] bg-white/80 px-3 py-1 text-[11px] font-medium text-navy"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#e2e8f0] bg-white/80 px-3 py-1 text-[11px] font-medium text-navy"
                 >
                   <ArrowRight className="size-3 text-teal" />
                   {p}

@@ -24,17 +24,17 @@ export function Faq() {
 
   return (
     <Section id="faq" flush wash="lavender" className="!py-14 lg:!py-20">
-      <div className="relative overflow-hidden rounded-[1.75rem] border border-[#e7e2da]/80 bg-[linear-gradient(155deg,#faf8f3_0%,#ffffff_45%,#f4faf9_100%)] px-5 py-10 shadow-sm sm:px-8 lg:px-12 lg:py-14">
+      <div className="relative overflow-hidden rounded-[1.75rem] border border-[#e2e8f0]/80 bg-[linear-gradient(155deg,#faf8f3_0%,#ffffff_45%,#f4faf9_100%)] px-5 py-10 shadow-sm sm:px-8 lg:px-12 lg:py-14">
         <GradientBubble
           size={200}
-          colorA="rgb(42 157 143 / 0.1)"
-          colorB="rgb(232 228 245 / 0.4)"
+          colorA="rgb(29 78 216 / 0.1)"
+          colorB="rgb(232 240 254 / 0.4)"
           style={{ top: "-12%", left: "-6%", zIndex: 0 }}
         />
         <GradientBubble
           size={160}
-          colorA="rgb(30 58 95 / 0.06)"
-          colorB="rgb(221 245 241 / 0.45)"
+          colorA="rgb(14 23 38 / 0.06)"
+          colorB="rgb(232 240 254 / 0.45)"
           style={{ bottom: "-10%", right: "-4%", zIndex: 0 }}
         />
 
@@ -43,7 +43,7 @@ export function Faq() {
           rows={5}
           gap={16}
           r={1.4}
-          fill="rgb(30 58 95 / 0.07)"
+          fill="rgb(14 23 38 / 0.07)"
           className="hidden lg:block"
           style={{ top: "1rem", right: "1.25rem", zIndex: 1 }}
         />
@@ -52,7 +52,7 @@ export function Faq() {
           className="hidden lg:block"
           style={{ bottom: "2rem", left: "0", width: "45%", zIndex: 1 }}
           d="M 0 60 Q 80 20 200 50 T 360 30"
-          stroke="rgb(42 157 143 / 0.14)"
+          stroke="rgb(29 78 216 / 0.14)"
           strokeWidth={1.5}
           viewBox="0 0 360 80"
         />
@@ -86,7 +86,7 @@ export function Faq() {
               <SketchArcs className="absolute -bottom-2 -left-4 opacity-70" />
             </div>
 
-            <div className="mt-8 hidden rounded-[1.15rem] border border-[#e7e2da] bg-white/80 p-5 shadow-xs lg:block">
+            <div className="mt-8 hidden rounded-[1.15rem] border border-[#e2e8f0] bg-white/80 p-5 shadow-xs lg:block">
               <p className="text-sm font-semibold text-navy">{t.faq.stillCurious}</p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.faq.stillCuriousText}</p>
               <CtaButton href={routes.booking} showArrow className="mt-4 !h-10">
@@ -105,7 +105,7 @@ export function Faq() {
                     "overflow-hidden rounded-[1.15rem] border bg-white/90 transition-all duration-300",
                     isOpen
                       ? "border-teal/25 shadow-[0_8px_28px_rgb(42_157_143_/_0.08)]"
-                      : "border-[#e7e2da]/90 shadow-xs hover:border-[#e7e2da]"
+                      : "border-[#e2e8f0]/90 shadow-xs hover:border-[#e2e8f0]"
                   )}
                   style={{
                     animation: `fadeIn 0.6s cubic-bezier(.22,.68,0,1.2) ${0.05 + index * 0.04}s both`,
@@ -126,8 +126,8 @@ export function Faq() {
                       className={cn(
                         "mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full border transition-all duration-300",
                         isOpen
-                          ? "border-teal/30 bg-[#ddf5f1] text-teal"
-                          : "border-[#e7e2da] bg-[#faf8f3] text-muted-foreground"
+                          ? "border-teal/30 bg-[#e8f0fe] text-teal"
+                          : "border-[#e2e8f0] bg-[#f4f7fb] text-muted-foreground"
                       )}
                     >
                       <ChevronDown
@@ -146,7 +146,7 @@ export function Faq() {
                     )}
                   >
                     <div className="overflow-hidden">
-                      <p className="border-t border-[#f0ece6] px-5 pb-5 pt-3 text-sm leading-[1.85] text-muted-foreground sm:px-6 sm:pb-6">
+                      <p className="border-t border-[#e8eef5] px-5 pb-5 pt-3 text-sm leading-[1.85] text-muted-foreground sm:px-6 sm:pb-6">
                         {item.answer}
                       </p>
                     </div>
@@ -155,7 +155,7 @@ export function Faq() {
               );
             })}
 
-            <div className="rounded-[1.15rem] border border-[#e7e2da] bg-white/80 p-5 shadow-xs lg:hidden">
+            <div className="rounded-[1.15rem] border border-[#e2e8f0] bg-white/80 p-5 shadow-xs lg:hidden">
               <p className="text-sm font-semibold text-navy">{t.faq.stillCurious}</p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.faq.stillCuriousText}</p>
               <CtaButton href={routes.booking} showArrow className="mt-4 w-full !h-10">
