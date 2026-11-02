@@ -5,7 +5,7 @@ import data from "../../../../../content/caso-estudio-estructura/contenido/data.
 export const metadata: Metadata = {
   title: { absolute: data.meta.title_es },
   description: data.meta.description_es,
-  robots: { index: false, follow: false },
+  robots: { index: data.meta.indexable, follow: data.meta.indexable },
   openGraph: {
     title: data.meta.title_es,
     description: data.meta.description_es,

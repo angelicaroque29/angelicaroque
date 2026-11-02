@@ -15,7 +15,15 @@ export function CaseTeaser() {
     <Section id="casos" flush className="!py-8 lg:!py-10">
       <div className="grid overflow-hidden rounded-[20px] border border-[#dfe5ec] bg-white md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         <div className="flex flex-col justify-center px-5 py-8 sm:px-8 lg:px-10 lg:py-12">
-          <p className="section-eyebrow">{copy.label}</p>
+          <Image
+            src="/casos/thales/thales-builders-logo.png"
+            alt="Thales Builders Corp."
+            width={1699}
+            height={294}
+            className="h-auto w-[190px] sm:w-[220px]"
+            sizes="220px"
+          />
+          <p className="section-eyebrow mt-6">{copy.label}</p>
           <h2 className="heading-editorial text-navy">{copy.title}</h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">{copy.body}</p>
           <dl className="mt-6 grid grid-cols-3 gap-3 border-y border-[#dfe5ec] py-5">
@@ -24,7 +32,7 @@ export function CaseTeaser() {
                 <dt className="mt-1 font-mono text-[11px] leading-snug text-muted-foreground uppercase">
                   {stat.label}
                 </dt>
-                <dd className="font-heading text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
+                <dd className="font-heading text-2xl font-semibold tracking-tight whitespace-nowrap text-navy sm:text-3xl">
                   {stat.value}
                 </dd>
               </div>

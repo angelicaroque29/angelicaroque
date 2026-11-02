@@ -3,11 +3,11 @@
   "meta": {
     "slug_es": "/casos/contratista-estructura",
     "slug_en": "/en/cases/structural-contractor",
-    "indexable": false,
-    "title_es": "Su estimado se ve perfecto. Ese es el problema.",
-    "title_en": "Your estimate looks perfect. That's the problem.",
-    "description_es": "Cómo encontramos nueve errores silenciosos en la plantilla de estimación de un contratista de estructura, y qué estamos construyendo para que no vuelvan.",
-    "description_en": "How we found nine silent errors in a structural contractor's estimating template, and what we're building so they don't come back."
+    "indexable": true,
+    "title_es": "Caso real: Thales Builders | De sistemas sueltos a sistemas conectados",
+    "title_en": "Real case: Thales Builders | From disconnected to connected systems",
+    "description_es": "Mapeamos 26 traspasos de información en una constructora y solo 1 era automático. Capturamos 255 datos en 5 semanas y automatizamos la facturación de costos, validada al centavo en $554K.",
+    "description_en": "We mapped 26 information handoffs at a construction company and found only one was automatic. We captured 255 facts in 5 weeks and automated job-cost billing, validated to the cent on $554K."
   },
   "cta": {
     "url": "[TU_LINK_DE_AGENDA, por ejemplo Calendly]",

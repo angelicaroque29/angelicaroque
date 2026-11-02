@@ -11,8 +11,6 @@ type Step = 0 | 1 | 2;
 const FACTOR = data.demo.labor.factor_hours_per_ft;
 const RATE = data.demo.labor.rate_per_hour;
 const laborRows = data.demo.labor.rows;
-const phaseRows = data.demo.phases.rows;
-const phaseCosts = phaseRows.map((row) => row.cost);
 
 function money(n: number) {
   return `$${Math.round(n).toLocaleString("en-US")}`;
@@ -185,70 +183,6 @@ export function LaborDemo({ locale }: { locale: Locale }) {
               <th className="rn">{laborRows.length + 3}</th>
               <td colSpan={3}>{copy.row_labor_cost}</td>
               <td className={`num ${step === 2 ? "is-ok" : ""}`}>{money(hoursNow * RATE)}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <DemoControls step={step} locale={locale} onAdvance={advance} message={message} />
-    </div>
-  );
-}
-
-export function PhaseDemo({ locale }: { locale: Locale }) {
-  const copy = data.demo[locale];
-  const [step, setStep] = useState<Step>(0);
-  const tBad = phaseRows.reduce((sum, row) => (row.excluded ? sum : sum + row.cost), 0);
-  const tGood = phaseCosts.reduce((a, b) => a + b, 0);
-  const [shownTotal, runTotal, setShownTotal] = useCountUp(tBad);
-
-  useEffect(() => {
-    if (step !== 1) return;
-    document.querySelector("#demo-phases tr.is-flag")?.scrollIntoView({ block: "nearest", inline: "nearest" });
-  }, [step]);
-
-  function advance() {
-    const next = ((step + 1) % 3) as Step;
-    setStep(next);
-    if (next === 2) runTotal(tBad, tGood);
-    else setShownTotal(tBad);
-  }
-
-  const message = [copy.msg_phases_start, copy.msg_phases_reveal, copy.msg_phases_fix][step];
-
-  return (
-    <div id="demo-phases" className="sheet-card">
-      <div
-        className={`fx mb-3 flex items-center gap-2 border px-2.5 py-1.5 text-[0.95rem] ${step === 1 ? "is-flag" : ""} ${step === 2 ? "is-ok" : "border-[color:var(--cs-slab)]"}`}
-      >
-        <b className="font-semibold text-[color:var(--cs-muted)] italic">fx</b>
-        <span>{step === 2 ? copy.formula_phases_good : copy.formula_phases_bad}</span>
-      </div>
-      <div className="sheet-scroll">
-        <table className="sheet">
-          <thead>
-            <tr>
-              <th />
-              <th>A</th>
-              <th>B</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th className="rn">1</th>
-              <td className="font-semibold">{copy.col_phase}</td>
-              <td className="num font-semibold">{copy.col_cost}</td>
-            </tr>
-            {phaseRows.map((row, index) => (
-              <tr key={row.name_es} className={step === 1 && row.excluded ? "is-flag" : ""}>
-                <th className="rn">{index + 2}</th>
-                <td>{locale === "es" ? row.name_es : row.name_en}</td>
-                <td className="num">{money(row.cost)}</td>
-              </tr>
-            ))}
-            <tr className="tot">
-              <th className="rn">{phaseRows.length + 2}</th>
-              <td>{copy.row_total}</td>
-              <td className={`num ${step === 2 ? "is-ok" : ""}`}>{money(step === 2 ? shownTotal : tBad)}</td>
             </tr>
           </tbody>
         </table>

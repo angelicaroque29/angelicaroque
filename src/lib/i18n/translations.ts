@@ -4,6 +4,7 @@ const es = {
     nav: {
       links: [
         { label: "Servicios", href: "/#services" },
+        { label: "Casos", href: "/casos/contratista-estructura" },
         { label: "Cómo trabajo", href: "/#how-it-works" },
         { label: "Sobre mí", href: "/#about" },
       ],
@@ -113,13 +114,13 @@ const es = {
       cta: "Agendar primer meeting",
     },
     caseTeaser: {
-      label: "Caso real",
-      title: "Una plantilla de costos que se veía bien y sumaba mal.",
-      body: "Contratista de estructura de concreto. Auditamos su plantilla de estimación contra un estimado real y encontramos nueve errores que no daban ninguna señal. Se ve en un minuto.",
+      label: "Caso real · Construcción",
+      title: "Ponga su constructora al día, antes que su competencia.",
+      body: "En Thales Builders la información pasaba de un sistema a otro a mano. Mapeamos cómo se mueve el trabajo y automatizamos la facturación de costos, validada al centavo.",
       stats: [
-        { value: "4", label: "sistemas sin conectar" },
-        { value: "9", label: "errores silenciosos" },
-        { value: "0", label: "avisos en rojo" },
+        { value: "1 de 26", label: "traspasos era automático" },
+        { value: "255", label: "datos capturados en 5 semanas" },
+        { value: "$554K", label: "validados al centavo" },
       ],
       cta: "Ver el caso",
     },
@@ -230,6 +231,7 @@ const es = {
             "Panel para administrar tu negocio",
             "Lanzamiento en internet",
             "Soporte inicial después del lanzamiento",
+            "Y más",
           ],
           examples: [
             "Portal donde tus clientes reservan y pagan",
@@ -370,6 +372,7 @@ const en = {
     nav: {
       links: [
         { label: "Services", href: "/#services" },
+        { label: "Cases", href: "/en/cases/structural-contractor" },
         { label: "How I work", href: "/#how-it-works" },
         { label: "About", href: "/#about" },
       ],
@@ -479,13 +482,13 @@ const en = {
       cta: "Book first meeting",
     },
     caseTeaser: {
-      label: "Real case",
-      title: "A cost template that looked right and added up wrong.",
-      body: "Structural concrete contractor. We audited their estimating template against a real estimate and found nine errors that gave no warning. It takes a minute to see.",
+      label: "Real case · Construction",
+      title: "Get your construction company up to speed, before your competitors do.",
+      body: "At Thales Builders, information moved between systems by hand. We mapped how work really flows and automated job-cost billing, validated to the cent.",
       stats: [
-        { value: "4", label: "disconnected systems" },
-        { value: "9", label: "silent errors" },
-        { value: "0", label: "red warnings" },
+        { value: "1 of 26", label: "handoffs was automatic" },
+        { value: "255", label: "facts captured in 5 weeks" },
+        { value: "$554K", label: "validated to the cent" },
       ],
       cta: "See the case",
     },
@@ -596,6 +599,7 @@ const en = {
             "A dashboard to run your business",
             "Launch on the web",
             "Initial support after launch",
+            "And more",
           ],
           examples: [
             "A portal where clients book and pay",
