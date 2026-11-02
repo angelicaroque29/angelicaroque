@@ -44,7 +44,7 @@ export function Contact({ standalone = false }: ContactProps) {
             height: 220,
             top: "-10%",
             right: "-5%",
-            background: "rgb(197 212 240 / 0.4)",
+            background: "rgb(214 191 140 / 0.4)",
           }}
         />
         <div className="relative z-10 max-w-xl">

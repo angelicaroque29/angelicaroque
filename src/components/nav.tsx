@@ -28,7 +28,7 @@ export function Nav() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#e7e2da]/80 bg-ivory/96 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-[#e2e8f0]/80 bg-ivory/96 backdrop-blur-md">
       <nav className="mx-auto grid min-h-[4.5rem] w-full max-w-6xl grid-cols-[1fr_auto] items-center gap-4 px-5 sm:px-8 lg:grid-cols-[auto_1fr_auto_auto] lg:gap-6 lg:px-10">
         <BrandLogo onClick={close} size="md" className="min-w-0 shrink" />
 
@@ -76,8 +76,8 @@ export function Nav() {
                 className={cn(
                   "flex min-h-[3rem] items-center rounded-xl px-4 text-base font-medium transition-colors",
                   isActive(link.href)
-                    ? "bg-[#ddf5f1] text-teal"
-                    : "text-navy hover:bg-[#faf9f7]"
+                    ? "bg-[#e8f0fe] text-teal"
+                    : "text-navy hover:bg-[#f7f9fc]"
                 )}
               >
                 {link.label}

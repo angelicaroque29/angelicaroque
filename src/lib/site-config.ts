@@ -30,8 +30,11 @@ export const siteConfig = {
   whatsappUrl:
     process.env.NEXT_PUBLIC_WHATSAPP_URL ?? "https://wa.me/17864610791",
   images: {
-    logo: "/images/angelica-roque-logo.png",
-    logoIcon: "/images/angelica-roque-icon.png",
+    logo: "/brand/logos/logo-espresso.png",
+    logoOnDark: "/brand/logos/logo-marfil.png",
+    monogram: "/brand/logos/monograma-espresso.png",
+    socialShare: "/brand/social/compartir-web-1200x630.png",
+    workflowModel: "/brand/hero/modelo-workflow.png",
     profile: "/images/angelica-profile-hq.jpg",
     headshot: "/images/angelica-headshot.png",
     office: "/images/angelica-office.png",

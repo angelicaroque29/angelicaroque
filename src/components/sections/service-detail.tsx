@@ -5,13 +5,8 @@ import { ArrowLeft, ArrowRight, Check, Lightbulb, Sparkles } from "lucide-react"
 import { CtaButton } from "@/components/cta-button";
 import { Section } from "@/components/section";
 import { useLocale } from "@/lib/i18n/context";
-import {
-  offerIconBackgrounds,
-  serviceHref,
-  serviceOfferIcons,
-  serviceOfferIds,
-  type ServiceOfferId,
-} from "@/lib/service-offers";
+import { ServiceIcon } from "@/components/service-icon";
+import { serviceHref, serviceOfferIds, type ServiceOfferId } from "@/lib/service-offers";
 import { routes } from "@/lib/routes";
 
 function DetailList({
@@ -24,7 +19,7 @@ function DetailList({
   icon: typeof Check;
 }) {
   return (
-    <div className="rounded-[1.25rem] border border-[#e7e2da] bg-white p-5 shadow-sm sm:p-6">
+    <div className="rounded-[1.25rem] border border-[#e2e8f0] bg-white p-5 shadow-sm sm:p-6">
       <h2 className="font-heading text-lg font-semibold text-navy">{title}</h2>
       <ul className="mt-4 space-y-3">
         {items.map((item) => (
@@ -42,7 +37,6 @@ export function ServiceDetail({ id }: { id: ServiceOfferId }) {
   const { t } = useLocale();
   const details = t.serviceDetails;
   const item = details.items[id];
-  const Icon = serviceOfferIcons[id];
   const otherIds = serviceOfferIds.filter((other) => other !== id);
 
   return (
@@ -55,23 +49,18 @@ export function ServiceDetail({ id }: { id: ServiceOfferId }) {
         {details.back}
       </Link>
 
-      <div className="mt-5 overflow-hidden rounded-[1.5rem] border border-[#e7e2da] bg-[linear-gradient(145deg,#faf8f3_0%,#ffffff_50%,#f4faf9_100%)] shadow-sm">
+      <div className="mt-5 overflow-hidden rounded-[1.5rem] border border-[#e2e8f0] bg-[linear-gradient(145deg,#faf8f3_0%,#ffffff_50%,#f4faf9_100%)] shadow-sm">
         <div className="grid lg:grid-cols-[1fr_minmax(18rem,21rem)]">
           <div className="p-6 sm:p-8 lg:p-10">
-            <div
-              className="flex size-12 items-center justify-center rounded-xl shadow-sm"
-              style={{ background: offerIconBackgrounds[id] }}
-            >
-              <Icon className="size-6 text-white" strokeWidth={1.75} />
-            </div>
-            <p className="mt-5 text-[11px] font-semibold tracking-[0.16em] text-teal uppercase">{item.note}</p>
+            <ServiceIcon id={id} size="lg" />
+            <p className="mt-5 font-mono text-[11px] font-medium tracking-[0.16em] text-nogal uppercase">{item.note}</p>
             <h1 className="mt-2 font-heading text-[clamp(1.75rem,4vw,2.5rem)] font-semibold leading-[1.1] tracking-tight text-navy">
               {item.title}
             </h1>
             <p className="mt-4 max-w-xl text-base leading-[1.75] text-muted-foreground">{item.intro}</p>
           </div>
 
-          <div className="flex flex-col justify-center gap-4 border-t border-[#e7e2da] bg-white/70 p-6 sm:p-8 lg:border-t-0 lg:border-l">
+          <div className="flex flex-col justify-center gap-4 border-t border-[#e2e8f0] bg-white/70 p-6 sm:p-8 lg:border-t-0 lg:border-l">
             <div>
               <p className="text-xs font-medium text-muted-foreground">{item.priceLabel}</p>
               <p className="mt-1 font-heading text-[2.5rem] font-semibold leading-none tracking-tight text-navy">
@@ -103,7 +92,7 @@ export function ServiceDetail({ id }: { id: ServiceOfferId }) {
           <CtaButton
             href={routes.booking}
             showArrow
-            className="w-full !h-12 !border-0 !bg-teal !text-white hover:!bg-[#238a7e] sm:w-auto"
+            className="w-full !h-12 !border-0 !bg-teal !text-white hover:!bg-[#1e40af] sm:w-auto"
           >
             {details.cta}
           </CtaButton>
@@ -111,25 +100,19 @@ export function ServiceDetail({ id }: { id: ServiceOfferId }) {
       </div>
 
       <div className="mt-8">
-        <p className="mb-3 text-xs font-semibold tracking-[0.2em] text-teal uppercase">
+        <p className="mb-3 font-mono text-xs font-medium tracking-[0.2em] text-nogal uppercase">
           {details.otherServicesLabel}
         </p>
         <div className="grid gap-3 sm:grid-cols-3">
           {otherIds.map((otherId) => {
             const other = details.items[otherId];
-            const OtherIcon = serviceOfferIcons[otherId];
             return (
               <Link
                 key={otherId}
                 href={serviceHref(otherId)}
-                className="group flex items-center gap-3 rounded-[1rem] border border-[#e7e2da] bg-white p-4 transition-colors hover:border-teal/40"
+                className="group flex items-center gap-3 rounded-[1rem] border border-[#e2e8f0] bg-white p-4 transition-colors hover:border-teal/40"
               >
-                <span
-                  className="flex size-9 shrink-0 items-center justify-center rounded-lg"
-                  style={{ background: offerIconBackgrounds[otherId] }}
-                >
-                  <OtherIcon className="size-4 text-white" strokeWidth={1.75} />
-                </span>
+                <ServiceIcon id={otherId} size="sm" />
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-sm font-semibold text-navy">{other.title}</span>
                   <span className="block text-xs text-muted-foreground">

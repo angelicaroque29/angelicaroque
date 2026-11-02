@@ -5,13 +5,8 @@ import { ArrowRight, Check } from "lucide-react";
 import { CtaButton } from "@/components/cta-button";
 import { Section } from "@/components/section";
 import { useLocale } from "@/lib/i18n/context";
-import {
-  auditAccent,
-  offerIconBackgrounds,
-  serviceHref,
-  serviceOfferIcons,
-  type ServiceOfferId,
-} from "@/lib/service-offers";
+import { ServiceIcon } from "@/components/service-icon";
+import { auditAccent, serviceHref, type ServiceOfferId } from "@/lib/service-offers";
 import { routes } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 
@@ -67,7 +62,10 @@ function AuditFeaturedCard({
     >
       <div className="grid lg:grid-cols-[1fr_minmax(19rem,22rem)]">
         <div className="p-6 sm:p-8 lg:p-9">
-          <p className="text-[11px] font-semibold tracking-[0.18em] text-[#a8e0d8] uppercase">{categoryLabel}</p>
+          <div className="flex items-center gap-3">
+            <ServiceIcon id="audit" tone="dorado" size="sm" />
+            <p className="font-mono text-[11px] font-medium tracking-[0.16em] text-dorado uppercase">{categoryLabel}</p>
+          </div>
           <h3 className="mt-3 font-heading text-[clamp(1.35rem,2.5vw,1.85rem)] font-semibold leading-snug text-white">
             {offer.title}
           </h3>
@@ -75,7 +73,7 @@ function AuditFeaturedCard({
           <ul className="mt-6 hidden gap-2.5 sm:grid sm:grid-cols-3">
             {offer.includes.map((item) => (
               <li key={item} className="flex items-start gap-2 text-sm text-white/90">
-                <Check className="mt-0.5 size-4 shrink-0 text-[#a8e0d8]" strokeWidth={2.5} />
+                <Check className="mt-0.5 size-4 shrink-0 text-dorado" strokeWidth={2.5} />
                 <span>{item}</span>
               </li>
             ))}
@@ -103,13 +101,13 @@ function AuditFeaturedCard({
           <CtaButton
             href={routes.booking}
             showArrow
-            className="w-full !h-12 !border-0 !bg-teal !text-white shadow-md hover:!bg-[#238a7e]"
+            className="w-full !h-12 !border-0 !bg-dorado !text-espresso shadow-md hover:!bg-[#0284c7]"
           >
             {offer.cta}
           </CtaButton>
           <Link
             href={serviceHref("audit")}
-            className="inline-flex items-center justify-center gap-1 text-sm font-semibold text-white/85 transition-colors hover:text-white"
+            className="inline-flex items-center justify-center gap-1 text-sm font-semibold text-marfil/85 transition-colors hover:text-marfil"
           >
             {detailsCta}
             <ArrowRight className="size-4" />
@@ -131,30 +129,23 @@ function OfferCard({
   priceFromLabel: string;
   detailsCta: string;
 }) {
-  const Icon = serviceOfferIcons[offer.id];
-
   return (
     <Link
       href={serviceHref(offer.id)}
-      className="group flex flex-col rounded-[1.25rem] border border-[#e7e2da] bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-teal/40 hover:shadow-md sm:p-6"
+      className="group flex flex-col rounded-[1.25rem] border border-[#e2e8f0] bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-teal/40 hover:shadow-md sm:p-6"
       style={{ animation: `fadeIn 0.7s cubic-bezier(.22,.68,0,1.2) ${0.12 + index * 0.06}s both` }}
     >
       <div className="flex items-center gap-3">
-        <div
-          className="flex size-11 shrink-0 items-center justify-center rounded-xl shadow-sm"
-          style={{ background: offerIconBackgrounds[offer.id] }}
-        >
-          <Icon className="size-5 text-white" strokeWidth={1.75} />
-        </div>
+        <ServiceIcon id={offer.id} />
         <div className="min-w-0">
-          <p className="text-[10px] font-semibold tracking-[0.14em] text-teal uppercase">{offer.note}</p>
+          <p className="font-mono text-[10px] font-medium tracking-[0.14em] text-nogal uppercase">{offer.note}</p>
           <h3 className="font-heading text-lg font-semibold leading-snug text-navy">{offer.title}</h3>
         </div>
       </div>
 
       <p className="mt-3 flex-1 text-[0.9375rem] leading-[1.65] text-muted-foreground">{offer.summary}</p>
 
-      <div className="mt-5 flex items-end justify-between gap-3 border-t border-[#f0ece6] pt-4">
+      <div className="mt-5 flex items-end justify-between gap-3 border-t border-[#e8eef5] pt-4">
         <div>
           <p className="text-[11px] font-medium text-muted-foreground">{priceFromLabel}</p>
           <p className="font-heading text-[1.6rem] font-semibold leading-none tracking-tight text-navy">
@@ -191,7 +182,7 @@ export function Services({ standalone = false }: ServicesProps) {
         detailsCta={services.detailsCta}
       />
 
-      <p className="mt-10 mb-4 text-xs font-semibold tracking-[0.2em] text-teal uppercase">{services.buildsLabel}</p>
+      <p className="mt-10 mb-4 font-mono text-xs font-medium tracking-[0.2em] text-nogal uppercase">{services.buildsLabel}</p>
 
       <div className="grid gap-4 md:grid-cols-3 md:gap-5">
         {services.offers.map((offer, index) => (

@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prototipo: Encuentre el error</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1C2630; --muted: #4A5560; --concrete: #ECEDEA; --slab: #D5D8D4; --cell: #FFFFFF;
+    --rebar: #7A4A2E; --on-rebar: #FFFFFF; --flag: #B42318; --flag-bg: #FBE9E7; --ok: #2F6B4F; --ok-bg: #E5F2EA;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #E4E7E3; --muted: #A9B1B8; --concrete: #161B20; --slab: #2A3138; --cell: #1F252B;
+      --rebar: #D08A5E; --on-rebar: #161B20; --flag: #F07167; --flag-bg: #3A1E1E; --ok: #6FBF95; --ok-bg: #1B3127;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--concrete); color: var(--ink);
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif; font-size: 1.0625rem; line-height: 1.6;
+  }
+  .demo { max-width: 960px; margin: 0 auto; padding: 2.5rem 1rem 3rem; }
+  .demo h3 { font-size: 1.5rem; font-weight: 700; line-height: 1.2; margin: 0 0 .25rem; }
+  .demo .intro { color: var(--muted); margin: 0 0 1.25rem; max-width: 66ch; }
+
+  .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: .25rem; border-bottom: 1px solid var(--slab); }
+  .tab {
+    font: inherit; font-size: .95rem; color: var(--muted); background: transparent;
+    border: 1px solid transparent; border-bottom: none; border-radius: 4px 4px 0 0;
+    padding: .55rem .75rem; cursor: pointer; margin-bottom: -1px; text-align: left; line-height: 1.3;
+  }
+  .tab[aria-selected="true"] { color: var(--ink); background: var(--cell); border-color: var(--slab); font-weight: 600; }
+  .tab:focus-visible, .action:focus-visible { outline: 3px solid var(--rebar); outline-offset: 2px; }
+
+  .panel { background: var(--cell); border: 1px solid var(--slab); border-top: none; padding: .75rem; }
+  @media (min-width: 40rem) { .panel { padding: 1.25rem; } }
+  .panel[hidden] { display: none; }
+
+  .fx { display: flex; align-items: center; gap: .6rem; border: 1px solid var(--slab); padding: .35rem .6rem; margin-bottom: .75rem; font-size: .95rem; transition: none; }
+  .fx b { color: var(--muted); font-style: italic; font-weight: 600; }
+  .fx.is-flag { border-color: var(--flag); background: var(--flag-bg); }
+  .fx.is-ok { border-color: var(--ok); background: var(--ok-bg); }
+
+  .scroll { overflow-x: auto; }
+  table.sheet { border-collapse: collapse; width: 100%; font-size: .875rem; line-height: 1.35; font-variant-numeric: tabular-nums; }
+  @media (min-width: 40rem) { table.sheet { font-size: .95rem; } }
+  .sheet th, .sheet td { border: 1px solid var(--slab); padding: .4rem .45rem; text-align: left; vertical-align: top; }
+  .sheet thead th, .sheet th.rn { background: var(--concrete); color: var(--muted); font-weight: 500; text-align: center; width: 1.75rem; }
+  .sheet thead th { width: auto; }
+  .sheet thead th:first-child { width: 1.75rem; }
+  .sheet .h { font-weight: 600; }
+  .sheet .num { text-align: right; }
+  .sheet tr.tot td { font-weight: 700; }
+  .sheet td.is-flag { outline: 2px solid var(--flag); outline-offset: -2px; background: var(--flag-bg); color: var(--flag); }
+  .sheet td.is-ok { outline: 2px solid var(--ok); outline-offset: -2px; background: var(--ok-bg); }
+  .sheet tr.is-flag td { background: var(--flag-bg); }
+  .sheet tr.is-flag td:first-of-type { box-shadow: inset 3px 0 0 var(--flag); }
+  .space { display: inline-block; min-width: 1.2em; border-bottom: 1px dashed currentColor; }
+
+  .controls { display: flex; flex-wrap: wrap; align-items: flex-start; gap: .75rem 1rem; margin-top: 1rem; }
+  .action {
+    font: inherit; font-weight: 600; color: var(--on-rebar); background: var(--rebar);
+    border: none; border-radius: 4px; padding: .6rem 1.1rem; cursor: pointer; flex: 0 0 auto;
+  }
+  .msg { margin: 0; flex: 1 1 18rem; max-width: 60ch; }
+  .msg.is-flag { color: var(--flag); }
+  .msg.is-ok { color: var(--ok); }
+</style>
+</head>
+<body>
+<section class="demo" aria-labelledby="demo-title">
+  <h3 id="demo-title">Encuentre el error</h3>
+  <p class="intro">Así se ve una plantilla con un error silencioso. Los números son ilustrativos.</p>
+
+  <div class="tabs" role="tablist" aria-label="Ejemplos de errores">
+    <button class="tab" role="tab" id="tab-labor" aria-selected="true" aria-controls="panel-labor">Una celda con un espacio</button>
+    <button class="tab" role="tab" id="tab-phases" aria-selected="false" aria-controls="panel-phases" tabindex="-1">Una fase fuera del total</button>
+  </div>
+
+  <div class="panel" role="tabpanel" id="panel-labor" aria-labelledby="tab-labor">
+    <div class="fx" id="fx-labor"><b>fx</b><span>=HORAS_MO(B3;C3)</span></div>
+    <div class="scroll">
+      <table class="sheet">
+        <thead><tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead>
+        <tbody>
+          <tr><th class="rn">1</th><td class="h">Elemento</td><td class="h num">Largo (ft)</td><td class="h num">Cantidad</td><td class="h num">Mano de obra (h)</td></tr>
+          <tr><th class="rn">2</th><td>V-1</td><td class="num">24</td><td class="num">6</td><td class="num">72</td></tr>
+          <tr><th class="rn">3</th><td>V-2</td><td class="num" id="labor-b3"><span class="space" aria-label="un espacio">&nbsp;</span></td><td class="num">4</td><td class="num" id="labor-d3">0</td></tr>
+          <tr><th class="rn">4</th><td>V-3</td><td class="num">18</td><td class="num">8</td><td class="num">72</td></tr>
+          <tr><th class="rn">5</th><td>V-4</td><td class="num">30</td><td class="num">2</td><td class="num">30</td></tr>
+          <tr class="tot"><th class="rn">6</th><td>Total horas</td><td></td><td></td><td class="num" id="labor-hours">174</td></tr>
+          <tr class="tot"><th class="rn">7</th><td colspan="3">Costo de mano de obra a $62/h</td><td class="num" id="labor-cost">$10,788</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="controls">
+      <button class="action" id="btn-labor" type="button">Mostrar el error</button>
+      <p class="msg" id="msg-labor" aria-live="polite">Todo suma y no hay ningún error en rojo. ¿Lo ve?</p>
+    </div>
+  </div>
+
+  <div class="panel" role="tabpanel" id="panel-phases" aria-labelledby="tab-phases" hidden>
+    <div class="fx" id="fx-phases"><b>fx</b><span id="fx-phases-text">=SUMA(B2:B4)</span></div>
+    <div class="scroll">
+      <table class="sheet">
+        <thead><tr><th></th><th>A</th><th>B</th></tr></thead>
+        <tbody>
+          <tr><th class="rn">1</th><td class="h">Fase</td><td class="h num">Costo</td></tr>
+          <tr><th class="rn">2</th><td>Cimentación</td><td class="num">$186,400</td></tr>
+          <tr><th class="rn">3</th><td>Losas</td><td class="num">$241,900</td></tr>
+          <tr><th class="rn">4</th><td>Columnas y vigas</td><td class="num">$158,300</td></tr>
+          <tr id="phases-row5"><th class="rn">5</th><td>Terrazas</td><td class="num">$37,600</td></tr>
+          <tr class="tot"><th class="rn">6</th><td>Costo total</td><td class="num" id="phases-total">$586,600</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="controls">
+      <button class="action" id="btn-phases" type="button">Mostrar el error</button>
+      <p class="msg" id="msg-phases" aria-live="polite">Cuatro fases, un total. Se ve bien.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var T = {
+    reveal: "Mostrar el error", fix: "Corregir", reset: "Volver a empezar",
+    labor: {
+      start: "Todo suma y no hay ningún error en rojo. ¿Lo ve?",
+      reveal: "B3 tiene un espacio, no un número. La macro de la plantilla convierte el error en 0, así que la fila no aporta mano de obra y nada se marca.",
+      fix: "Una sola celda: $2,480 de mano de obra que no estaban en el estimado. Una plantilla real tiene cientos de filas como esta."
+    },
+    phases: {
+      start: "Cuatro fases, un total. Se ve bien.",
+      reveal: "El total suma B2:B4. Terrazas está en B5 y nunca entra al precio.",
+      fix: "$37,600 fuera del precio. Con márgenes de un solo dígito, eso puede ser toda la ganancia del trabajo."
+    },
+    formulaBad: "=SUMA(B2:B4)", formulaGood: "=SUMA(B2:B5)"
+  };
+
+  // Datos ilustrativos (iguales a contenido/data.json)
+  var FACTOR = 0.5, RATE = 62;
+  var laborRows = [{ len: 24, qty: 6 }, { len: null, qty: 4, fixed: 20 }, { len: 18, qty: 8 }, { len: 30, qty: 2 }];
+  var phaseCosts = [186400, 241900, 158300, 37600];
+
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var money = function (n) { return "$" + Math.round(n).toLocaleString("en-US"); };
+  var plain = function (n) { return Math.round(n).toLocaleString("en-US"); };
+  var $ = function (id) { return document.getElementById(id); };
+
+  function countTo(el, from, to, format) {
+    if (reduceMotion) { el.textContent = format(to); return; }
+    var start = null, dur = 450;
+    function step(t) {
+      if (start === null) start = t;
+      var p = Math.min(1, (t - start) / dur);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = format(from + (to - from) * eased);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function hours(rows, fixed) {
+    return rows.reduce(function (sum, r) {
+      var len = r.len === null ? (fixed ? r.fixed : 0) : r.len;
+      return sum + len * r.qty * FACTOR;
+    }, 0);
+  }
+
+  function setMsg(el, text, tone) {
+    el.textContent = text;
+    el.className = "msg" + (tone ? " is-" + tone : "");
+  }
+
+  // Pestaña 1
+  var laborState = 0;
+  var hBad = hours(laborRows, false), hGood = hours(laborRows, true);
+  $("btn-labor").addEventListener("click", function () {
+    var b3 = $("labor-b3"), d3 = $("labor-d3"), msg = $("msg-labor"), btn = this;
+    laborState = (laborState + 1) % 3;
+    b3.classList.remove("is-flag", "is-ok"); d3.classList.remove("is-flag", "is-ok");
+    if (laborState === 1) {
+      b3.classList.add("is-flag"); d3.classList.add("is-flag");
+      setMsg(msg, T.labor.reveal, "flag"); btn.textContent = T.fix;
+    } else if (laborState === 2) {
+      var r = laborRows[1];
+      b3.textContent = plain(r.fixed); d3.textContent = plain(r.fixed * r.qty * FACTOR);
+      b3.classList.add("is-ok"); d3.classList.add("is-ok");
+      countTo($("labor-hours"), hBad, hGood, plain);
+      countTo($("labor-cost"), hBad * RATE, hGood * RATE, money);
+      setMsg(msg, T.labor.fix, "ok"); btn.textContent = T.reset;
+    } else {
+      b3.innerHTML = '<span class="space" aria-label="un espacio">&nbsp;</span>'; d3.textContent = "0";
+      $("labor-hours").textContent = plain(hBad); $("labor-cost").textContent = money(hBad * RATE);
+      setMsg(msg, T.labor.start); btn.textContent = T.reveal;
+    }
+  });
+
+  // Pestaña 2
+  var phasesState = 0;
+  var tBad = phaseCosts.slice(0, 3).reduce(function (a, b) { return a + b; }, 0);
+  var tGood = phaseCosts.reduce(function (a, b) { return a + b; }, 0);
+  $("btn-phases").addEventListener("click", function () {
+    var row = $("phases-row5"), fx = $("fx-phases"), total = $("phases-total"), msg = $("msg-phases"), btn = this;
+    phasesState = (phasesState + 1) % 3;
+    row.classList.remove("is-flag"); fx.classList.remove("is-flag", "is-ok"); total.classList.remove("is-ok");
+    if (phasesState === 1) {
+      row.classList.add("is-flag"); fx.classList.add("is-flag");
+      setMsg(msg, T.phases.reveal, "flag"); btn.textContent = T.fix;
+    } else if (phasesState === 2) {
+      $("fx-phases-text").textContent = T.formulaGood;
+      fx.classList.add("is-ok"); total.classList.add("is-ok");
+      countTo(total, tBad, tGood, money);
+      setMsg(msg, T.phases.fix, "ok"); btn.textContent = T.reset;
+    } else {
+      $("fx-phases-text").textContent = T.formulaBad; total.textContent = money(tBad);
+      setMsg(msg, T.phases.start); btn.textContent = T.reveal;
+    }
+  });
+
+  // Pestañas accesibles
+  var tabs = [$("tab-labor"), $("tab-phases")];
+  function select(i) {
+    tabs.forEach(function (t, j) {
+      var on = i === j;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+      $(t.getAttribute("aria-controls")).hidden = !on;
+    });
+    tabs[i].focus();
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { select(i); });
+    t.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+        e.preventDefault();
+        select((i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length);
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

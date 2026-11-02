@@ -20,7 +20,7 @@ export function MobileBottomNav() {
 
   return (
     <nav
-      className="fixed inset-x-0 bottom-0 z-50 border-t border-[#e7e2da]/90 bg-white/95 backdrop-blur-md lg:hidden"
+      className="fixed inset-x-0 bottom-0 z-50 border-t border-[#e2e8f0]/90 bg-white/95 backdrop-blur-md lg:hidden"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
       aria-label={t.nav.openMenu}
     >
@@ -45,7 +45,7 @@ export function MobileBottomNav() {
               <span
                 className={cn(
                   "flex size-9 items-center justify-center rounded-xl transition-colors",
-                  active ? "bg-[#ddf5f1]" : "bg-transparent"
+                  active ? "bg-[#e8f0fe]" : "bg-transparent"
                 )}
               >
                 <Icon className="size-5" strokeWidth={active ? 2.25 : 2} />

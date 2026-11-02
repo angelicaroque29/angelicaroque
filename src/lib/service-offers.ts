@@ -1,16 +1,17 @@
-import type { LucideIcon } from "lucide-react";
-import { Code2, Compass, Globe, Zap } from "lucide-react";
-
 export type ServiceOfferId = "audit" | "website" | "automation" | "saas";
 
 export const serviceOfferIds: readonly ServiceOfferId[] = ["audit", "website", "automation", "saas"];
 
-export const serviceOfferIcons: Record<ServiceOfferId, LucideIcon> = {
-  audit: Compass,
-  website: Globe,
-  automation: Zap,
-  saas: Code2,
+const serviceIconNames: Record<ServiceOfferId, string> = {
+  audit: "ia",
+  website: "desarrollo",
+  automation: "automatizacion",
+  saas: "sistemas",
 };
+
+export function serviceIconSrc(id: ServiceOfferId, tone: "espresso" | "dorado" = "espresso") {
+  return `/brand/iconos/${serviceIconNames[id]}-${tone}.png`;
+}
 
 export const serviceSlugs: Record<ServiceOfferId, string> = {
   audit: "consultoria",
@@ -27,22 +28,8 @@ export function serviceIdFromSlug(slug: string): ServiceOfferId | undefined {
   return serviceOfferIds.find((id) => serviceSlugs[id] === slug);
 }
 
-/** Shared tokens — navy + teal + warm ivory only */
-const navy = "#1e3a5f";
-const navyMid = "#2d5278";
-const teal = "#2a9d8f";
-const tealLight = "#3bb3a4";
-const periwinkle = "#8fa8c8";
-
-export const offerIconBackgrounds: Record<ServiceOfferId, string> = {
-  audit: `linear-gradient(145deg, ${teal} 0%, ${tealLight} 100%)`,
-  website: `linear-gradient(145deg, ${navy} 0%, ${navyMid} 100%)`,
-  automation: `linear-gradient(145deg, ${teal} 0%, ${tealLight} 100%)`,
-  saas: `linear-gradient(145deg, ${navyMid} 0%, ${periwinkle} 100%)`,
-};
-
 export const auditAccent = {
-  gradient: `linear-gradient(145deg, ${navy} 0%, #254a6e 52%, #2a6570 100%)`,
-  glow: "0 16px 44px rgb(30 58 95 / 0.16)",
-  border: "rgb(42 157 143 / 0.28)",
+  gradient: "linear-gradient(145deg, #0e1726 0%, #152238 55%, #1d4ed8 100%)",
+  glow: "0 16px 44px rgb(14 23 38 / 0.18)",
+  border: "rgb(14 165 233 / 0.35)",
 } as const;

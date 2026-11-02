@@ -8,13 +8,14 @@ type BrandLogoProps = {
   href?: string;
   onClick?: () => void;
   size?: "sm" | "md" | "lg";
-  invert?: boolean;
+  tone?: "dark" | "light";
 };
 
-const heights = {
-  sm: 32,
-  md: 40,
-  lg: 48,
+/** The wordmark is part of the PNG; never rebuild it with live text. */
+const sizeClasses = {
+  sm: "h-7",
+  md: "h-8 sm:h-9 lg:h-10",
+  lg: "h-11 lg:h-12",
 } as const;
 
 export function BrandLogo({
@@ -22,22 +23,17 @@ export function BrandLogo({
   href = "/",
   onClick,
   size = "md",
-  invert = false,
+  tone = "dark",
 }: BrandLogoProps) {
-  const height = heights[size];
-
   const logo = (
     <Image
-      src={siteConfig.images.logo}
+      src={tone === "light" ? siteConfig.images.logoOnDark : siteConfig.images.logo}
       alt={siteConfig.name}
-      width={320}
-      height={120}
+      width={2091}
+      height={388}
       priority
-      className={cn(
-        "h-auto w-auto max-w-none object-contain object-left",
-        invert && "brightness-0 invert"
-      )}
-      style={{ height, width: "auto" }}
+      sizes="280px"
+      className={cn("w-auto max-w-none object-contain object-left", sizeClasses[size])}
     />
   );
 
